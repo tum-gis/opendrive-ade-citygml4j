@@ -15,6 +15,9 @@ allprojects {
         maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
+        maven {
+            url 'https://jitpack.io'
+        }
         mavenCentral()
     }
 }
@@ -48,7 +51,8 @@ dependencies {
 //    annotationProcessor 'org.xmlobjects:classindex:3.11.1'
 
     // This works in any case
-    api files('../citygml4j/build/libs/citygml4j-3.0.0-rc.3.jar')
+//    api files('../citygml4j/build/libs/citygml4j-3.0.0-rc.3.jar')
+    api "com.github.b-schwab:citygml4j:enable-jitpack-SNAPSHOT"
     api 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
     api 'org.xmlobjects.xal:xal-objects:1.0.0-SNAPSHOT'
     implementation project(":gml-linear-referencing")
