@@ -21,13 +21,24 @@ java {
 }
 
 dependencies {
+    // Uncoment all when bottom dependencies are commented out
+//    api 'org.glassfish.jaxb:xsom:3.0.2'
+//    api 'org.xmlobjects:classindex:3.11.1'
+//    api files('../../xal-objects/build/libs/xal-objects-1.0.0-SNAPSHOT.jar')
+//    api files('../../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar')
+//    api files('../../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar')
+//    annotationProcessor files('../../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar')
+//    annotationProcessor files('../../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar')
+//    annotationProcessor 'org.xmlobjects:classindex:3.11.1'
+
+    // This works in any case
     api 'org.glassfish.jaxb:xsom:3.0.2'
     api 'org.xmlobjects:classindex:3.11.1'
-    api files('../../xal-objects/build/libs/xal-objects-1.0.0-SNAPSHOT.jar')
-    api files('../../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar')
-    api files('../../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar')
-    annotationProcessor files('../../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar')
-    annotationProcessor files('../../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar')
+    api 'org.xmlobjects:xml-objects:1.0.0-SNAPSHOT'
+    api 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
+    api 'org.xmlobjects.xal:xal-objects:1.0.0-SNAPSHOT'
+    annotationProcessor 'org.xmlobjects:xml-objects:1.0.0-SNAPSHOT'
+    annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
     annotationProcessor 'org.xmlobjects:classindex:3.11.1'
 }
 

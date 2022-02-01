@@ -5,11 +5,23 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$PROJECT_DIR$/../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar" />
-          <entry name="$PROJECT_DIR$/../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects.gml/gml-objects/1.0.0-SNAPSHOT/6c8774bd136f4a62ec108487243123cd9441e55/gml-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects/xml-objects/1.0.0-SNAPSHOT/a805e6fbd24a5f4887353762936747f747655054/xml-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/xsom/3.0.2/32f936578ef5755aaab9627023168a635c3e1c3/xsom-3.0.2.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects/classindex/3.11.1/5da97cf654486814a03f2315457e7156ce18f2ac/classindex-3.11.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind.external/relaxng-datatype/3.0.2/221ee282707d196f927a5e0bb0c3129f4ef36575/relaxng-datatype-3.0.2.jar" />
         </processorPath>
         <module name="opendrive-ade-citygml4j.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects.gml/gml-objects/1.0.0-SNAPSHOT/6c8774bd136f4a62ec108487243123cd9441e55/gml-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects/xml-objects/1.0.0-SNAPSHOT/a805e6fbd24a5f4887353762936747f747655054/xml-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects/classindex/3.11.1/5da97cf654486814a03f2315457e7156ce18f2ac/classindex-3.11.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/xsom/3.0.2/32f936578ef5755aaab9627023168a635c3e1c3/xsom-3.0.2.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind.external/relaxng-datatype/3.0.2/221ee282707d196f927a5e0bb0c3129f4ef36575/relaxng-datatype-3.0.2.jar" />
+        </processorPath>
         <module name="opendrive-ade-citygml4j.gml-linear-referencing.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
@@ -17,10 +29,10 @@
         <processorPath useClasspath="false">
           <entry name="$PROJECT_DIR$/build/libs/opendrive-ade-citygml4j-1.0-SNAPSHOT.jar" />
           <entry name="$PROJECT_DIR$/../citygml4j/build/libs/citygml4j-3.0.0-rc.3.jar" />
-          <entry name="$PROJECT_DIR$/../xal-objects/build/libs/xal-objects-1.0.0-SNAPSHOT.jar" />
-          <entry name="$PROJECT_DIR$/../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar" />
-          <entry name="$PROJECT_DIR$/../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar" />
           <entry name="$PROJECT_DIR$/gml-linear-referencing/build/libs/gml-linear-referencing-1.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects.gml/gml-objects/1.0.0-SNAPSHOT/6c8774bd136f4a62ec108487243123cd9441e55/gml-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects.xal/xal-objects/1.0.0-SNAPSHOT/94c0ab925ab60ebac6609ce3e51b9d36b084244e/xal-objects-1.0.0-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects/xml-objects/1.0.0-SNAPSHOT/a805e6fbd24a5f4887353762936747f747655054/xml-objects-1.0.0-SNAPSHOT.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/xsom/3.0.2/32f936578ef5755aaab9627023168a635c3e1c3/xsom-3.0.2.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects/classindex/3.11.1/5da97cf654486814a03f2315457e7156ce18f2ac/classindex-3.11.1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind.external/relaxng-datatype/3.0.2/221ee282707d196f927a5e0bb0c3129f4ef36575/relaxng-datatype-3.0.2.jar" />
