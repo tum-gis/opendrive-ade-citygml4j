@@ -1,0 +1,59 @@
+plugins {
+    id 'java-library'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+allprojects {
+//    group 'org.citygml4j'
+//    version '3.0.0-rc.3'
+//    description 'The Open Source Java API for CityGML'
+//    ext.date = new Date()
+
+    repositories {
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+        mavenCentral()
+    }
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+    withJavadocJar()
+    withSourcesJar()
+}
+
+dependencies {
+    api files('../citygml4j/build/libs/citygml4j-3.0.0-rc.3.jar')
+    api 'org.glassfish.jaxb:xsom:3.0.2'
+    api 'org.xmlobjects:classindex:3.11.1'
+    api files('../xal-objects/build/libs/xal-objects-1.0.0-SNAPSHOT.jar')
+    api files('../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar')
+    api files('../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar')
+    implementation project(":gml-linear-referencing")
+    annotationProcessor files('../gml-objects/build/libs/gml-objects-1.0.0-SNAPSHOT.jar')
+    annotationProcessor files('../xml-objects/build/libs/xml-objects-1.0.0-SNAPSHOT.jar')
+    annotationProcessor 'org.xmlobjects:classindex:3.11.1'
+
+    // This works in any case
+//    api files('../citygml4j/build/libs/citygml4j-3.0.0-rc.3.jar')
+//    api 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
+//    api 'org.xmlobjects.xal:xal-objects:1.0.0-SNAPSHOT'
+//    annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
+}
+
+//test {
+//    useJUnitPlatform()
+//}
+

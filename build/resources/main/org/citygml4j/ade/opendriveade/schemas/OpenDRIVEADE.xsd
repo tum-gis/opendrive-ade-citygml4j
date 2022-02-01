@@ -1,0 +1,3532 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:app="http://www.opengis.net/citygml/appearance/3.0" xmlns:brid="http://www.opengis.net/citygml/bridge/3.0" xmlns:core="http://www.opengis.net/citygml/3.0" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/3.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmllr="http://www.opengis.net/gml/3.3/lr" xmlns:grp="http://www.opengis.net/citygml/cityobjectgroup/3.0" xmlns:odr="http://www.citygml.org/ade/openDRIVE" xmlns:tran="http://www.opengis.net/citygml/transportation/3.0" xmlns:tun="http://www.opengis.net/citygml/tunnel/3.0" elementFormDefault="qualified" targetNamespace="http://www.citygml.org/ade/openDRIVE" version="1.0">
+  <annotation>
+    <documentation>Notes that describe Package A.</documentation>
+  </annotation>
+  <import namespace="http://www.opengis.net/citygml/3.0" schemaLocation="./cityGMLBase.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/appearance/3.0" schemaLocation="./appearance.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/bridge/3.0" schemaLocation="./bridge.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/cityfurniture/3.0" schemaLocation="./cityFurniture.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/cityobjectgroup/3.0" schemaLocation="./cityObjectGroup.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/transportation/3.0" schemaLocation="./transportation.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/tunnel/3.0" schemaLocation="./tunnel.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.3/lr" schemaLocation="http://schemas.opengis.net/gml/3.3/linearRef.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element name="CRGTransformationParameters" substitutionGroup="gml:AbstractObject" type="odr:CRGTransformationParametersType">
+    <annotation>
+      <documentation>Class containing parameters used for the transformation of positions between the road reference line and the CRG reference line.</documentation>
+    </annotation>
+  </element>
+  <complexType name="CRGTransformationParametersType">
+    <sequence>
+      <element default="0.0" minOccurs="0" name="sTranslation" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: s-offset between CRG center line and reference line of the road
+(default = 0.0).</documentation>
+        </annotation>
+      </element>
+      <element default="0.0" minOccurs="0" name="tTranslation" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: t-offset between CRG center line and reference line of the road
+(default = 0.0).</documentation>
+        </annotation>
+      </element>
+      <element default="0.0" minOccurs="0" name="zTranslation" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: z-offset between CRG center line and reference line of the road
+(default = 0.0).</documentation>
+        </annotation>
+      </element>
+      <element default="1.0" minOccurs="0" name="zScale" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: z-scale factor for the surface description (default = 1.0).</documentation>
+        </annotation>
+      </element>
+      <element default="0.0" minOccurs="0" name="headingOffset" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: Heading offset between CRG center line and reference line of the road (required for mode genuine only, default = 0.0)</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="CRGTransformationParametersPropertyType">
+    <sequence>
+      <element ref="odr:CRGTransformationParameters"/>
+    </sequence>
+  </complexType>
+  <element name="Heading" substitutionGroup="gml:AbstractObject" type="odr:HeadingType"/>
+  <complexType name="HeadingType">
+    <sequence>
+      <element name="heading" type="gml:AngleType"/>
+      <element minOccurs="0" name="relativeTo" type="anyURI"/>
+    </sequence>
+    <attributeGroup ref="gml:SRSReferenceGroup"/>
+  </complexType>
+  <complexType name="HeadingPropertyType">
+    <sequence>
+      <element ref="odr:Heading"/>
+    </sequence>
+  </complexType>
+  <element name="LE_Event" substitutionGroup="gml:AbstractGML" type="odr:LE_EventType">
+    <annotation>
+      <documentation>From ISO 19148: The LE_Event class is used to specify information about linearly located feature and attribute events.</documentation>
+    </annotation>
+  </element>
+  <complexType name="LE_EventType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="eventName" type="string"/>
+          <element minOccurs="0" name="value">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="gml:AbstractObject"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element name="location">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:LE_FromToLocation"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element name="locatingOrAttributedFeature" type="core:AbstractFeaturePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LE_EventPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:LE_Event"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="LE_FromToLocation" substitutionGroup="gml:AbstractGML" type="odr:LE_FromToLocationType">
+    <annotation>
+      <documentation>From ISO 19148: The type “LE_FromToLocation” is used to specify a contiguous spatial interval along the locating or attributed
+feature.</documentation>
+    </annotation>
+  </element>
+  <complexType name="LE_FromToLocationType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="fromPosition" type="gmllr:DistanceExpressionPropertyType">
+            <annotation>
+              <documentation>From ISO 19148: The attribute “fromPosition” specifies the starting linearly referenced location of the event as a single point
+along the locating or attributed feature.</documentation>
+            </annotation>
+          </element>
+          <element name="toPosition" type="gmllr:DistanceExpressionPropertyType">
+            <annotation>
+              <documentation>From ISO 19148: The attribute “toPosition” specifies the ending linearly referenced location of the event as a single point along
+the locating or attributed feature.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LE_FromToLocationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:LE_FromToLocation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="LateralLaneSectionType">
+    <restriction base="string">
+      <enumeration value="center"/>
+      <enumeration value="left"/>
+      <enumeration value="right"/>
+    </restriction>
+  </simpleType>
+  <element name="LinearReferencing" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:LinearReferencingType">
+    <annotation>
+      <documentation>Class holding the linear referencing information.</documentation>
+    </annotation>
+  </element>
+  <complexType name="LinearReferencingType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element name="positionExpression" type="gmllr:PositionExpressionPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LinearReferencingPropertyType">
+    <sequence>
+      <element ref="odr:LinearReferencing"/>
+    </sequence>
+  </complexType>
+  <element name="MarkingElementLateralOffset" substitutionGroup="gml:AbstractObject" type="odr:MarkingElementLateralOffsetType"/>
+  <complexType name="MarkingElementLateralOffsetType">
+    <sequence>
+      <element name="startOffset" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: Lateral offset in u-direction from start of bounding box side where the first marking starts.</documentation>
+        </annotation>
+      </element>
+      <element name="stopOffset" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: Lateral offset in u-direction from end of bounding box side where the marking ends.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="relativeToBoundingBoxSide" type="anyURI"/>
+    </sequence>
+    <attributeGroup ref="gml:SRSReferenceGroup"/>
+    <attribute default="1" name="alongCRSAxisIndex" type="string"/>
+  </complexType>
+  <complexType name="MarkingElementLateralOffsetPropertyType">
+    <sequence>
+      <element ref="odr:MarkingElementLateralOffset"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEAdditionalData" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEAdditionalDataType">
+    <annotation>
+      <documentation>From OpenDRIVE: OpenDRIVE offers the possibility to include external data. The processing of this data depends on the application.
+Additional data may be placed at any position in OpenDRIVE.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEAdditionalDataType">
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="include" type="core:ExternalReferencePropertyType"/>
+      <element minOccurs="0" name="dataQuality" type="odr:OpenDRIVEDataQualityPropertyType"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="userData" type="odr:OpenDRIVEUserDataPropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEAdditionalDataPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEAdditionalData"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEAdditionalDatasetData" substitutionGroup="core:ADEOfCityModel" type="odr:OpenDRIVEAdditionalDatasetDataType">
+    <annotation>
+      <documentation>From OpenDRIVE.: OpenDRIVE offers the possibility to include external data. The processing of this data depends on the application.
+Additional data may be placed at any position in OpenDRIVE.
+
+Additional data regarding the data set.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEAdditionalDatasetDataType">
+    <complexContent>
+      <extension base="core:ADEOfCityModelType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="additionalData" type="odr:OpenDRIVEAdditionalDataPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEAdditionalDatasetDataPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEAdditionalDatasetData"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEAdditionalObjectData" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEAdditionalObjectDataType">
+    <annotation>
+      <documentation>From OpenDRIVE: OpenDRIVE offers the possibility to include external data. The processing of this data depends on the application.
+Additional data may be placed at any position in OpenDRIVE.
+
+Additional data that can be attached to any kind of city object.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEAdditionalObjectDataType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="additionalData" type="odr:OpenDRIVEAdditionalDataPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEAdditionalObjectDataPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEAdditionalObjectData"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEArc" substitutionGroup="odr:OpenDRIVECurveSegment" type="odr:OpenDRIVEArcType">
+    <annotation>
+      <documentation>From OpenDRIVE: An arc describes a road reference line with constant curvature.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEArcType">
+    <complexContent>
+      <extension base="odr:OpenDRIVECurveSegmentType">
+        <sequence>
+          <element name="curvature" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Constant curvature throughout the element.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEArcPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEArc"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEAuxiliaryTrafficLane" substitutionGroup="tran:AuxiliaryTrafficSpace" type="odr:OpenDRIVEAuxiliaryTrafficLaneType">
+    <annotation>
+      <documentation>OpenDRIVE lane which is not used for traffic purposes.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEAuxiliaryTrafficLaneType">
+    <complexContent>
+      <extension base="tran:AuxiliaryTrafficSpaceType">
+        <sequence>
+          <element name="lateralLaneSection" type="odr:LateralLaneSectionType">
+            <annotation>
+              <documentation>From OpenDRIVE: Lane elements are separated into left/center/right elements.</documentation>
+            </annotation>
+          </element>
+          <element name="laneID" type="integer">
+            <annotation>
+              <documentation>From OpenDRIVE: Lane elements should represent the lanes from left to right, that is, with descending ID.</documentation>
+            </annotation>
+          </element>
+          <element name="type" type="odr:e_laneTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the lane.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="level" type="boolean"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="predecessor">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="successor">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="rule" type="odr:OpenDRIVELaneRulePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="speed" type="odr:OpenDRIVELaneSpeedPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="access" type="odr:OpenDRIVELaneAccessPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="material" type="odr:OpenDRIVELaneMaterialPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="roadMark" type="odr:OpenDRIVELaneRoadMarkPropertyType"/>
+          <element maxOccurs="unbounded" name="laneShape" type="odr:OpenDRIVELaneShapePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEAuxiliaryTrafficLanePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEBridgeProperties" substitutionGroup="brid:ADEOfBridge" type="odr:OpenDRIVEBridgePropertiesType">
+    <annotation>
+      <documentation>Additional OpenDRIVE properties for bridge objects.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEBridgePropertiesType">
+    <complexContent>
+      <extension base="brid:ADEOfBridgeType">
+        <sequence>
+          <element name="type" type="odr:e_bridgeTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of bridge.</documentation>
+            </annotation>
+          </element>
+          <element name="length" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the bridge (in s-direction).</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="bridgeName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the bridge. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEBridgePropertiesPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEBridgeProperties"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEConnectingRoad" substitutionGroup="tran:AbstractTransportationSpace" type="odr:OpenDRIVEConnectingRoadType">
+    <annotation>
+      <documentation>Connecting road which is part of a junction.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEConnectingRoadType">
+    <complexContent>
+      <extension base="tran:AbstractTransportationSpaceType">
+        <sequence>
+          <element name="length" type="gml:LengthType"/>
+          <element minOccurs="0" name="roadName" type="string"/>
+          <element minOccurs="0" name="rule" type="odr:e_trafficRuleType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="object" type="core:AbstractCityObjectPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="tunnel" type="tun:TunnelPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="bridge" type="brid:BridgePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="signal">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="signalReference" type="odr:OpenDRIVESignalReferencePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="centerLaneOffset" type="odr:OpenDRIVECurvePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="type" type="odr:OpenDRIVERoadTypePropertyType"/>
+          <element maxOccurs="unbounded" name="laneSection">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVELaneSection"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element name="roadShape">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVERoadShape"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="predecessor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element minOccurs="0" name="successor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="objectReference" type="odr:OpenDRIVEObjectReferencePropertyType"/>
+          <element name="junction" type="odr:OpenDRIVEJunctionPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEConnectingRoadPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEConnectingRoad"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEConnectionPriority" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEConnectionPriorityType">
+    <annotation>
+      <documentation>From OpenDRIVE: If an incoming road is linked to an outgoing road with multiple connection roads to represent several possible lane connections, then one of these connections may be prioritized. Assigning a priority is only required if the application is unable to derive priorities from signals before or inside a junction or from the lanes leading to a junction. At least one attribute must be given.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEConnectionPriorityType">
+    <sequence>
+      <element minOccurs="0" name="high">
+        <annotation>
+          <documentation>From OpenDRIVE: Prioritized connecting road.</documentation>
+        </annotation>
+        <complexType>
+          <complexContent>
+            <extension base="gml:AbstractFeatureMemberType">
+              <sequence minOccurs="0">
+                <element ref="odr:OpenDRIVEConnectingRoad"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element minOccurs="0" name="low">
+        <annotation>
+          <documentation>From OpenDRIVE: Connecting road with lower priority.</documentation>
+        </annotation>
+        <complexType>
+          <complexContent>
+            <extension base="gml:AbstractFeatureMemberType">
+              <sequence minOccurs="0">
+                <element ref="odr:OpenDRIVEConnectingRoad"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEConnectionPriorityPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEConnectionPriority"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEController" substitutionGroup="core:AbstractLogicalSpace" type="odr:OpenDRIVEControllerType">
+    <annotation>
+      <documentation>From OpenDRIVE: Controllers provides identical states for one or more dynamic signals. Controllers serve as wrappers for the behaviour of a group of signals. Controllers are used for dynamic speed control on motorways, and to control traffic light switching phases.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEControllerType">
+    <complexContent>
+      <extension base="core:AbstractLogicalSpaceType">
+        <sequence>
+          <element minOccurs="0" name="controllerName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the controller. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="controllerSequence" type="integer">
+            <annotation>
+              <documentation>From OpenDRIVE: Sequence number (priority) of this controller with respect to other controllers of same logical level.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="signalState" type="core:AbstractGenericAttributePropertyType"/>
+          <element maxOccurs="unbounded" name="control" type="odr:OpenDRIVESignalControlPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEControllerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEController"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="OpenDRIVECoordinateReferenceSystemType">
+    <restriction base="string">
+      <enumeration value="Inertial coordinate system"/>
+      <enumeration value="Reference line coordinate system"/>
+      <enumeration value="Local coordinate system"/>
+    </restriction>
+  </simpleType>
+  <element name="OpenDRIVECubicPolynomial" substitutionGroup="odr:OpenDRIVECurveSegment" type="odr:OpenDRIVECubicPolynomialType">
+    <annotation>
+      <documentation>Polynomial of degree  3: f(x) = a + b*x + c*x^2 + d*x^3</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVECubicPolynomialType">
+    <complexContent>
+      <extension base="odr:OpenDRIVECurveSegmentType">
+        <sequence>
+          <element name="a" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Polynomila parameter a.</documentation>
+            </annotation>
+          </element>
+          <element name="b" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Polynomila parameter b.</documentation>
+            </annotation>
+          </element>
+          <element name="c" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Polynomila parameter c.</documentation>
+            </annotation>
+          </element>
+          <element name="d" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Polynomila parameter d.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVECubicPolynomialPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVECubicPolynomial"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVECurve" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVECurveType">
+    <annotation>
+      <documentation>Curve class containing curve segments.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVECurveType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element maxOccurs="unbounded" name="segment">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVECurveSegment"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVECurvePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVECurve"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="OpenDRIVECurveSegment" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVECurveSegmentType">
+    <annotation>
+      <documentation>Abstract superclass for OpenDRIVE curve segments.</documentation>
+    </annotation>
+  </element>
+  <complexType abstract="true" name="OpenDRIVECurveSegmentType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+          <element minOccurs="0" name="heading" type="gml:AngleType">
+            <annotation>
+              <documentation>From OpenDRIVE: Inertial heading.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="length">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the element.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="origin" type="gml:PointPropertyType"/>
+        </sequence>
+        <attributeGroup ref="gml:SRSReferenceGroup"/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVECurveSegmentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVECurveSegment"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEDataError" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEDataErrorType">
+    <annotation>
+      <documentation>From OpenDRIVE: The absolute or relative errors of road data.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEDataErrorType">
+    <sequence>
+      <element name="xyAbsolute" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: Absolute error of the road data in x/y direction.</documentation>
+        </annotation>
+      </element>
+      <element name="zAbsolute" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: Absolute error of the road data in z direction.</documentation>
+        </annotation>
+      </element>
+      <element name="xyRelative" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE:  Relative error of the road data in x/y direction.</documentation>
+        </annotation>
+      </element>
+      <element name="zRelative" type="double">
+        <annotation>
+          <documentation>From OpenDRIVE: Relative error of the road data in z direction.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEDataErrorPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEDataError"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEDataQuality" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEDataQualityType">
+    <annotation>
+      <documentation>From OpenDRIVE: Raw data or data from external sources that is integrated in OpenDRIVE may be of varying quality. It is possible to describe quality and accuracy of external data in OpenDRIVE.
+The description of the data quality is represented by &lt;dataQuality&gt; elements. They may be stored at any position in OpenDRIVE.
+Measurement data derived from external sources like GPS that is integrated in OpenDRIVE may be inaccurate. The error range, given in [m], may be listed in the application.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEDataQualityType">
+    <sequence>
+      <element minOccurs="0" name="error" type="odr:OpenDRIVEDataErrorPropertyType"/>
+      <element minOccurs="0" name="rawData" type="odr:OpenDRIVERawDataPropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEDataQualityPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEDataQuality"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEHeader" substitutionGroup="core:ADEOfCityModel" type="odr:OpenDRIVEHeaderType"/>
+  <complexType name="OpenDRIVEHeaderType">
+    <complexContent>
+      <extension base="core:ADEOfCityModelType">
+        <sequence>
+          <element minOccurs="0" name="date" type="date"/>
+          <element minOccurs="0" name="east" type="double"/>
+          <element minOccurs="0" name="name" type="string"/>
+          <element minOccurs="0" name="north" type="double"/>
+          <element name="revMajor" type="integer"/>
+          <element name="revMinor" type="integer"/>
+          <element minOccurs="0" name="south" type="double"/>
+          <element minOccurs="0" name="vendor" type="string"/>
+          <element minOccurs="0" name="version" type="string"/>
+          <element minOccurs="0" name="west" type="double"/>
+          <element minOccurs="0" name="georeference" type="anyType"/>
+          <element minOccurs="0" name="offset" type="odr:OpenDRIVEOffsetPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEHeaderPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEHeader"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEJunction" substitutionGroup="tran:Intersection" type="odr:OpenDRIVEJunctionType">
+    <annotation>
+      <documentation>From OpenDRIVE: Contains information about all possible connections between roads meeting at a physical junction.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEJunctionType">
+    <complexContent>
+      <extension base="tran:IntersectionType">
+        <sequence>
+          <element minOccurs="0" name="junctionName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the junction. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+          <element default="default" minOccurs="0" name="junctionType" type="odr:e_junction_typeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the junction; regular junctions are of type "default". The attribute is mandatory for virtual junctions.</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="controllerReference" type="odr:OpenDRIVEJunctionControllerReferencePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="priority" type="odr:OpenDRIVEConnectionPriorityPropertyType"/>
+          <element maxOccurs="unbounded" name="connection">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEJunctionConnection"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="surfaceData">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVERoadSurfaceData"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEJunctionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEJunction"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEJunctionConnection" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVEJunctionConnectionType">
+    <annotation>
+      <documentation>From OpenDRIVE: Provides information about a single connection within a junction.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEJunctionConnectionType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="connectingRoad">
+            <annotation>
+              <documentation>Connecting road which is part of the connection.</documentation>
+            </annotation>
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEConnectingRoad"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="incomingRoad">
+            <annotation>
+              <documentation>Standard road which is part of the connection.</documentation>
+            </annotation>
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEStandardRoad"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="connectionType" type="odr:e_junction_typeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the connection, regular connections are type “default” mandatory attribute for virtual connections.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="contactPoint" type="odr:e_contactPointType">
+            <annotation>
+              <documentation>From OpenDRIVE: Contact point on the connecting road.</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="laneLink" type="odr:OpenDRIVEJunctionLaneLinkPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEJunctionConnectionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEJunctionConnection"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEJunctionControllerReference" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVEJunctionControllerReferenceType">
+    <annotation>
+      <documentation>From OpenDRIVE: Lists the controllers that are used for the management of a junction.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEJunctionControllerReferenceType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="controlType" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of control for this junction. Free text, depending on the application.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="junctionControllerSequence" type="integer"/>
+          <element name="controller" type="odr:OpenDRIVEControllerPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEJunctionControllerReferencePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEJunctionControllerReference"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEJunctionGroup" substitutionGroup="grp:CityObjectGroup" type="odr:OpenDRIVEJunctionGroupType">
+    <annotation>
+      <documentation>From OpenDRIVE: Two or more junctions may be grouped in junction groups to indicate that these junctions belong to the same roundabout.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEJunctionGroupType">
+    <complexContent>
+      <extension base="grp:CityObjectGroupType">
+        <sequence>
+          <element minOccurs="0" name="junctionGroupName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the junction group. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+          <element name="type" type="odr:e_junctionGroup_typeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of junction group.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEJunctionGroupPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEJunctionGroup"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEJunctionLaneLink" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVEJunctionLaneLinkType">
+    <annotation>
+      <documentation>From OpenDRIVE: Provides information about the lanes that are linked between an incoming road and a connecting road.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEJunctionLaneLinkType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="from">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element name="to">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEJunctionLaneLinkPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEJunctionLaneLink"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneAccess" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneAccessType"/>
+  <complexType name="OpenDRIVELaneAccessType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element minOccurs="0" name="rule" type="odr:e_road_lanes_laneSection_lr_lane_access_ruleType">
+        <annotation>
+          <documentation>From OpenDRIVE: Specifies whether the participant given in the attribute @restriction is allowed or denied access to the given lane.</documentation>
+        </annotation>
+      </element>
+      <element name="restriction" type="odr:e_accessRestrictionTypeType">
+        <annotation>
+          <documentation>From OpenDRIVE: Identification of the participant to whom the restriction applies.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneAccessPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneAccess"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneBorder" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneBorderType"/>
+  <complexType name="OpenDRIVELaneBorderType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element minOccurs="0" name="border" type="odr:OpenDRIVECurvePropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneBorderPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneBorder"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneHeight" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneHeightType">
+    <annotation>
+      <documentation>From OpenDRIVE: Lane height shall be defined along the h-coordinate. Lane height may be used to elevate a lane independent from the road elevation. Lane height is used to implement small-scale elevation such as raising pedestrian walkways. Lane height is specified as offset from the road (including elevation, superelevation, shape) in z direction.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneHeightType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element name="inner" type="double"/>
+      <element name="outer" type="double"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneHeightPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneHeight"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneMaterial" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneMaterialType">
+    <annotation>
+      <documentation>From OpenDRIVE: Stores information about the material of lanes. Each element is valid until a new element is defined. If multiple elements are defined, they must be listed in increasing order.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneMaterialType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element minOccurs="0" name="friction">
+        <simpleType>
+          <restriction base="double">
+            <minInclusive value="0.0"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="roughness">
+        <simpleType>
+          <restriction base="double">
+            <minInclusive value="0.0"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="surface" type="gml:CodeType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneMaterialPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneMaterial"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneRoadMark" substitutionGroup="tran:Marking" type="odr:OpenDRIVELaneRoadMarkType">
+    <annotation>
+      <documentation>Association to OpenDRIVELaneRoadMarkType.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneRoadMarkType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element name="type" type="odr:e_roadMarkTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the road mark.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="weight" type="odr:e_roadMarkWeightType">
+            <annotation>
+              <documentation>From OpenDRIVE: Weight of the road mark. This attribute is optional if detailed definition is given below.</documentation>
+            </annotation>
+          </element>
+          <element name="color" type="odr:e_roadMarkColorType">
+            <annotation>
+              <documentation>From OpenDRIVE: Color of the road mark.</documentation>
+            </annotation>
+          </element>
+          <element default="standard" minOccurs="0" name="material" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Material of the road mark. Identifiers to be defined by the user, use "standard" as default value.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="width">
+            <annotation>
+              <documentation>From OpenDRIVE: Width of the road mark.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element default="both" minOccurs="0" name="laneChange" type="odr:e_road_lanes_laneSection_lcr_lane_roadMark_laneChangeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Allows a lane change in the indicated direction, taking into account that lanes are numbered in ascending order from right to left. If the attribute is missing, “both” is used as default.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="thickness" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Height of road mark above the road, i.e. thickness of the road mark.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="laneRoadMarkType" type="odr:OpenDRIVELaneRoadMarkTypePropertyType"/>
+          <element minOccurs="0" name="explicit" type="odr:OpenDRIVELaneRoadMarkExplicitPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="sway" type="odr:OpenDRIVECurvePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneRoadMarkPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELaneRoadMark"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneRoadMarkExplicit" substitutionGroup="tran:Marking" type="odr:OpenDRIVELaneRoadMarkExplicitType">
+    <annotation>
+      <documentation>From OpenDRIVE: Irregular road markings that cannot be described by repetitive line patterns may be described by individual road marking elements. These explicit definitions also contain &lt;line&gt; elements for the line definition, however, these lines will not be repeated automatically as in repetitive road marking types.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneRoadMarkExplicitType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element maxOccurs="unbounded" name="line">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVELaneRoadMarkLine"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneRoadMarkExplicitPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELaneRoadMarkExplicit"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneRoadMarkLine" substitutionGroup="tran:Marking" type="odr:OpenDRIVELaneRoadMarkLineType">
+    <annotation>
+      <documentation>From OpenDRIVE: A road mark may consist of one or more elements. Multiple elements are usually positioned side-by-side. A line definition is valid for a given length of the lane and will be repeated automatically.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneRoadMarkLineType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element name="length">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the visible part.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="width">
+            <annotation>
+              <documentation>From OpenDRIVE: Line width.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element name="space">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the gap between the visible parts.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="rule" type="odr:e_roadMarkRuleType">
+            <annotation>
+              <documentation>From OpenDRIVE: Rule that must be observed when passing the line from inside, for example, from the lane with the lower absolute ID to the lane with the higher absolute ID.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="color" type="odr:e_roadMarkColorType">
+            <annotation>
+              <documentation>From OpenDRIVE: Line color. If given, this attribute supersedes the definition in the &lt;roadMark&gt; element.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneRoadMarkLinePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELaneRoadMarkLine"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneRoadMarkType" substitutionGroup="tran:Marking" type="odr:OpenDRIVELaneRoadMarkTypeType">
+    <annotation>
+      <documentation>From OpenDRIVE: Each type definition shall contain one or more line definitions with additional information about the lines that the road mark is composed of.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneRoadMarkTypeType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element name="roadMarkTypeName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the road mark type. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+          <element name="width">
+            <annotation>
+              <documentation>From OpenDRIVE: Accumulated width of the road mark.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" name="line">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVELaneRoadMarkLine"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneRoadMarkTypePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELaneRoadMarkType"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneRule" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneRuleType">
+    <annotation>
+      <documentation>From OpenDRIVE: Free text; currently recommended values are
+"no stopping at any time"
+"disabled parking"
+"car pool"</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneRuleType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element name="value" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneRulePropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneRule"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneSection" substitutionGroup="tran:AbstractTransportationSpace" type="odr:OpenDRIVELaneSectionType">
+    <annotation>
+      <documentation>From OpenDRIVE: Lanes may be split into multiple lane sections. Each lane section contains a fixed number of lanes. Every time the number of lanes changes, a new lane section is required.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneSectionType">
+    <complexContent>
+      <extension base="tran:AbstractTransportationSpaceType">
+        <sequence>
+          <element minOccurs="0" name="singleSided" type="boolean"/>
+          <element maxOccurs="unbounded" name="lane">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneSectionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELaneSection"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneShape" substitutionGroup="core:AbstractUnoccupiedSpace" type="odr:OpenDRIVELaneShapeType">
+    <annotation>
+      <documentation>The lane shape is defined by the lane height and the lateral lane bounsary (border/width).</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneShapeType">
+    <complexContent>
+      <extension base="core:AbstractUnoccupiedSpaceType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="laneHeight" type="odr:OpenDRIVELaneHeightPropertyType"/>
+          <element minOccurs="0" name="lateralLaneBoundary" type="odr:OpenDRIVELateralLaneBoundaryPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneShapePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELaneShape"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVELaneSpeed" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneSpeedType">
+    <annotation>
+      <documentation>From OpenDRIVE: Defines the maximum allowed speed on a given lane. Each element is valid in direction of the increasing s-coordinate until a new element is defined.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneSpeedType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element name="maxSpeed">
+        <annotation>
+          <documentation>From OpenDRIVE: Maximum allowed speed. If the attribute unit is not specified, m/s is used as default.</documentation>
+        </annotation>
+        <complexType>
+          <simpleContent>
+            <restriction base="gml:SpeedType">
+              <minInclusive value="0.0"/>
+            </restriction>
+          </simpleContent>
+        </complexType>
+      </element>
+      <element minOccurs="0" name="minSpeed">
+        <annotation>
+          <documentation>Minimum allowed speed. If the attribute unit is not specified, m/s is used as default.</documentation>
+        </annotation>
+        <complexType>
+          <simpleContent>
+            <restriction base="gml:SpeedType">
+              <minInclusive value="0.0"/>
+            </restriction>
+          </simpleContent>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneSpeedPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneSpeed"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneValidity" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVELaneValidityType">
+    <annotation>
+      <documentation>From OpenDRIVE: May replace the default validity with explicit validity information for an object. Multiple validity elements may be defined per object.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELaneValidityType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="lane">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELaneValidityPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneValidity"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELaneWidth" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELaneWidthType"/>
+  <complexType name="OpenDRIVELaneWidthType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element minOccurs="0" name="width" type="odr:OpenDRIVECurvePropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVELaneWidthPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELaneWidth"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELateralLaneBoundary" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVELateralLaneBoundaryType"/>
+  <complexType name="OpenDRIVELateralLaneBoundaryType">
+    <choice>
+      <element maxOccurs="unbounded" minOccurs="0" name="laneBorder" type="odr:OpenDRIVELaneBorderPropertyType"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="laneWidth" type="odr:OpenDRIVELaneWidthPropertyType"/>
+    </choice>
+  </complexType>
+  <complexType name="OpenDRIVELateralLaneBoundaryPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVELateralLaneBoundary"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVELine" substitutionGroup="odr:OpenDRIVECurveSegment" type="odr:OpenDRIVELineType">
+    <annotation>
+      <documentation>From OpenDRIVE: A straight line is the simplest geometry element. It contains no further attributes.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVELineType">
+    <complexContent>
+      <extension base="odr:OpenDRIVECurveSegmentType">
+        <sequence/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVELinePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVELine"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEMeteorology" substitutionGroup="core:AbstractUnoccupiedSpace" type="odr:OpenDRIVEMeteorologyType">
+    <annotation>
+      <documentation>Meteorological conditions for a space unit.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEMeteorologyType">
+    <complexContent>
+      <extension base="core:AbstractUnoccupiedSpaceType">
+        <sequence>
+          <element minOccurs="0" name="airpressure" type="gml:MeasureType"/>
+          <element minOccurs="0" name="temperature" type="gml:MeasureType"/>
+          <element minOccurs="0" name="relativeHumidity" type="core:DoubleBetween0and1Type"/>
+          <element minOccurs="0" name="precipitation" type="gml:MeasureType"/>
+          <element minOccurs="0" name="windDirection" type="gml:AngleType"/>
+          <element minOccurs="0" name="cloudiness" type="string"/>
+          <element minOccurs="0" name="gust" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEMeteorologyPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEMeteorology"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectAlignment" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEObjectAlignmentType">
+    <annotation>
+      <documentation>Contains parameters used for the alignment of an object.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectAlignmentType">
+    <sequence>
+      <element minOccurs="0" name="objectHeading" type="odr:HeadingPropertyType"/>
+      <element minOccurs="0" name="objectRoll" type="odr:RollPropertyType"/>
+      <element minOccurs="0" name="objectPitch" type="odr:PitchPropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEObjectAlignmentPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectAlignment"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectBorder" substitutionGroup="core:AbstractThematicSurface" type="odr:OpenDRIVEObjectBorderType">
+    <annotation>
+      <documentation>From OpenDRIVE: Objects may have a border, that is, a frame of a defined width. Different border types are available.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectBorderType">
+    <complexContent>
+      <extension base="core:AbstractThematicSurfaceType">
+        <sequence>
+          <element maxOccurs="unbounded" name="borderElement">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEObjectBorderElement"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectBorderPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectBorder"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectBorderElement" substitutionGroup="core:AbstractThematicSurface" type="odr:OpenDRIVEObjectBorderElementType">
+    <annotation>
+      <documentation>Single border element.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectBorderElementType">
+    <complexContent>
+      <extension base="core:AbstractThematicSurfaceType">
+        <sequence>
+          <element name="width">
+            <annotation>
+              <documentation>From OpenDRIVE: Border width.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element name="type" type="odr:e_borderTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Appearance of border.</documentation>
+            </annotation>
+          </element>
+          <element default="true" minOccurs="0" name="useCompleteOutline" type="boolean">
+            <annotation>
+              <documentation>From OpenDRIVE: Use all outline points for border. “true” is used as default.</documentation>
+            </annotation>
+          </element>
+          <element name="outline" type="odr:OpenDRIVEObjectOutlinePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="2" name="cornerReference" type="odr:OpenDRIVEObjectOutlinePointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectBorderElementPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectBorderElement"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectBorderProperty" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEObjectBorderProperty_Type">
+    <annotation>
+      <documentation>Class holding the object's border elements.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectBorderProperty_Type">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element name="objectBorder" type="odr:OpenDRIVEObjectBorderPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectBorderProperty_PropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectBorderProperty"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectBoundingBox" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEObjectBoundingBoxType">
+    <annotation>
+      <documentation>Object's bounding box.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectBoundingBoxType">
+    <sequence>
+      <element minOccurs="0" name="length" type="gml:LengthType">
+        <annotation>
+          <documentation>From OpenDRIVE: Length of the object's bounding box, alternative to @radius.
+@length is defined in the local coordinate system u/v along the v-axis.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="width" type="gml:LengthType">
+        <annotation>
+          <documentation>From OpenDRIVE: Width of the object's bounding box, alternative to @radius.
+@width is defined in the local coordinate system u/v along the u-axis.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="radius" type="gml:LengthType">
+        <annotation>
+          <documentation>From OpenDRIVE: Radius of the circular object's bounding box, alternative to @length and @width. @radius is defined in the local coordinate system u/v.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="height" type="gml:LengthType">
+        <annotation>
+          <documentation>From OpenDRIVE: Height of the object's bounding box. @height is defined in the local coordinate system u/v along the z-axis.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+    <attributeGroup ref="gml:SRSReferenceGroup"/>
+  </complexType>
+  <complexType name="OpenDRIVEObjectBoundingBoxPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectBoundingBox"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectMarking" substitutionGroup="tran:Marking" type="odr:OpenDRIVEObjectMarkingType">
+    <annotation>
+      <documentation>From OpenDRIVE: Describes the appearance of the parking space with multiple marking elements.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectMarkingType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element maxOccurs="unbounded" name="markingElement">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEObjectMarkingElement"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectMarkingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectMarking"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectMarkingElement" substitutionGroup="tran:Marking" type="odr:OpenDRIVEObjectMarkingElementType">
+    <annotation>
+      <documentation>Marking element.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectMarkingElementType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element name="color" type="odr:e_roadMarkColorType">
+            <annotation>
+              <documentation>From OpenDRIVE: Color of the marking.</documentation>
+            </annotation>
+          </element>
+          <element name="spaceLength">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the gap between the visible parts.</documentation>
+            </annotation>
+            <simpleType>
+              <restriction base="double">
+                <minInclusive value="0.0"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element name="lineLength">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the visible part.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="weight" type="odr:e_roadMarkWeightType">
+            <annotation>
+              <documentation>From OpenDRIVE: Optical "weight" of the marking.</documentation>
+            </annotation>
+          </element>
+          <element name="objectBoundingBoxSide" type="odr:e_sideTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Side of the bounding box described in &lt;object&gt; element in the local coordinate system u/v.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="roadMarkThickness">
+            <annotation>
+              <documentation>zOffset: From OpenDRIVE: Height of road mark above the road, i.e. thickness of the road mark.</documentation>
+            </annotation>
+            <complexType>
+              <simpleContent>
+                <restriction base="gml:LengthType">
+                  <minInclusive value="0.0"/>
+                </restriction>
+              </simpleContent>
+            </complexType>
+          </element>
+          <element name="width" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Width of the marking.</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="2" name="cornerReference" type="odr:OpenDRIVEObjectOutlinePointPropertyType"/>
+          <element name="markingOffset" type="odr:MarkingElementLateralOffsetPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectMarkingElementPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectMarkingElement"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectMarkingProperty" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEObjectMarkingProperty_Type">
+    <annotation>
+      <documentation>Class holding the object's marking elements.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectMarkingProperty_Type">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element name="objectMarking" type="odr:OpenDRIVEObjectMarkingPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectMarkingProperty_PropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectMarkingProperty"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectMaterial" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEObjectMaterialType">
+    <annotation>
+      <documentation>From OpenDRIVE: Describes the material properties of objects, for example, patches that are part of the road surface but deviate from the standard road material. Supersedes the material specified in the &lt;road material&gt; element and is valid only within the outline of the parent road object.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectMaterialType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element minOccurs="0" name="surface" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Surface material code, depending on application.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="friction">
+            <annotation>
+              <documentation>From OpenDRIVE: Friction value, depending on application.</documentation>
+            </annotation>
+            <simpleType>
+              <restriction base="double">
+                <minInclusive value="0.0"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element minOccurs="0" name="roughness">
+            <annotation>
+              <documentation>From OpenDRIVE: Roughness, for example, for sound and motion systems, depending on application</documentation>
+            </annotation>
+            <simpleType>
+              <restriction base="double">
+                <minInclusive value="0.0"/>
+              </restriction>
+            </simpleType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectMaterialPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectMaterial"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectOutline" substitutionGroup="core:AbstractFeature" type="odr:OpenDRIVEObjectOutlineType"/>
+  <complexType name="OpenDRIVEObjectOutlineType">
+    <complexContent>
+      <extension base="core:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="closed" type="boolean"/>
+          <element minOccurs="0" name="fillType" type="odr:e_outlineFillTypeType"/>
+          <element minOccurs="0" name="laneType" type="odr:e_laneTypeType"/>
+          <element minOccurs="0" name="outer" type="boolean"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="outlinePoint">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEObjectOutlinePoint"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+        <attributeGroup ref="gml:SRSReferenceGroup"/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectOutlinePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectOutline"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectOutlinePoint" substitutionGroup="core:AbstractFeature" type="odr:OpenDRIVEObjectOutlinePointType"/>
+  <complexType name="OpenDRIVEObjectOutlinePointType">
+    <complexContent>
+      <extension base="core:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="objectHeight" type="double"/>
+          <element name="point" type="gml:PointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectOutlinePointPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectOutlinePoint"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectOutlineRepresentation" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEObjectOutlineRepresentationType"/>
+  <complexType name="OpenDRIVEObjectOutlineRepresentationType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element maxOccurs="unbounded" name="objectOutline" type="odr:OpenDRIVEObjectOutlinePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectOutlineRepresentationPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectOutlineRepresentation"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectProperties" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEObjectPropertiesType">
+    <annotation>
+      <documentation>Class containing OpenDRIVE object properties.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectPropertiesType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element minOccurs="0" name="validLength" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Validity of object along s-axis (0.0 for point object).</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="objectType" type="odr:e_objectTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of object.</documentation>
+            </annotation>
+          </element>
+          <element name="orientation" type="odr:e_orientationType">
+            <annotation>
+              <documentation>From OpenDRIVE: "+" = valid in positive s-direction
+"-" = valid in negative s-direction
+"none" = valid in both directions
+(does not affect the heading)</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="objectSubtype" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Variant of a type.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="dynamic" type="boolean">
+            <annotation>
+              <documentation>From OpenDRIVE: Indicates whether the object is dynamic or static, default value is “no” (static). Dynamic object cannot change its position.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="objectName" type="string"/>
+          <element minOccurs="0" name="objectBoundingBox" type="odr:OpenDRIVEObjectBoundingBoxPropertyType"/>
+          <element minOccurs="0" name="objectAlignment" type="odr:OpenDRIVEObjectAlignmentPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectPropertiesPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectProperties"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEObjectReference" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVEObjectReferenceType"/>
+  <complexType name="OpenDRIVEObjectReferenceType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+          <element name="laneValidity" type="odr:OpenDRIVELaneValidityPropertyType"/>
+          <element name="objectProperties" type="odr:OpenDRIVEObjectPropertiesPropertyType"/>
+          <element name="object" type="core:AbstractCityObjectPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectReferencePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEObjectReference"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEObjectRepeat" substitutionGroup="core:ADEOfAbstractCityObject" type="odr:OpenDRIVEObjectRepeatType">
+    <annotation>
+      <documentation>From OpenDRIVE: To avoid lengthy XML code, objects of the same type may be repeated. The attributes of the repeated object may be changed. Attributes of the repeated object shall overrule the attributes from the original object. If attributes are omitted in the repeated objects, the attributes from the original object apply.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEObjectRepeatType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element name="distance" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Distance between two instances of the object;
+If this value is zero, then the object is treated like a continuous feature, for example, a guard rail, a wall, etc.</documentation>
+            </annotation>
+          </element>
+          <element name="heightEnd" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Height of the object at the end of the interval.</documentation>
+            </annotation>
+          </element>
+          <element name="heightStart" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Height of the object at the start of the interval.</documentation>
+            </annotation>
+          </element>
+          <element name="length" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the repeat area, along the reference line in s-direction.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="lengthEnd" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the object at the end of the interval.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="lengthStart" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the object at the start of the interval.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="radiusEnd" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Radius of the object at the end of the interval.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="radiusStart" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Radius of the object at the start of the interval.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="widthEnd" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Width of the object at the end of the interval.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="widthStart" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Width of the object at the start of the interval.</documentation>
+            </annotation>
+          </element>
+          <element name="interval" type="odr:LE_EventPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEObjectRepeatPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEObjectRepeat"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEOffset" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEOffsetType"/>
+  <complexType name="OpenDRIVEOffsetType">
+    <sequence>
+      <element name="hdg" type="gml:AngleType"/>
+      <element name="x" type="double"/>
+      <element name="y" type="double"/>
+      <element name="z" type="double"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEOffsetPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEOffset"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEParametricCubicCurve" substitutionGroup="odr:OpenDRIVECurveSegment" type="odr:OpenDRIVEParametricCubicCurveType">
+    <annotation>
+      <documentation>Parametric cubic space curve.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEParametricCubicCurveType">
+    <complexContent>
+      <extension base="odr:OpenDRIVECurveSegmentType">
+        <sequence>
+          <element name="pRange" type="odr:e_paramPoly3_pRangeType">
+            <annotation>
+              <documentation>From OpenDRIVE:  Range of parameter p.
+- Case arcLength: p in [0, @length of &lt;geometry&gt;]
+- Case normalized: p in [0, 1]</documentation>
+            </annotation>
+          </element>
+          <element name="firstComponentFunction" type="odr:OpenDRIVECubicPolynomialPropertyType"/>
+          <element name="secondComponentFunction" type="odr:OpenDRIVECubicPolynomialPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEParametricCubicCurvePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEParametricCubicCurve"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEParkingSpace" substitutionGroup="tran:AuxiliaryTrafficArea" type="odr:OpenDRIVEParkingSpaceType">
+    <annotation>
+      <documentation>Parking space object as part of a lane.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEParkingSpaceType">
+    <complexContent>
+      <extension base="tran:AuxiliaryTrafficAreaType">
+        <sequence>
+          <element name="access" type="odr:e_road_objects_object_parkingSpace_accessType">
+            <annotation>
+              <documentation>From OpenDRIVE: Access definitions for the parking space. Parking spaces tagged with "women" and "handicapped" are vehicles of type car.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="restrictions" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Free text, depending on application.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEParkingSpacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEParkingSpace"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEPlatform" substitutionGroup="tran:TrafficSpace" type="odr:OpenDRIVEPlatformType"/>
+  <complexType name="OpenDRIVEPlatformType">
+    <complexContent>
+      <extension base="tran:TrafficSpaceType">
+        <sequence>
+          <element minOccurs="0" name="platformName" type="string"/>
+          <element maxOccurs="unbounded" name="segment">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVEPlatformSegment"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEPlatformPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEPlatform"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEPlatformSegment" substitutionGroup="core:AbstractLogicalSpace" type="odr:OpenDRIVEPlatformSegmentType"/>
+  <complexType name="OpenDRIVEPlatformSegmentType">
+    <complexContent>
+      <extension base="core:AbstractLogicalSpaceType">
+        <sequence>
+          <element name="side" type="odr:e_station_platform_segment_sideType"/>
+          <element name="railroad" type="odr:OpenDRIVERailroadPropertyType"/>
+          <element name="interval" type="odr:LE_EventPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEPlatformSegmentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEPlatformSegment"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERailroad" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVERailroadType">
+    <annotation>
+      <documentation>From OpenDRIVE: Railroad that accompanies the platform segment.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERailroadType">
+    <choice>
+      <element name="sideTrack">
+        <complexType>
+          <complexContent>
+            <extension base="gml:AbstractFeatureMemberType">
+              <sequence minOccurs="0">
+                <element ref="odr:OpenDRIVERailroadSidetrack"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="mainTrack">
+        <complexType>
+          <complexContent>
+            <extension base="gml:AbstractFeatureMemberType">
+              <sequence minOccurs="0">
+                <element ref="odr:OpenDRIVERailroadMaintrack"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+    </choice>
+  </complexType>
+  <complexType name="OpenDRIVERailroadPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVERailroad"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVERailroadMaintrack" substitutionGroup="tran:Section" type="odr:OpenDRIVERailroadMaintrackType"/>
+  <complexType name="OpenDRIVERailroadMaintrackType">
+    <complexContent>
+      <extension base="tran:SectionType">
+        <sequence>
+          <element name="length" type="gml:LengthType"/>
+          <element minOccurs="0" name="roadName" type="string"/>
+          <element minOccurs="0" name="rule" type="odr:e_trafficRuleType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="object" type="core:AbstractCityObjectPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="tunnel" type="tun:TunnelPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="bridge" type="brid:BridgePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="signal">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="signalReference" type="odr:OpenDRIVESignalReferencePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="centerLaneOffset" type="odr:OpenDRIVECurvePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="type" type="odr:OpenDRIVERoadTypePropertyType"/>
+          <element maxOccurs="unbounded" name="laneSection">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVELaneSection"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element name="roadShape">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVERoadShape"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="predecessor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element minOccurs="0" name="successor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="objectReference" type="odr:OpenDRIVEObjectReferencePropertyType"/>
+          <element minOccurs="0" name="switchEntryDirection" type="odr:e_elementDirType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="switchPosition" type="odr:LinearReferencingPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="switch" type="odr:OpenDRIVERailroadSwitchPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERailroadMaintrackPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERailroadMaintrack"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERailroadSidetrack" substitutionGroup="tran:Intersection" type="odr:OpenDRIVERailroadSidetrackType"/>
+  <complexType name="OpenDRIVERailroadSidetrackType">
+    <complexContent>
+      <extension base="tran:IntersectionType">
+        <sequence>
+          <element name="length" type="gml:LengthType"/>
+          <element minOccurs="0" name="roadName" type="string"/>
+          <element minOccurs="0" name="rule" type="odr:e_trafficRuleType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="object" type="core:AbstractCityObjectPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="tunnel" type="tun:TunnelPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="bridge" type="brid:BridgePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="signal">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="signalReference" type="odr:OpenDRIVESignalReferencePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="centerLaneOffset" type="odr:OpenDRIVECurvePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="type" type="odr:OpenDRIVERoadTypePropertyType"/>
+          <element maxOccurs="unbounded" name="laneSection">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVELaneSection"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element name="roadShape">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVERoadShape"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="predecessor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element minOccurs="0" name="successor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="objectReference" type="odr:OpenDRIVEObjectReferencePropertyType"/>
+          <element minOccurs="0" name="switchEntryDirection" type="odr:e_elementDirType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="switchPosition" type="odr:LinearReferencingPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERailroadSidetrackPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERailroadSidetrack"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERailroadSwitch" substitutionGroup="tran:AbstractTransportationSpace" type="odr:OpenDRIVERailroadSwitchType">
+    <annotation>
+      <documentation>From OpenDRIVE: Rail-bound vehicles use switches to change their tracks. In contrast to junctions, a switch can guide the vehicles into two directions only.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERailroadSwitchType">
+    <complexContent>
+      <extension base="tran:AbstractTransportationSpaceType">
+        <sequence>
+          <element name="switchName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Unique name of the switch.</documentation>
+            </annotation>
+          </element>
+          <element name="position" type="odr:e_road_railroad_switch_positionType">
+            <annotation>
+              <documentation>From OpenDRIVE: Either a switch can be operated (dynamic) or it is in a static position.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="partnerSwitch" type="odr:OpenDRIVERailroadSwitchPropertyType"/>
+          <element name="mainTrack" type="odr:OpenDRIVERailroadMaintrackPropertyType"/>
+          <element name="sideTrack" type="odr:OpenDRIVERailroadSidetrackPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERailroadSwitchPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERailroadSwitch"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERawData" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVERawDataType">
+    <annotation>
+      <documentation>From OpenDRIVE. Some basic metadata containing information about raw data.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERawDataType">
+    <sequence>
+      <element name="date" type="date">
+        <annotation>
+          <documentation>From OpenDRIVE: Date of the delivery of raw data, to be given in ISO 8601 notification (YYYY-MM-DDTHH:MM:SS).</documentation>
+        </annotation>
+      </element>
+      <element name="source" type="odr:e_dataQuality_RawData_SourceType">
+        <annotation>
+          <documentation>From OpenDRIVE: Source that has been used for retrieving the raw data; further sources to be added in upcoming versions.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="sourceComment" type="string">
+        <annotation>
+          <documentation>From OpenDRIVE:  Comments concerning the source property . Free text, depending on the application.</documentation>
+        </annotation>
+      </element>
+      <element name="postProcessing" type="odr:e_dataQuality_RawData_PostProcessingType">
+        <annotation>
+          <documentation>From OpenDRIVE:  Information about the kind of data handling before exporting data into the ASAM OpenDRIVE file.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="postProcessingComment" type="string">
+        <annotation>
+          <documentation>From OpenDRIVE: Comments concerning the postprocessing attribute. Free text, depending on the application.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVERawDataPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVERawData"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVERoadCRGSurface" substitutionGroup="app:AbstractSurfaceData" type="odr:OpenDRIVERoadCRGSurfaceType">
+    <annotation>
+      <documentation>Data described in OpenCRG format.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadCRGSurfaceType">
+    <complexContent>
+      <extension base="app:AbstractSurfaceDataType">
+        <sequence>
+          <element name="mode" type="odr:e_road_surface_CRG_modeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Attachment mode for the surface data, see specification.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="purpose" type="odr:e_road_surface_CRG_purposeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Physical purpose of the data contained in the CRG file; if the attribute is missing, data will be interpreted as elevation data.</documentation>
+            </annotation>
+          </element>
+          <element name="file" type="core:ExternalReferencePropertyType"/>
+          <element minOccurs="0" name="crgTransformation" type="odr:CRGTransformationParametersPropertyType"/>
+          <element name="interval" type="odr:LE_EventPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadCRGSurfacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadCRGSurface"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadElevationProfile" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVERoadElevationProfileType"/>
+  <complexType name="OpenDRIVERoadElevationProfileType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="geometry" type="odr:OpenDRIVECurvePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadElevationProfilePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadElevationProfile"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadLateralProfile" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVERoadLateralProfileType">
+    <annotation>
+      <documentation>Class containing the information for the lateral profile of the road.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadLateralProfileType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="shape" type="odr:OpenDRIVERoadLateralShapePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="superelevation" type="odr:OpenDRIVERoadSuperElevationPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadLateralProfilePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadLateralProfile"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadLateralShape" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVERoadLateralShapeType"/>
+  <complexType name="OpenDRIVERoadLateralShapeType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="geometry" type="odr:OpenDRIVECurvePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadLateralShapePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadLateralShape"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadLink" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVERoadLinkType"/>
+  <complexType name="OpenDRIVERoadLinkType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="contactPoint" type="odr:e_contactPointType"/>
+          <element minOccurs="0" name="elementDir" type="odr:e_elementDirType"/>
+          <element name="linkedElement" type="odr:OpenDRIVERoadLinkedElementPropertyType"/>
+          <element name="elementS" type="odr:LinearReferencingPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadLinkPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadLink"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadLinkedElement" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVERoadLinkedElementType">
+    <annotation>
+      <documentation>Choice between junction or road as linked element.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadLinkedElementType">
+    <choice>
+      <element name="junction">
+        <complexType>
+          <complexContent>
+            <extension base="gml:AbstractFeatureMemberType">
+              <sequence minOccurs="0">
+                <element ref="odr:OpenDRIVEJunction"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="road">
+        <complexType>
+          <choice minOccurs="0">
+            <element ref="odr:OpenDRIVEConnectingRoad"/>
+            <element ref="odr:OpenDRIVERailroadMaintrack"/>
+            <element ref="odr:OpenDRIVERailroadSidetrack"/>
+            <element ref="odr:OpenDRIVEStandardRoad"/>
+          </choice>
+          <attributeGroup ref="gml:AssociationAttributeGroup"/>
+        </complexType>
+      </element>
+    </choice>
+  </complexType>
+  <complexType name="OpenDRIVERoadLinkedElementPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVERoadLinkedElement"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVERoadMarkSignal" substitutionGroup="tran:Marking" type="odr:OpenDRIVERoadMarkSignalType"/>
+  <complexType name="OpenDRIVERoadMarkSignalType">
+    <complexContent>
+      <extension base="tran:MarkingType">
+        <sequence>
+          <element minOccurs="0" name="signalName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the signal. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+          <element name="dynamic" type="boolean">
+            <annotation>
+              <documentation>From OpenDRIVE: Indicates whether the signal is dynamic or static. Example: traffic light is dynamic.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="country" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Country code of the road, see ISO 3166-1, alpha-2 codes.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="countryRevision" type="string"/>
+          <element name="type" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type identifier according to country code
+or "-1" / "none". See extra document.</documentation>
+            </annotation>
+          </element>
+          <element name="subtype" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Subtype identifier according to country code or "-1" / "none"</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="value" type="gml:SpeedType">
+            <annotation>
+              <documentation>From OpenDRIVE: Value of the signal, if value is given, unit is mandatory.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="text" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Additional text associated with the signal, for example, text on city limit "City\nBadAibling".</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="dependency" type="odr:OpenDRIVESignalDependencyPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="signalReference" type="odr:OpenDRIVESignalReferencePropertyType"/>
+          <element minOccurs="0" name="positionRoad" type="odr:OpenDRIVESignalPositionRoadPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadMarkSignalPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadMarkSignal"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadReferenceLine" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVERoadReferenceLineType">
+    <annotation>
+      <documentation>OpenDRIVE road refernence line consisting of plan view curve, along which the s-parameter is measured, and the road elevation profile.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadReferenceLineType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="referent" type="gmllr:ReferentPropertyType"/>
+          <element name="planView">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVECurve"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadReferenceLinePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadReferenceLine"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadShape" substitutionGroup="core:AbstractThematicSurface" type="odr:OpenDRIVERoadShapeType">
+    <annotation>
+      <documentation>Class containing the information defining the road shape.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadShapeType">
+    <complexContent>
+      <extension base="core:AbstractThematicSurfaceType">
+        <sequence>
+          <element name="referenceLine" type="odr:OpenDRIVERoadReferenceLinePropertyType"/>
+          <element minOccurs="0" name="lateralProfile" type="odr:OpenDRIVERoadLateralProfilePropertyType"/>
+          <element minOccurs="0" name="surfaceData" type="odr:OpenDRIVERoadSurfaceDataPropertyType"/>
+          <element minOccurs="0" name="elevationProfile" type="odr:OpenDRIVERoadElevationProfilePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadShapePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadShape"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadSuperElevation" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVERoadSuperElevationType"/>
+  <complexType name="OpenDRIVERoadSuperElevationType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="geometry" type="odr:OpenDRIVECurvePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadSuperElevationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadSuperElevation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadSurfaceData" substitutionGroup="app:AbstractSurfaceData" type="odr:OpenDRIVERoadSurfaceDataType">
+    <annotation>
+      <documentation>From OpenDRIVE: Road surface data described in OpenCRG format.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadSurfaceDataType">
+    <complexContent>
+      <extension base="app:AbstractSurfaceDataType">
+        <sequence>
+          <element maxOccurs="unbounded" name="crg">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVERoadCRGSurface"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVERoadSurfaceDataPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVERoadSurfaceData"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVERoadType" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVERoadTypeType">
+    <annotation>
+      <documentation>From OpenDRIVE: A road type element is valid for the entire cross section of a road. It is valid until a new road type element is provided or until the road ends.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVERoadTypeType">
+    <sequence>
+      <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+      <element minOccurs="0" name="country" type="string">
+        <annotation>
+          <documentation>From OpenDRIVE: Country code of the road, see ISO 3166-1, alpha-2 codes.</documentation>
+        </annotation>
+      </element>
+      <element name="type" type="odr:e_roadTypeType">
+        <annotation>
+          <documentation>Code list value specifying the road type.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="maxSpeed" type="gml:SpeedType"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVERoadTypePropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVERoadType"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVESignal" substitutionGroup="frn:CityFurniture" type="odr:OpenDRIVESignalType"/>
+  <complexType name="OpenDRIVESignalType">
+    <complexContent>
+      <extension base="frn:CityFurnitureType">
+        <sequence>
+          <element minOccurs="0" name="signalName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the signal. May be chosen freely.</documentation>
+            </annotation>
+          </element>
+          <element name="dynamic" type="boolean">
+            <annotation>
+              <documentation>From OpenDRIVE: Indicates whether the signal is dynamic or static. Example: traffic light is dynamic.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="country" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Country code of the road, see ISO 3166-1, alpha-2 codes.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="countryRevision" type="string"/>
+          <element name="type" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type identifier according to country code
+or "-1" / "none". See extra document.</documentation>
+            </annotation>
+          </element>
+          <element name="subtype" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Subtype identifier according to country code or "-1" / "none"</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="value" type="gml:SpeedType">
+            <annotation>
+              <documentation>From OpenDRIVE: Value of the signal, if value is given, unit is mandatory.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="text" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Additional text associated with the signal, for example, text on city limit "City\nBadAibling".</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="dependency" type="odr:OpenDRIVESignalDependencyPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="signalReference" type="odr:OpenDRIVESignalReferencePropertyType"/>
+          <element minOccurs="0" name="positionRoad" type="odr:OpenDRIVESignalPositionRoadPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVESignalPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVESignal"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVESignalControl" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVESignalControlType"/>
+  <complexType name="OpenDRIVESignalControlType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="controlType" type="gml:CodeType"/>
+          <element name="control">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVESignalControlPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVESignalControl"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVESignalDependency" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVESignalDependencyType">
+    <annotation>
+      <documentation>From OpenDRIVE: Signal dependency means that one signal controls the output of another signal. A signal may have multiple dependency elements.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVESignalDependencyType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="type" type="gml:CodeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the dependency, free text, depending on application.</documentation>
+            </annotation>
+          </element>
+          <element name="controlledSignal">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVESignalDependencyPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVESignalDependency"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVESignalPositionRoad" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVESignalPositionRoadType">
+    <annotation>
+      <documentation>From OpenDRIVE: Describes the reference point of the physical position road coordinates in cases where it deviates from the logical position. Defines the position on the road.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVESignalPositionRoadType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+          <element name="relativeToRoadAlignment" type="odr:OpenDRIVEObjectAlignmentPropertyType"/>
+          <element minOccurs="0" name="inertialAlignment" type="odr:OpenDRIVEObjectAlignmentPropertyType"/>
+          <element minOccurs="0" name="road">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEConnectingRoad"/>
+                <element ref="odr:OpenDRIVERailroadMaintrack"/>
+                <element ref="odr:OpenDRIVERailroadSidetrack"/>
+                <element ref="odr:OpenDRIVEStandardRoad"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVESignalPositionRoadPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVESignalPositionRoad"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVESignalReference" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVESignalReferenceType">
+    <annotation>
+      <documentation>From OpenDRIVE: Refers to the same, that is, identical signal from multiple roads.
+The referenced signals require a unique ID. The &lt;signalReference&gt; element consists of a main element and an optional lane validity element.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVESignalReferenceType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="linearReferencing" type="odr:LinearReferencingPropertyType"/>
+          <element name="objectProperties" type="odr:OpenDRIVEObjectPropertiesPropertyType">
+            <annotation>
+              <documentation>Object properties of the referenced object.</documentation>
+            </annotation>
+          </element>
+          <element name="signal">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="validity" type="odr:OpenDRIVELaneValidityPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVESignalReferencePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVESignalReference"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVESpiral" substitutionGroup="odr:OpenDRIVECurveSegment" type="odr:OpenDRIVESpiralType">
+    <annotation>
+      <documentation>Geometry type defined by arc length and curvature at start and end point.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVESpiralType">
+    <complexContent>
+      <extension base="odr:OpenDRIVECurveSegmentType">
+        <sequence>
+          <element name="curvatureStart" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Curvature at the endof the element.</documentation>
+            </annotation>
+          </element>
+          <element name="curvatureEnd" type="double">
+            <annotation>
+              <documentation>From OpenDRIVE: Curvature at the start of the element.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVESpiralPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVESpiral"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEStandardRoad" substitutionGroup="tran:Section" type="odr:OpenDRIVEStandardRoadType">
+    <annotation>
+      <documentation>Standard OpenDRIVE road which is not part of a junction.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEStandardRoadType">
+    <complexContent>
+      <extension base="tran:SectionType">
+        <sequence>
+          <element name="length" type="gml:LengthType"/>
+          <element minOccurs="0" name="roadName" type="string"/>
+          <element minOccurs="0" name="rule" type="odr:e_trafficRuleType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="object" type="core:AbstractCityObjectPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="tunnel" type="tun:TunnelPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="bridge" type="brid:BridgePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="signal">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVERoadMarkSignal"/>
+                <element ref="odr:OpenDRIVESignal"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="signalReference" type="odr:OpenDRIVESignalReferencePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="centerLaneOffset" type="odr:OpenDRIVECurvePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="type" type="odr:OpenDRIVERoadTypePropertyType"/>
+          <element maxOccurs="unbounded" name="laneSection">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVELaneSection"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element name="roadShape">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="odr:OpenDRIVERoadShape"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="predecessor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element minOccurs="0" name="successor" type="odr:OpenDRIVERoadLinkPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="objectReference" type="odr:OpenDRIVEObjectReferencePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEStandardRoadPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEStandardRoad"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEStation" substitutionGroup="tran:AbstractTransportationSpace" type="odr:OpenDRIVEStationType">
+    <annotation>
+      <documentation>From OpenDRIVE: Defines stations for tram and railroad applications and for automotive environments. May refer to multiple tracks and is therefore defined on the same level as junctions.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEStationType">
+    <complexContent>
+      <extension base="tran:AbstractTransportationSpaceType">
+        <sequence>
+          <element name="stationName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Unique name of the station.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="type" type="odr:e_station_typeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of station. Free text, depending on the application.
+e.g.: small, medium, large.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEStationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEStation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVETrafficLane" substitutionGroup="tran:TrafficSpace" type="odr:OpenDRIVETrafficLaneType">
+    <annotation>
+      <documentation>OpenDRIVE lane which is used for traffic purposes.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVETrafficLaneType">
+    <complexContent>
+      <extension base="tran:TrafficSpaceType">
+        <sequence>
+          <element name="lateralLaneSection" type="odr:LateralLaneSectionType">
+            <annotation>
+              <documentation>From OpenDRIVE: Lane elements are separated into left/center/right elements.</documentation>
+            </annotation>
+          </element>
+          <element name="laneID" type="integer">
+            <annotation>
+              <documentation>From OpenDRIVE: Lane elements should represent the lanes from left to right, that is, with descending ID.</documentation>
+            </annotation>
+          </element>
+          <element name="type" type="odr:e_laneTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the lane.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="level" type="boolean"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="predecessor">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="successor">
+            <complexType>
+              <choice minOccurs="0">
+                <element ref="odr:OpenDRIVEAuxiliaryTrafficLane"/>
+                <element ref="odr:OpenDRIVETrafficLane"/>
+              </choice>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+              <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="rule" type="odr:OpenDRIVELaneRulePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="speed" type="odr:OpenDRIVELaneSpeedPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="access" type="odr:OpenDRIVELaneAccessPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="material" type="odr:OpenDRIVELaneMaterialPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="roadMark" type="odr:OpenDRIVELaneRoadMarkPropertyType"/>
+          <element maxOccurs="unbounded" name="laneShape" type="odr:OpenDRIVELaneShapePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVETrafficLanePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVETrafficLane"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVETrafficObstacle" substitutionGroup="core:AbstractOccupiedSpace" type="odr:OpenDRIVETrafficObstacleType">
+    <annotation>
+      <documentation>Traffic participant, e.g. bus, car, biker.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVETrafficObstacleType">
+    <complexContent>
+      <extension base="core:AbstractOccupiedSpaceType">
+        <sequence>
+          <element name="type" type="gml:CodeType">
+            <annotation>
+              <documentation>Code list value specifying the type of road user.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVETrafficObstaclePropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVETrafficObstacle"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVETunnelProperties" substitutionGroup="tun:ADEOfTunnel" type="odr:OpenDRIVETunnelPropertiesType">
+    <annotation>
+      <documentation>Additional OpenDRIVE properties for tunnel objects.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVETunnelPropertiesType">
+    <complexContent>
+      <extension base="tun:ADEOfTunnelType">
+        <sequence>
+          <element minOccurs="0" name="lightning" type="core:DoubleBetween0and1Type">
+            <annotation>
+              <documentation>From OpenDRIVE: Degree of artificial tunnel lighting. Depends on the application.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="daylight" type="core:DoubleBetween0and1Type">
+            <annotation>
+              <documentation>From OpenDRIVE: Degree of daylight intruding the tunnel. Depends on the application.</documentation>
+            </annotation>
+          </element>
+          <element name="type" type="odr:e_tunnelTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of tunnel.</documentation>
+            </annotation>
+          </element>
+          <element name="length" type="gml:LengthType">
+            <annotation>
+              <documentation>From OpenDRIVE: Length of the tunnel (in s-direction).</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tunnelName" type="string">
+            <annotation>
+              <documentation>From OpenDRIVE: Name of the tunnel.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVETunnelPropertiesPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVETunnelProperties"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEUserData" substitutionGroup="gml:AbstractObject" type="odr:OpenDRIVEUserDataType"/>
+  <complexType name="OpenDRIVEUserDataType">
+    <sequence>
+      <element name="code" type="gml:CodeType"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="userDataContent" type="anyType"/>
+      <element minOccurs="0" name="value" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="OpenDRIVEUserDataPropertyType">
+    <sequence>
+      <element ref="odr:OpenDRIVEUserData"/>
+    </sequence>
+  </complexType>
+  <element name="OpenDRIVEVirtualConnectionPartner" substitutionGroup="gml:AbstractGML" type="odr:OpenDRIVEVirtualConnectionPartnerType"/>
+  <complexType name="OpenDRIVEVirtualConnectionPartnerType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="elementDir" type="odr:e_elementDirType"/>
+          <element name="road" type="odr:OpenDRIVEStandardRoadPropertyType"/>
+          <element name="elementS" type="odr:LinearReferencingPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEVirtualConnectionPartnerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEVirtualConnectionPartner"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEVirtualJunction" substitutionGroup="odr:OpenDRIVEJunction" type="odr:OpenDRIVEVirtualJunctionType">
+    <annotation>
+      <documentation>From OpenDRIVE: Virtual junctions are used to describe connections within a road that do not require the main road to be split up like in normal junctions.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEVirtualJunctionType">
+    <complexContent>
+      <extension base="odr:OpenDRIVEJunctionType">
+        <sequence/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEVirtualJunctionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEVirtualJunction"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="OpenDRIVEVirtualJunctionConnection" substitutionGroup="odr:OpenDRIVEJunctionConnection" type="odr:OpenDRIVEVirtualJunctionConnectionType">
+    <annotation>
+      <documentation>From OpenDRIVE: Virtual connections indicate possible connections between two roads or one or more lanes of two roads. Because the indicated connections are only virtual, no real path is defined.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OpenDRIVEVirtualJunctionConnectionType">
+    <complexContent>
+      <extension base="odr:OpenDRIVEJunctionConnectionType">
+        <sequence>
+          <element minOccurs="0" name="successor" type="odr:OpenDRIVEVirtualConnectionPartnerPropertyType"/>
+          <element minOccurs="0" name="predecessor" type="odr:OpenDRIVEVirtualConnectionPartnerPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDRIVEVirtualJunctionConnectionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:OpenDRIVEVirtualJunctionConnection"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Pitch" substitutionGroup="gml:AbstractObject" type="odr:PitchType"/>
+  <complexType name="PitchType">
+    <sequence>
+      <element name="pitch" type="gml:AngleType"/>
+      <element minOccurs="0" name="relativeTo" type="anyURI"/>
+    </sequence>
+    <attributeGroup ref="gml:SRSReferenceGroup"/>
+  </complexType>
+  <complexType name="PitchPropertyType">
+    <sequence>
+      <element ref="odr:Pitch"/>
+    </sequence>
+  </complexType>
+  <element name="Roll" substitutionGroup="gml:AbstractObject" type="odr:RollType"/>
+  <complexType name="RollType">
+    <sequence>
+      <element name="roll" type="gml:AngleType"/>
+      <element minOccurs="0" name="relativeTo" type="anyURI"/>
+    </sequence>
+    <attributeGroup ref="gml:SRSReferenceGroup"/>
+  </complexType>
+  <complexType name="RollPropertyType">
+    <sequence>
+      <element ref="odr:Roll"/>
+    </sequence>
+  </complexType>
+  <element name="SignalRelation" substitutionGroup="core:CityObjectRelation" type="odr:SignalRelationType">
+    <annotation>
+      <documentation>From OpenDRIVE: Provides a means to link a signal to a series of other elements (for example, objects and signals).</documentation>
+    </annotation>
+  </element>
+  <complexType name="SignalRelationType">
+    <complexContent>
+      <extension base="core:CityObjectRelationType">
+        <sequence>
+          <element name="elementType" type="odr:e_road_signals_signal_reference_elementTypeType">
+            <annotation>
+              <documentation>From OpenDRIVE: Type of the linked element.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SignalRelationPropertyType">
+    <sequence minOccurs="0">
+      <element ref="odr:SignalRelation"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="e_accessRestrictionTypeType">
+    <restriction base="string">
+      <enumeration value="throughTraffic"/>
+      <enumeration value="truck"/>
+      <enumeration value="bicycle"/>
+      <enumeration value="motorcycle"/>
+      <enumeration value="none"/>
+      <enumeration value="trucks"/>
+      <enumeration value="simulator"/>
+      <enumeration value="autonomousTraffic"/>
+      <enumeration value="pedestrian"/>
+      <enumeration value="passengerCar"/>
+      <enumeration value="bus"/>
+      <enumeration value="delivery"/>
+      <enumeration value="emergency"/>
+      <enumeration value="taxi"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_borderTypeType">
+    <restriction base="string">
+      <enumeration value="concrete"/>
+      <enumeration value="curb"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_bridgeTypeType">
+    <restriction base="string">
+      <enumeration value="concrete"/>
+      <enumeration value="steel"/>
+      <enumeration value="brick"/>
+      <enumeration value="wood"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_contactPointType">
+    <restriction base="string">
+      <enumeration value="start"/>
+      <enumeration value="end"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_dataQuality_RawData_PostProcessingType">
+    <restriction base="string">
+      <enumeration value="raw"/>
+      <enumeration value="cleaned"/>
+      <enumeration value="processed"/>
+      <enumeration value="fused"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_dataQuality_RawData_SourceType">
+    <restriction base="string">
+      <enumeration value="sensor"/>
+      <enumeration value="cadastre"/>
+      <enumeration value="custom"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_directionType">
+    <restriction base="string">
+      <enumeration value="same"/>
+      <enumeration value="opposite"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_elementDirType">
+    <restriction base="string">
+      <enumeration value="-"/>
+      <enumeration value="+"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_junctionGroup_typeType">
+    <restriction base="string">
+      <enumeration value="roundabout"/>
+      <enumeration value="unkown"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_junction_typeType">
+    <restriction base="string">
+      <enumeration value="default"/>
+      <enumeration value="virtual"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_laneTypeType">
+    <restriction base="string">
+      <enumeration value="shoulder"/>
+      <enumeration value="border"/>
+      <enumeration value="driving"/>
+      <enumeration value="stop"/>
+      <enumeration value="none"/>
+      <enumeration value="restricted"/>
+      <enumeration value="parking"/>
+      <enumeration value="median"/>
+      <enumeration value="biking"/>
+      <enumeration value="sidewalk"/>
+      <enumeration value="curb"/>
+      <enumeration value="exit"/>
+      <enumeration value="entry"/>
+      <enumeration value="onRamp"/>
+      <enumeration value="offRamp"/>
+      <enumeration value="connectingRamp"/>
+      <enumeration value="bidirectional"/>
+      <enumeration value="special1"/>
+      <enumeration value="special2"/>
+      <enumeration value="special3"/>
+      <enumeration value="roadWorks"/>
+      <enumeration value="tram"/>
+      <enumeration value="rail"/>
+      <enumeration value="bus"/>
+      <enumeration value="taxi"/>
+      <enumeration value="HOV"/>
+      <enumeration value="mwyEntry"/>
+      <enumeration value="mwyExit"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_objectTypeType">
+    <restriction base="string">
+      <enumeration value="none"/>
+      <enumeration value="obstacle"/>
+      <enumeration value="car"/>
+      <enumeration value="pole"/>
+      <enumeration value="tree"/>
+      <enumeration value="vegetation"/>
+      <enumeration value="barrier"/>
+      <enumeration value="building"/>
+      <enumeration value="parking Space"/>
+      <enumeration value="patch"/>
+      <enumeration value="railing"/>
+      <enumeration value="trafficIsland"/>
+      <enumeration value="crosswalk"/>
+      <enumeration value="streetLamp"/>
+      <enumeration value="gantry"/>
+      <enumeration value="soundBarrier"/>
+      <enumeration value="van"/>
+      <enumeration value="bus"/>
+      <enumeration value="trailer"/>
+      <enumeration value="bike"/>
+      <enumeration value="motorbike"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_orientationType">
+    <restriction base="string">
+      <enumeration value="+"/>
+      <enumeration value="-"/>
+      <enumeration value="none"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_outlineFillTypeType">
+    <restriction base="string">
+      <enumeration value="grass"/>
+      <enumeration value="concrete"/>
+      <enumeration value="cobble"/>
+      <enumeration value="asphalt"/>
+      <enumeration value="pavement"/>
+      <enumeration value="gravel"/>
+      <enumeration value="soil"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_paramPoly3_pRangeType">
+    <restriction base="string">
+      <enumeration value="arcLength"/>
+      <enumeration value="normalized"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_roadMarkColorType">
+    <restriction base="string">
+      <enumeration value="standard"/>
+      <enumeration value="blue"/>
+      <enumeration value="green"/>
+      <enumeration value="red"/>
+      <enumeration value="white"/>
+      <enumeration value="yellow"/>
+      <enumeration value="orange"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_roadMarkRuleType">
+    <restriction base="string">
+      <enumeration value="no passing"/>
+      <enumeration value="caution"/>
+      <enumeration value="none"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_roadMarkTypeType">
+    <restriction base="string">
+      <enumeration value="none"/>
+      <enumeration value="solid"/>
+      <enumeration value="broken"/>
+      <enumeration value="solid solid"/>
+      <enumeration value="solid broken"/>
+      <enumeration value="broken solid"/>
+      <enumeration value="broken broken"/>
+      <enumeration value="botts dots"/>
+      <enumeration value="grass"/>
+      <enumeration value="curb"/>
+      <enumeration value="custom"/>
+      <enumeration value="edge"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_roadMarkWeightType">
+    <restriction base="string">
+      <enumeration value="standard"/>
+      <enumeration value="bold"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_roadTypeType">
+    <restriction base="string">
+      <enumeration value="unkown"/>
+      <enumeration value="rural"/>
+      <enumeration value="motorway"/>
+      <enumeration value="town"/>
+      <enumeration value="lowSpeed"/>
+      <enumeration value="pedestrian"/>
+      <enumeration value="bicycle"/>
+      <enumeration value="townExpressway"/>
+      <enumeration value="townCollector"/>
+      <enumeration value="townArterial"/>
+      <enumeration value="townPrivate"/>
+      <enumeration value="townLocal"/>
+      <enumeration value="townPlayStreet"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_lanes_laneSection_lcr_lane_roadMark_laneChangeType">
+    <restriction base="string">
+      <enumeration value="increase"/>
+      <enumeration value="decrease"/>
+      <enumeration value="both"/>
+      <enumeration value="none"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_lanes_laneSection_lr_lane_access_ruleType">
+    <restriction base="string">
+      <enumeration value="deny"/>
+      <enumeration value="allow"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_objects_object_parkingSpace_accessType">
+    <restriction base="string">
+      <enumeration value="all"/>
+      <enumeration value="car"/>
+      <enumeration value="women"/>
+      <enumeration value="handicapped"/>
+      <enumeration value="bus"/>
+      <enumeration value="truck"/>
+      <enumeration value="electric"/>
+      <enumeration value="residents"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_railroad_switch_positionType">
+    <restriction base="string">
+      <enumeration value="dynamic"/>
+      <enumeration value="straight"/>
+      <enumeration value="turn"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_signals_signal_reference_elementTypeType">
+    <restriction base="string">
+      <enumeration value="object"/>
+      <enumeration value="signal"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_surface_CRG_modeType">
+    <restriction base="string">
+      <enumeration value="attached"/>
+      <enumeration value="attached0"/>
+      <enumeration value="genuine"/>
+      <enumeration value="global"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_road_surface_CRG_purposeType">
+    <restriction base="string">
+      <enumeration value="friction"/>
+      <enumeration value="elevation"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_sideTypeType">
+    <restriction base="string">
+      <enumeration value="left"/>
+      <enumeration value="right"/>
+      <enumeration value="front"/>
+      <enumeration value="rear"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_station_platform_segment_sideType">
+    <restriction base="string">
+      <enumeration value="left"/>
+      <enumeration value="right"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_station_typeType">
+    <restriction base="string">
+      <enumeration value="small"/>
+      <enumeration value="medium"/>
+      <enumeration value="large"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_trafficRuleType">
+    <restriction base="string">
+      <enumeration value="RHT"/>
+      <enumeration value="LHT"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_tunnelTypeType">
+    <restriction base="string">
+      <enumeration value="standard"/>
+      <enumeration value="underpass"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="e_unitSpeedType">
+    <restriction base="string">
+      <enumeration value="m/s"/>
+      <enumeration value="mph"/>
+      <enumeration value="km/h"/>
+    </restriction>
+  </simpleType>
+</schema>

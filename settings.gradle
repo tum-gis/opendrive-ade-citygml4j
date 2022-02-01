@@ -1,0 +1,4 @@
+rootProject.name = 'opendrive-ade-citygml4j'
+include 'opendrive-ade-citygml4j-test'
+include 'gml-linear-referencing'
+
