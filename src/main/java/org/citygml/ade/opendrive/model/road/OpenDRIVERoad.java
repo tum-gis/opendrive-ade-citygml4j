@@ -2,6 +2,8 @@ package org.citygml.ade.opendrive.model.road;
 
 import org.xmlobjects.gml.model.measures.Length;
 
+import java.util.List;
+
 public interface OpenDRIVERoad {
     public void setOpenDRIVERoadLength(Length length);
     public Length getOpenDRIVERoadLength();
@@ -11,5 +13,8 @@ public interface OpenDRIVERoad {
 
     public void setOpenDRIVERoadTrafficRule(e_trafficRule trafficRule);
     public e_trafficRule getOpenDRIVERoadTrafficRule();
+
+    public void setOpenDRIVELaneSection(List<OpenDRIVELaneSectionProperty> laneSection);
+    public List<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection();
 
 }

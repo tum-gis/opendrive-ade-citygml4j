@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.road;
 
+import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSectionProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVEStandardRoad;
 import org.citygml.ade.opendrive.model.road.e_trafficRule;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
@@ -45,6 +46,9 @@ public class OpenDRIVEStandardRoadAdapter extends CompositeObjectAdapter<OpenDRI
                 case "rule":
                     reader.getTextContent().ifPresent(v -> object.setOpenDRIVERoadTrafficRule(e_trafficRule.fromValue(v)));
                     break;
+                case "laneSection":
+                    object.getOpenDRIVELaneSection().add(reader.getObjectUsingBuilder(OpenDRIVELaneSectionPropertyAdapter.class));
+                    break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
             super.buildChildObject(object, name, attributes, reader);
@@ -67,6 +71,9 @@ public class OpenDRIVEStandardRoadAdapter extends CompositeObjectAdapter<OpenDRI
 
         if (object.getSpaceType() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "rule").addTextContent(object.getOpenDRIVERoadTrafficRule().toValue()));
+
+        for (OpenDRIVELaneSectionProperty laneSectionProperty : object.getOpenDRIVELaneSection())
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneSection"), laneSectionProperty, OpenDRIVELaneSectionPropertyAdapter.class, namespaces);
 
     }
 }
