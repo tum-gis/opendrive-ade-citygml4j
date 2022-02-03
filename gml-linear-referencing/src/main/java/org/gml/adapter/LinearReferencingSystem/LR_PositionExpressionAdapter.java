@@ -48,7 +48,11 @@ public class LR_PositionExpressionAdapter extends AbstractGMLAdapter<LR_Position
 
     @Override
     public void writeChildElements(LR_PositionExpression object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        // TODO:
         super.writeChildElements(object, namespaces, writer);
+
+        if (object.getDistanceExpression() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "distanceExpression"), object.getDistanceExpression(), LR_DistanceExpressionPropertyAdapter.class, namespaces);
+
+        // TODO: Write remaining elements
     }
 }

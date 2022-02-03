@@ -54,5 +54,9 @@ public class LinearReferencingAdapter implements ObjectBuilder<LinearReferencing
 //        if (object.getAdditionalData() != null)
 //            for (OpenDRIVEAdditionalDataProperty dataProperty : object.getAdditionalData())
 //                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"), dataProperty, OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
+
+        if (object.getPositionExpression() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "positionExpression"),
+                    object.getPositionExpression(), LR_PositionExpressionPropertyAdapter.class, namespaces);
     }
 }

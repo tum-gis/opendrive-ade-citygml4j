@@ -1,5 +1,7 @@
 package org.citygml.ade.opendrive.model.road;
 
+import org.citygml.ade.opendrive.model.core.ReferenceableType;
+import org.citygml.ade.opendrive.model.object.LinearReferencing;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
 
@@ -13,4 +15,5 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
     public void setSingleSided(Boolean singleSided) {
         this.singleSided = singleSided;
     }
+
 }

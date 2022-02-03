@@ -8,6 +8,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.adapter.basictypes.MeasureAdapter;
+import org.xmlobjects.gml.adapter.measures.LengthAdapter;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -48,7 +49,12 @@ public class LR_DistanceExpressionAdapter extends AbstractGMLAdapter<LR_Distance
 
     @Override
     public void writeChildElements(LR_DistanceExpression object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        // TODO:
         super.writeChildElements(object, namespaces, writer);
+
+        if (object.getDistanceAlong() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "distanceAlong"), object.getDistanceAlong(), MeasureAdapter.class, namespaces);
+
+        // TODO: Write referent to element
+
     }
 }
