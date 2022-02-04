@@ -28,7 +28,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$PROJECT_DIR$/build/libs/opendrive-ade-citygml4j-1.0-SNAPSHOT.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.b-schwab/citygml4j/enable-jitpack-SNAPSHOT/6a748e8f7c76f3f45a9bec8b901c45eb28d01bfb/citygml4j-enable-jitpack-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.citygml4j/citygml4j/eacbbc4954/ba9825c7f228b0c142ff144f522319118e0d10d9/citygml4j-eacbbc4954.jar" />
           <entry name="$PROJECT_DIR$/gml-linear-referencing/build/libs/gml-linear-referencing-1.0-SNAPSHOT.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects.gml/gml-objects/1.0.0-SNAPSHOT/6c8774bd136f4a62ec108487243123cd9441e55/gml-objects-1.0.0-SNAPSHOT.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xmlobjects.xal/xal-objects/1.0.0-SNAPSHOT/94c0ab925ab60ebac6609ce3e51b9d36b084244e/xal-objects-1.0.0-SNAPSHOT.jar" />
