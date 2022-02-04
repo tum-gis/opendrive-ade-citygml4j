@@ -69,7 +69,7 @@ public class OpenDRIVEStandardRoadAdapter extends CompositeObjectAdapter<OpenDRI
         if (object.getOpenDRIVERoadName() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadName").addTextContent(object.getOpenDRIVERoadName()));
 
-        if (object.getSpaceType() != null)
+        if (object.getOpenDRIVERoadTrafficRule() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "rule").addTextContent(object.getOpenDRIVERoadTrafficRule().toValue()));
 
         for (OpenDRIVELaneSectionProperty laneSectionProperty : object.getOpenDRIVELaneSection())
