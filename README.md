@@ -1,5 +1,3 @@
-# Opendrive Ade Citygml4j
+# opendrive-ade-citygml4j
 
-## Implementation Ideas
-
-![Implemenation overview](docs/implementation-overview.drawio.svg)
+> **_⚠:_** This is work-in-progress for a proof of concept.
