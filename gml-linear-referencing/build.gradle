@@ -50,7 +50,7 @@ dependencies {
 // Hint from: https://stackoverflow.com/questions/67798503/android-jitpack-unable-to-import-submodule
 publishing {
     publications {
-        maven(MavenPublication) {
+        mavenJavaGML(MavenPublication) {
             groupId = 'org.gml'
             artifactId = 'gml-linear-referencing'
             version = '0.1'

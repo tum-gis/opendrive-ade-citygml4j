@@ -68,7 +68,7 @@ dependencies {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        mavenJavaADE(MavenPublication) {
             groupId = 'org.citygml.ade'
             artifactId = 'opendrive'
             version = '0.1'
