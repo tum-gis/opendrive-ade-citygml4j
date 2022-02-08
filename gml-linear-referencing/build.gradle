@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
 }
 
-group 'org.citygml.ade'
+group 'org.gml'
 //artifactId 'gml-linear-referencing'
 version '0.1'
 
@@ -51,7 +51,7 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'org.citygml.ade'
+            groupId = 'org.gml'
             artifactId = 'gml-linear-referencing'
             version = '0.1'
             description 'GML3.3 Linear Referencing module for CityGML OpenDRIVEADE module'
