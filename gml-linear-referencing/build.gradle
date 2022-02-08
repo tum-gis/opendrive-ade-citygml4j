@@ -42,6 +42,20 @@ dependencies {
     annotationProcessor 'org.xmlobjects:classindex:3.11.1'
 }
 
-test {
-    useJUnitPlatform()
+//test {
+//    useJUnitPlatform()
+//}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.citygml.ade'
+            artifactId = 'gml-linear-referencing'
+            version = '0.1'
+            description 'GML3.3 Linear Referencing module for CityGML OpenDRIVEADE module'
+
+            from components.java
+        }
+    }
 }
+
