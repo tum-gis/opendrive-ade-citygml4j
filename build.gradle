@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 group 'org.example'
@@ -63,4 +64,17 @@ dependencies {
 //test {
 //    useJUnitPlatform()
 //}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'org.citygml.ade'
+            artifactId = 'opendrive'
+            version = '0.1'
+            description 'CityGML OpenDRIVEADE module for citygml4j'
+
+            from components.java
+        }
+    }
+}
 
