@@ -1,12 +1,10 @@
 package org.citygml.ade.opendrive.adapter.road;
 
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
-import org.citygml.ade.opendrive.model.road.e_trafficRule;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.transportation.AbstractTransportationSpaceAdapter;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.measures.LengthAdapter;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;

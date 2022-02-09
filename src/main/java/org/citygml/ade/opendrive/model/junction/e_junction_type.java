@@ -1,7 +1,5 @@
 package org.citygml.ade.opendrive.model.junction;
 
-import org.citygml.ade.opendrive.model.object.e_bridgeType;
-
 public enum e_junction_type {
     DEFAULT("default"),
     VIRTUAL("virtual");

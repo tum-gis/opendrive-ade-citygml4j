@@ -1,13 +1,13 @@
 package org.citygml.ade.opendrive.model.road;
 
-public enum e_trafficRule {
+public enum E_trafficRule {
     RHT("RHT"),
     LHT("LHT");
 
     private final String value;
 
-    public static e_trafficRule fromValue(String value) {
-        for (e_trafficRule v : e_trafficRule.values()) {
+    public static E_trafficRule fromValue(String value) {
+        for (E_trafficRule v : E_trafficRule.values()) {
             if (v.value.equals(value))
                 return v;
         }
@@ -15,7 +15,7 @@ public enum e_trafficRule {
         return null;
     }
 
-    private e_trafficRule(String value) {
+    private E_trafficRule(String value) {
         this.value = value;
     }
 

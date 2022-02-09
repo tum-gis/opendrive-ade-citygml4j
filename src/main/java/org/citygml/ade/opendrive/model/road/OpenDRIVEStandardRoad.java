@@ -11,7 +11,7 @@ import java.util.List;
 public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, OpenDRIVERoad, ADEObject {
     private Length length;
     private String roadName;
-    private e_trafficRule trafficRule;
+    private E_trafficRule trafficRule;
     private List<OpenDRIVELaneSectionProperty> laneSection;
 
     @Override
@@ -35,12 +35,12 @@ public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, O
     }
 
     @Override
-    public void setOpenDRIVERoadTrafficRule(e_trafficRule trafficRule) {
+    public void setOpenDRIVERoadTrafficRule(E_trafficRule trafficRule) {
         this.trafficRule = trafficRule;
     }
 
     @Override
-    public e_trafficRule getOpenDRIVERoadTrafficRule() {
+    public E_trafficRule getOpenDRIVERoadTrafficRule() {
         return this.trafficRule;
     }
 

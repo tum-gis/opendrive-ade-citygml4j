@@ -1,17 +1,13 @@
 package org.citygml.ade.opendrive.model.object;
 
-import org.citygml.ade.opendrive.model.core.e_dataQuality_RawData_PostProcessing;
-
-public enum e_bridgeType {
-    CONCRETE("concrete"),
-    STEEL("steel"),
-    BRICK("brick"),
-    WOOD("wood");
+public enum E_tunnelType {
+    UNDERPASS("underpass"),
+    STANDARD("standard");
 
     private final String value;
 
-    public static e_bridgeType fromValue(String value) {
-        for (e_bridgeType v : e_bridgeType.values()) {
+    public static E_tunnelType fromValue(String value) {
+        for (E_tunnelType v : E_tunnelType.values()) {
             if (v.value.equals(value))
                 return v;
         }
@@ -19,7 +15,7 @@ public enum e_bridgeType {
         return null;
     }
 
-    private e_bridgeType(String value) {
+    private E_tunnelType(String value) {
         this.value = value;
     }
 

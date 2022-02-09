@@ -1,17 +1,12 @@
 package org.citygml.ade.opendrive.adapter.object;
 
 import org.citygml.ade.opendrive.model.object.LinearReferencing;
-import org.citygml.ade.opendrive.model.object.OpenDRIVEBridgeProperties;
-import org.citygml.ade.opendrive.model.object.e_bridgeType;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.ade.SingletonADEProperty;
-import org.gml.adapter.LinearReferencingSystem.LR_PositionExpressionAdapter;
 import org.gml.adapter.LinearReferencingSystem.LR_PositionExpressionPropertyAdapter;
-import org.gml.module.GML_LR_Module;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.measures.LengthAdapter;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;

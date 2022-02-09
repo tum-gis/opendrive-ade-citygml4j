@@ -11,8 +11,8 @@ public interface OpenDRIVERoad {
     public void setOpenDRIVERoadName(String roadName);
     public String getOpenDRIVERoadName();
 
-    public void setOpenDRIVERoadTrafficRule(e_trafficRule trafficRule);
-    public e_trafficRule getOpenDRIVERoadTrafficRule();
+    public void setOpenDRIVERoadTrafficRule(E_trafficRule trafficRule);
+    public E_trafficRule getOpenDRIVERoadTrafficRule();
 
     public void setOpenDRIVELaneSection(List<OpenDRIVELaneSectionProperty> laneSection);
     public List<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection();

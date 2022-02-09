@@ -1,9 +1,7 @@
 package org.citygml.ade.opendrive.adapter.object;
 
-import org.citygml.ade.opendrive.model.object.OpenDRIVEBridgeProperties;
 import org.citygml.ade.opendrive.model.object.OpenDRIVETunnelProperties;
-import org.citygml.ade.opendrive.model.object.e_bridgeType;
-import org.citygml.ade.opendrive.model.object.e_tunnelType;
+import org.citygml.ade.opendrive.model.object.E_tunnelType;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.ade.SingletonADEProperty;
 import org.xmlobjects.annotation.XMLElement;
@@ -38,7 +36,7 @@ public class OpenDRIVETunnelPropertiesAdapter implements ObjectBuilder<OpenDRIVE
                     reader.getTextContent().ifPresent(object::setTunnelName);
                     break;
                 case "type":
-                    reader.getTextContent().ifPresent((v) -> object.setType(e_tunnelType.fromValue(v)));
+                    reader.getTextContent().ifPresent((v) -> object.setType(E_tunnelType.fromValue(v)));
                     break;
                 case "length":
                     object.setLength(reader.getObjectUsingBuilder(LengthAdapter.class));

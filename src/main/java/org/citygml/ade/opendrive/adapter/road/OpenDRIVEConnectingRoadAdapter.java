@@ -2,11 +2,9 @@ package org.citygml.ade.opendrive.adapter.road;
 
 import org.citygml.ade.opendrive.model.road.OpenDRIVEConnectingRoad;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSectionProperty;
-import org.citygml.ade.opendrive.model.road.OpenDRIVEStandardRoad;
-import org.citygml.ade.opendrive.model.road.e_trafficRule;
+import org.citygml.ade.opendrive.model.road.E_trafficRule;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.transportation.AbstractTransportationSpaceAdapter;
-import org.gml.module.GML_LR_Module;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.measures.LengthAdapter;
@@ -39,7 +37,7 @@ public class OpenDRIVEConnectingRoadAdapter extends AbstractTransportationSpaceA
                     reader.getTextContent().ifPresent(object::setOpenDRIVERoadName);
                     break;
                 case "rule":
-                    reader.getTextContent().ifPresent(v -> object.setOpenDRIVERoadTrafficRule(e_trafficRule.fromValue(v)));
+                    reader.getTextContent().ifPresent(v -> object.setOpenDRIVERoadTrafficRule(E_trafficRule.fromValue(v)));
                     break;
                 case "laneSection":
                     object.getOpenDRIVELaneSection().add(reader.getObjectUsingBuilder(OpenDRIVELaneSectionPropertyAdapter.class));

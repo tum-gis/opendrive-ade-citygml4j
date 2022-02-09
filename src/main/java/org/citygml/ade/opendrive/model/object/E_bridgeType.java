@@ -1,13 +1,15 @@
 package org.citygml.ade.opendrive.model.object;
 
-public enum e_tunnelType {
-    UNDERPASS("underpass"),
-    STANDARD("standard");
+public enum E_bridgeType {
+    CONCRETE("concrete"),
+    STEEL("steel"),
+    BRICK("brick"),
+    WOOD("wood");
 
     private final String value;
 
-    public static e_tunnelType fromValue(String value) {
-        for (e_tunnelType v : e_tunnelType.values()) {
+    public static E_bridgeType fromValue(String value) {
+        for (E_bridgeType v : E_bridgeType.values()) {
             if (v.value.equals(value))
                 return v;
         }
@@ -15,7 +17,7 @@ public enum e_tunnelType {
         return null;
     }
 
-    private e_tunnelType(String value) {
+    private E_bridgeType(String value) {
         this.value = value;
     }
 

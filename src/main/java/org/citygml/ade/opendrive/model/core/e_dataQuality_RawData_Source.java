@@ -1,7 +1,5 @@
 package org.citygml.ade.opendrive.model.core;
 
-import org.citygml.ade.opendrive.model.road.e_trafficRule;
-
 public enum e_dataQuality_RawData_Source {
     SENSOR("sensor"),
     CADASTRE("cadastre"),

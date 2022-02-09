@@ -3,7 +3,6 @@ package org.citygml.ade.opendrive.model.road;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.common.TopLevelFeature;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
-import org.citygml4j.visitor.ObjectVisitor;
 import org.xmlobjects.gml.model.measures.Length;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.List;
 public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace implements TopLevelFeature, OpenDRIVERoad, ADEObject {
     private Length length;
     private String roadName;
-    private e_trafficRule trafficRule;
+    private E_trafficRule trafficRule;
     private List<OpenDRIVELaneSectionProperty> laneSection;
 
     @Override
@@ -36,12 +35,12 @@ public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace impleme
     }
 
     @Override
-    public void setOpenDRIVERoadTrafficRule(e_trafficRule trafficRule) {
+    public void setOpenDRIVERoadTrafficRule(E_trafficRule trafficRule) {
         this.trafficRule = trafficRule;
     }
 
     @Override
-    public e_trafficRule getOpenDRIVERoadTrafficRule() {
+    public E_trafficRule getOpenDRIVERoadTrafficRule() {
         return trafficRule;
     }
 

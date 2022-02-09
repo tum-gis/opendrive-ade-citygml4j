@@ -2,13 +2,12 @@ package org.citygml.ade.opendrive.model.object;
 
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.bridge.ADEOfBridge;
-import org.citygml4j.model.tunnel.ADEOfTunnel;
 import org.xmlobjects.gml.model.measures.Length;
 
 public class OpenDRIVEBridgeProperties extends ADEOfBridge implements ADEObject {
     private String bridgeName;
     private Length length;
-    private e_bridgeType type;
+    private E_bridgeType type;
 
     public String getBridgeName() {
         return bridgeName;
@@ -26,11 +25,11 @@ public class OpenDRIVEBridgeProperties extends ADEOfBridge implements ADEObject 
         this.length = length;
     }
 
-    public e_bridgeType getType() {
+    public E_bridgeType getType() {
         return type;
     }
 
-    public void setType(e_bridgeType type) {
+    public void setType(E_bridgeType type) {
         this.type = type;
     }
 }

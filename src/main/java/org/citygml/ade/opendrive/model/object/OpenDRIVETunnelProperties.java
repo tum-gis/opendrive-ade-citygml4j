@@ -9,7 +9,7 @@ public class OpenDRIVETunnelProperties extends ADEOfTunnel implements ADEObject 
     private Double daylight;
     private Double lighting;
     private String tunnelName;
-    private e_tunnelType type;
+    private E_tunnelType type;
 
     public Length getLength() {
         return length;
@@ -43,11 +43,11 @@ public class OpenDRIVETunnelProperties extends ADEOfTunnel implements ADEObject 
         this.tunnelName = tunnelName;
     }
 
-    public e_tunnelType getType() {
+    public E_tunnelType getType() {
         return type;
     }
 
-    public void setType(e_tunnelType type) {
+    public void setType(E_tunnelType type) {
         this.type = type;
     }
 }
