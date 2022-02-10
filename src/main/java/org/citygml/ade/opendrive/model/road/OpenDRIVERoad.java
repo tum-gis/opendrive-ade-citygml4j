@@ -17,4 +17,7 @@ public interface OpenDRIVERoad {
     public void setOpenDRIVELaneSection(List<OpenDRIVELaneSectionProperty> laneSection);
     public List<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection();
 
+    public void setOpenDRIVERoadShape(OpenDRIVERoadShapeProperty roadShape);
+    public OpenDRIVERoadShapeProperty getOpenDRIVERoadShape();
+
 }

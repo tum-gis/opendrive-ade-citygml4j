@@ -13,6 +13,7 @@ public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace impleme
     private String roadName;
     private E_trafficRule trafficRule;
     private List<OpenDRIVELaneSectionProperty> laneSection;
+    private OpenDRIVERoadShapeProperty roadShape;
 
     @Override
     public void setOpenDRIVERoadLength(Length length) {
@@ -55,5 +56,15 @@ public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace impleme
             laneSection = new ArrayList<>();
 
         return laneSection;
+    }
+
+    @Override
+    public void setOpenDRIVERoadShape(OpenDRIVERoadShapeProperty roadShape) {
+        this.roadShape = roadShape;
+    }
+
+    @Override
+    public OpenDRIVERoadShapeProperty getOpenDRIVERoadShape() {
+        return roadShape;
     }
 }

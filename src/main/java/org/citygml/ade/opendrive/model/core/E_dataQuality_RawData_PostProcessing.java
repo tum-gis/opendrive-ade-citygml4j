@@ -1,6 +1,6 @@
 package org.citygml.ade.opendrive.model.core;
 
-public enum e_dataQuality_RawData_PostProcessing {
+public enum E_dataQuality_RawData_PostProcessing {
     RAW("raw"),
     CLEANED("cleaned"),
     PROCESSED("processed"),
@@ -8,8 +8,8 @@ public enum e_dataQuality_RawData_PostProcessing {
 
     private final String value;
 
-    public static e_dataQuality_RawData_PostProcessing fromValue(String value) {
-        for (e_dataQuality_RawData_PostProcessing v : e_dataQuality_RawData_PostProcessing.values()) {
+    public static E_dataQuality_RawData_PostProcessing fromValue(String value) {
+        for (E_dataQuality_RawData_PostProcessing v : E_dataQuality_RawData_PostProcessing.values()) {
             if (v.value.equals(value))
                 return v;
         }
@@ -17,7 +17,7 @@ public enum e_dataQuality_RawData_PostProcessing {
         return null;
     }
 
-    private e_dataQuality_RawData_PostProcessing(String value) {
+    private E_dataQuality_RawData_PostProcessing(String value) {
         this.value = value;
     }
 

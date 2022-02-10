@@ -5,9 +5,9 @@ import org.xmlobjects.gml.model.GMLObject;
 
 public class OpenDRIVERawData extends GMLObject implements ADEObject {
     private String date;
-    private e_dataQuality_RawData_PostProcessing postProcessing;
+    private E_dataQuality_RawData_PostProcessing postProcessing;
     private String postProcessingComment;
-    private e_dataQuality_RawData_Source source;
+    private E_dataQuality_RawData_Source source;
     private String sourceComment;
 
     public String getDate() {
@@ -18,11 +18,11 @@ public class OpenDRIVERawData extends GMLObject implements ADEObject {
         this.date = date;
     }
 
-    public e_dataQuality_RawData_PostProcessing getPostProcessing() {
+    public E_dataQuality_RawData_PostProcessing getPostProcessing() {
         return postProcessing;
     }
 
-    public void setPostProcessing(e_dataQuality_RawData_PostProcessing postProcessing) {
+    public void setPostProcessing(E_dataQuality_RawData_PostProcessing postProcessing) {
         this.postProcessing = postProcessing;
     }
 
@@ -34,11 +34,11 @@ public class OpenDRIVERawData extends GMLObject implements ADEObject {
         this.postProcessingComment = postProcessingComment;
     }
 
-    public e_dataQuality_RawData_Source getSource() {
+    public E_dataQuality_RawData_Source getSource() {
         return source;
     }
 
-    public void setSource(e_dataQuality_RawData_Source source) {
+    public void setSource(E_dataQuality_RawData_Source source) {
         this.source = source;
     }
 

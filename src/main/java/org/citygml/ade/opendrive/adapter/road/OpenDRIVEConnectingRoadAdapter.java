@@ -42,6 +42,9 @@ public class OpenDRIVEConnectingRoadAdapter extends AbstractTransportationSpaceA
                 case "laneSection":
                     object.getOpenDRIVELaneSection().add(reader.getObjectUsingBuilder(OpenDRIVELaneSectionPropertyAdapter.class));
                     break;
+                case "roadShape":
+                    object.setOpenDRIVERoadShape(reader.getObjectUsingBuilder(OpenDRIVERoadShapePropertyAdapter.class));
+                    break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
             super.buildChildObject(object, name, attributes, reader);
@@ -68,5 +71,7 @@ public class OpenDRIVEConnectingRoadAdapter extends AbstractTransportationSpaceA
         for (OpenDRIVELaneSectionProperty laneSectionProperty : object.getOpenDRIVELaneSection())
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneSection"), laneSectionProperty, OpenDRIVELaneSectionPropertyAdapter.class, namespaces);
 
+        if (object.getOpenDRIVERoadShape() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadShape"), object.getOpenDRIVERoadShape(), OpenDRIVERoadShapePropertyAdapter.class, namespaces);
     }
 }

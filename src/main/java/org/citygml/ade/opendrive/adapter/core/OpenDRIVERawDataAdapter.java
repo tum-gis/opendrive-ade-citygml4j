@@ -1,9 +1,8 @@
 package org.citygml.ade.opendrive.adapter.core;
 
-import org.citygml.ade.opendrive.model.core.OpenDRIVEDataError;
 import org.citygml.ade.opendrive.model.core.OpenDRIVERawData;
-import org.citygml.ade.opendrive.model.core.e_dataQuality_RawData_PostProcessing;
-import org.citygml.ade.opendrive.model.core.e_dataQuality_RawData_Source;
+import org.citygml.ade.opendrive.model.core.E_dataQuality_RawData_PostProcessing;
+import org.citygml.ade.opendrive.model.core.E_dataQuality_RawData_Source;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
@@ -36,14 +35,14 @@ public class OpenDRIVERawDataAdapter implements ObjectBuilder<OpenDRIVERawData>,
                     break;
                 case "postProcessing":
 //                    object.setPostProcessing(e_dataQuality_RawData_PostProcessing.fromValue(reader.getTextContent().toString()));
-                    reader.getTextContent().ifPresent(v -> object.setPostProcessing(e_dataQuality_RawData_PostProcessing.fromValue(v)));
+                    reader.getTextContent().ifPresent(v -> object.setPostProcessing(E_dataQuality_RawData_PostProcessing.fromValue(v)));
                     break;
                 case "postProcessingComment":
                     reader.getTextContent().ifPresent(object::setPostProcessingComment);
                     break;
                 case "source":
 //                    object.setSource(e_dataQuality_RawData_Source.fromValue(reader.getTextContent().toString()));
-                    reader.getTextContent().ifPresent(v -> object.setSource(e_dataQuality_RawData_Source.fromValue(v)));
+                    reader.getTextContent().ifPresent(v -> object.setSource(E_dataQuality_RawData_Source.fromValue(v)));
                     break;
                 case "sourceComment":
                     reader.getTextContent().ifPresent(object::setSourceComment);

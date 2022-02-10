@@ -1,14 +1,14 @@
 package org.citygml.ade.opendrive.model.core;
 
-public enum e_dataQuality_RawData_Source {
+public enum E_dataQuality_RawData_Source {
     SENSOR("sensor"),
     CADASTRE("cadastre"),
     CUSTOM("custom");
 
     private final String value;
 
-    public static e_dataQuality_RawData_Source fromValue(String value) {
-        for (e_dataQuality_RawData_Source v : e_dataQuality_RawData_Source.values()) {
+    public static E_dataQuality_RawData_Source fromValue(String value) {
+        for (E_dataQuality_RawData_Source v : E_dataQuality_RawData_Source.values()) {
             if (v.value.equals(value))
                 return v;
         }
@@ -16,7 +16,7 @@ public enum e_dataQuality_RawData_Source {
         return null;
     }
 
-    private e_dataQuality_RawData_Source(String value) {
+    private E_dataQuality_RawData_Source(String value) {
         this.value = value;
     }
 
