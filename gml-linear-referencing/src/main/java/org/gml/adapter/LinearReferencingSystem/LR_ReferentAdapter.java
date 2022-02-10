@@ -19,6 +19,7 @@ import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
+import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
 
@@ -62,5 +63,11 @@ public class LR_ReferentAdapter extends AbstractGMLAdapter<LR_Referent> {
     public void writeChildElements(LR_Referent object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         // TODO:
         super.writeChildElements(object, namespaces, writer);
+
+        if (object.getName() != null)
+            writer.writeElement(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "name").addTextContent(object.getName().toString()));
+
+        if (object.getLocation() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "location"), object.getLocation(), LR_PositionExpressionPropertyAdapter.class, namespaces);
     }
 }
