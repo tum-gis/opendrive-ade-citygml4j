@@ -3,6 +3,7 @@ package org.citygml.ade.opendrive.adapter.road;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.model.road.OpenDRIVERoadReferenceLine;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
+import org.citygml4j.xml.adapter.core.AbstractFeatureAdapter;
 import org.gml.adapter.LinearReferencingSystem.LR_AlongReferentPropertyAdapter;
 import org.gml.adapter.LinearReferencingSystem.LR_ReferentPropertyAdapter;
 import org.gml.model.LinearReferencingSystem.LR_ReferentProperty;
@@ -22,7 +23,7 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElement(name = "OpenDRIVERoadReferenceLine", namespaceURI = OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)
-public class OpenDRIVERoadReferenceLineAdapter extends AbstractGMLAdapter<OpenDRIVERoadReferenceLine> {
+public class OpenDRIVERoadReferenceLineAdapter extends AbstractFeatureAdapter<OpenDRIVERoadReferenceLine> {
     @Override
     public OpenDRIVERoadReferenceLine createObject(QName name, Object parent) throws ObjectBuildException {
         return new OpenDRIVERoadReferenceLine();
