@@ -21,6 +21,10 @@ java {
     withSourcesJar()
 }
 
+tasks.withType(Javadoc) {
+    failOnError false
+}
+
 dependencies {
     // Uncoment all when bottom dependencies are commented out
 //    api 'org.glassfish.jaxb:xsom:3.0.2'
