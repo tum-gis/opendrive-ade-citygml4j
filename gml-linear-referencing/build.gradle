@@ -42,7 +42,7 @@ dependencies {
     annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
     annotationProcessor 'org.xmlobjects:classindex:3.11.1'
 
-    implementation("org.assertj:assertj-core:3.22.0")
+    api("org.assertj:assertj-core:3.22.0")
 }
 
 //test {
