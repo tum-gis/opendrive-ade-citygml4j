@@ -61,6 +61,7 @@ dependencies {
     api project(":gml-linear-referencing")
     annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
 
+    api "org.assertj:assertj-core:3.22.0"
 }
 
 //test {
