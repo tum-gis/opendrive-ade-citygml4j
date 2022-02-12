@@ -60,6 +60,8 @@ dependencies {
 //    implementation project(":gml-linear-referencing")
     api project(":gml-linear-referencing")
     annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
+
+    implementation("org.assertj:assertj-core:3.22.0") // TODO: remove
 }
 
 //test {
