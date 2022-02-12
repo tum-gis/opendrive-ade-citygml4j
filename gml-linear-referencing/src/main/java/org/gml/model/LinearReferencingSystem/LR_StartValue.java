@@ -5,7 +5,7 @@ import org.xmlobjects.gml.model.GMLObject;
 public class LR_StartValue extends GMLObject {
     private Double value;
     private String uom;
-    private String lrm;
+    private LR_LinearReferencingMethodProperty lrm;
 
     public Double getValue() {
         return value;
@@ -23,11 +23,11 @@ public class LR_StartValue extends GMLObject {
         this.uom = uom;
     }
 
-    public String getLrm() {
+    public LR_LinearReferencingMethodProperty getLrm() {
         return lrm;
     }
 
-    public void setLrm(String lrm) {
+    public void setLrm(LR_LinearReferencingMethodProperty lrm) {
         this.lrm = lrm;
     }
 }

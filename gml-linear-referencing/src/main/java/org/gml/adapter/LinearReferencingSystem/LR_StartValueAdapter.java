@@ -1,5 +1,6 @@
 package org.gml.adapter.LinearReferencingSystem;
 
+import org.gml.model.LinearReferencingSystem.LR_LinearReferencingMethodProperty;
 import org.gml.model.LinearReferencingSystem.LR_StartValue;
 import org.gml.module.GML_LR_Module;
 import org.xmlobjects.annotation.XMLElement;
@@ -30,7 +31,9 @@ public class LR_StartValueAdapter implements ObjectBuilder<LR_StartValue>, Objec
         if (GML_LR_Module.GML_LR_NAMESPACE.equals(name.getNamespaceURI())) {
             reader.getTextContent().ifDouble(object::setValue);
             attributes.getValue("uom").ifPresent(object::setUom);
-            attributes.getValue("lrm").ifPresent(object::setLrm);
+
+            String xLinkHrefToLRM = attributes.getValue("lrm").toString();
+            object.setLrm(new LR_LinearReferencingMethodProperty(xLinkHrefToLRM));
         }
     }
 
