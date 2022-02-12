@@ -39,6 +39,10 @@ java {
     withSourcesJar()
 }
 
+tasks.withType(Javadoc) {
+    failOnError false
+}
+
 dependencies {
     // Uncoment all when bottom dependencies are commented out
 //    api files('../citygml4j/build/libs/citygml4j-3.0.0-rc.3.jar')
