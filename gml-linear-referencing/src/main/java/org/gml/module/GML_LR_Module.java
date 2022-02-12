@@ -1,5 +1,9 @@
 package org.gml.module;
 
+/**
+ * The java implementation is referring to the GML3.3 implementation
+ */
+
 public class GML_LR_Module {
     public final static String GML_LR_NAMESPACE = "http://www.opengis.net/gml/3.3/lr";
     public final static String GML_LR_PREFIX = "gmllr";

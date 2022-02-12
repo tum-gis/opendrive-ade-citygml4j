@@ -51,10 +51,12 @@ public class LR_LinearElement extends AbstractGML {
     public List<LR_StartValue> getStartValue() {
         if (startValue == null)
             startValue = new ArrayList<>();
+
         return startValue;
     }
 
     public void setStartValue(List<LR_StartValue> startValue) {
         this.startValue = startValue;
     }
+
 }
