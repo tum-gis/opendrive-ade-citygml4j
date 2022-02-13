@@ -21,9 +21,9 @@ java {
     withSourcesJar()
 }
 
-tasks.withType(Javadoc) {
-    failOnError false
-}
+//tasks.withType(Javadoc) {
+//    failOnError false
+//}
 
 dependencies {
     // Uncoment all when bottom dependencies are commented out
@@ -46,7 +46,8 @@ dependencies {
     annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
     annotationProcessor 'org.xmlobjects:classindex:3.11.1'
 
-    implementation("org.assertj:assertj-core:3.22.0")
+//    implementation("org.assertj:assertj-core:3.22.0")
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 }
 
 //test {

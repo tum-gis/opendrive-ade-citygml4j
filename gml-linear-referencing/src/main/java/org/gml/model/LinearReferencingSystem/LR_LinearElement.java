@@ -1,6 +1,7 @@
 package org.gml.model.LinearReferencingSystem;
 
-import org.assertj.core.api.RecursiveComparisonAssert;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+//import org.assertj.core.api.RecursiveComparisonAssert;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.basictypes.Measure;
 import org.xmlobjects.gml.model.feature.FeatureProperty;
@@ -9,7 +10,7 @@ import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 
 public class LR_LinearElement extends AbstractGML {
     private FeatureProperty feature;
@@ -93,18 +94,25 @@ public class LR_LinearElement extends AbstractGML {
 
     public Measure startValue(LR_LinearReferencingMethod lrm) {
         if (this.getStartValue().isEmpty() == false) {
+
             for(LR_StartValue startVal : this.getStartValue()) {
                 // TODO: Resolve XLink reference if present
                 LR_LinearReferencingMethod lrm_tmp = startVal.getLrm().getObject();
-                try {
-                    assertThat(lrm).usingRecursiveComparison().isEqualTo(lrm_tmp);
+//                try {
+//                    assertThat(lrm).usingRecursiveComparison().isEqualTo(lrm_tmp);
+//
+//
+//
+//                    // If no exception is thrown the objects are equal and the corresponding values can be returned
+//                    return new Measure(startVal.getValue(), startVal.getUom());
+//                } catch (AssertionError assertionError) {
+//                    continue;
+//                }
 
-                    // If no exception is thrown the objects are equal and the corresponding values can be returned
-                    return new Measure(startVal.getValue(), startVal.getUom());
-                } catch (AssertionError assertionError) {
-                    continue;
-                }
+                    boolean equal = new EqualsBuilder().setTestRecursive(true).reflectionAppend(lrm, lrm_tmp).isEquals();
 
+                    if (equal == true)
+                        return new Measure(startVal.getValue(), startVal.getUom());
             }
         } else {
             if (feature != null && feature.getObject() != null && feature.getObject() instanceof LR_ILinearElement) {
