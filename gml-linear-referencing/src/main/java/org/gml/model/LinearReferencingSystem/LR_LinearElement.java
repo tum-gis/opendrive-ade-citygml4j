@@ -1,6 +1,6 @@
 package org.gml.model.LinearReferencingSystem;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
+//import org.apache.commons.lang3.builder.EqualsBuilder;
 //import org.assertj.core.api.RecursiveComparisonAssert;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.basictypes.Measure;
@@ -98,21 +98,12 @@ public class LR_LinearElement extends AbstractGML {
             for(LR_StartValue startVal : this.getStartValue()) {
                 // TODO: Resolve XLink reference if present
                 LR_LinearReferencingMethod lrm_tmp = startVal.getLrm().getObject();
-//                try {
-//                    assertThat(lrm).usingRecursiveComparison().isEqualTo(lrm_tmp);
-//
-//
-//
-//                    // If no exception is thrown the objects are equal and the corresponding values can be returned
-//                    return new Measure(startVal.getValue(), startVal.getUom());
-//                } catch (AssertionError assertionError) {
-//                    continue;
-//                }
 
-                    boolean equal = new EqualsBuilder().setTestRecursive(true).reflectionAppend(lrm, lrm_tmp).isEquals();
+                // TODO: Object comparison
 
-                    if (equal == true)
-                        return new Measure(startVal.getValue(), startVal.getUom());
+                // If no exception is thrown the objects are equal and the corresponding values can be returned
+//                return new Measure(startVal.getValue(), startVal.getUom());
+                break;
             }
         } else {
             if (feature != null && feature.getObject() != null && feature.getObject() instanceof LR_ILinearElement) {

@@ -64,6 +64,8 @@ dependencies {
 //    implementation project(":gml-linear-referencing")
     api project(":gml-linear-referencing")
     annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
+
+    implementation 'commons-beanutils:commons-beanutils:1.9.4'
 }
 
 //test {
