@@ -1,7 +1,6 @@
 package org.gml.model.LinearReferencingSystem;
 
-//import org.apache.commons.lang3.builder.EqualsBuilder;
-//import org.assertj.core.api.RecursiveComparisonAssert;
+import org.gml.utils.LRMComparator;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.basictypes.Measure;
 import org.xmlobjects.gml.model.feature.FeatureProperty;
@@ -10,7 +9,6 @@ import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-//import static org.assertj.core.api.Assertions.assertThat;
 
 public class LR_LinearElement extends AbstractGML {
     private FeatureProperty feature;
@@ -102,8 +100,8 @@ public class LR_LinearElement extends AbstractGML {
                 // TODO: Object comparison
 
                 // If no exception is thrown the objects are equal and the corresponding values can be returned
-//                return new Measure(startVal.getValue(), startVal.getUom());
-                break;
+                if (new LRMComparator().compare(lrm, lrm_tmp) == 0)
+                    return new Measure(startVal.getValue(), startVal.getUom());
             }
         } else {
             if (feature != null && feature.getObject() != null && feature.getObject() instanceof LR_ILinearElement) {

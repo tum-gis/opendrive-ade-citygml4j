@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
+
 //group 'org.citygml.ade'
 //artifactId = 'opendrive'
 //version '0.1'
@@ -19,6 +20,9 @@ allprojects {
         }
         maven {
             url 'https://jitpack.io'
+        }
+        maven {
+            url "https://plugins.gradle.org/m2/"
         }
         mavenCentral()
     }
@@ -65,12 +69,11 @@ dependencies {
     api project(":gml-linear-referencing")
     annotationProcessor 'org.xmlobjects.gml:gml-objects:1.0.0-SNAPSHOT'
 
-    implementation 'commons-beanutils:commons-beanutils:1.9.4'
 }
 
-//test {
-//    useJUnitPlatform()
-//}
+test {
+    useJUnitPlatform()
+}
 
 publishing {
     publications {
