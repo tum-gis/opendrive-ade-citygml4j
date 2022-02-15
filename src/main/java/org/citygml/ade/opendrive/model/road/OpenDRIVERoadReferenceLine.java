@@ -5,12 +5,22 @@ import org.citygml4j.model.core.AbstractFeature;
 import org.gml.model.LinearReferencingSystem.*;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.basictypes.Measure;
+import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OpenDRIVERoadReferenceLine extends AbstractFeature implements LR_Feature, ADEObject {
     private List<LR_ReferentProperty> referent;
+    private CurveProperty planView;
+
+    public CurveProperty getPlanView() {
+        return planView;
+    }
+
+    public void setPlanView(CurveProperty planView) {
+        this.planView = planView;
+    }
 
     @Override
     public void setReferent(List<LR_ReferentProperty> referent) {

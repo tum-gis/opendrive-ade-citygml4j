@@ -11,6 +11,7 @@ import org.gml.module.GML_LR_Module;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
+import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -34,7 +35,11 @@ public class OpenDRIVERoadReferenceLineAdapter extends AbstractFeatureAdapter<Op
         if (OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE.equals(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "referent":
-                object.getReferent().add(reader.getObjectUsingBuilder(LR_ReferentPropertyAdapter.class));
+                    object.getReferent().add(reader.getObjectUsingBuilder(LR_ReferentPropertyAdapter.class));
+                    break;
+                case "planView":
+                    object.setPlanView(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
+                    break;
             }
         } else  // If the namespace is not from the ADE then the element is from the citygml standard module
             super.buildChildObject(object, name, attributes, reader);
