@@ -19,12 +19,14 @@ module opendrive.ade.citygml4j.main {
     exports org.citygml.ade.opendrive.model.object;
     exports org.citygml.ade.opendrive.model.junction;
     exports org.citygml.ade.opendrive.model.geometry;
+    exports org.citygml.ade.opendrive.model.lane;
 
     exports org.citygml.ade.opendrive.adapter.core to org.xmlobjects;
     exports org.citygml.ade.opendrive.adapter.road to org.xmlobjects;
     exports org.citygml.ade.opendrive.adapter.object to org.xmlobjects;
     exports org.citygml.ade.opendrive.adapter.junction to org.xmlobjects;
     exports org.citygml.ade.opendrive.adapter.geometry to org.xmlobjects;
+    exports org.citygml.ade.opendrive.adapter.lane to org.xmlobjects;
 
     exports org.citygml.ade.opendrive.walker to org.citygml4j;
 

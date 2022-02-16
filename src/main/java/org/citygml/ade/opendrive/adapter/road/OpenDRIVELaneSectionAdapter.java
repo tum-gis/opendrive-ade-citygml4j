@@ -1,7 +1,10 @@
 package org.citygml.ade.opendrive.adapter.road;
 
+import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELanePropertyAdapter;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
+import org.citygml4j.xml.adapter.core.AbstractFeaturePropertyAdapter;
 import org.citygml4j.xml.adapter.transportation.AbstractTransportationSpaceAdapter;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
@@ -29,6 +32,15 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
             switch (name.getLocalPart()) {
                 case "singleSided":
                     reader.getTextContent().ifBoolean(object::setSingleSided);
+                    break;
+                case "lane":
+//                    reader.getObjectUsingBuilder(AbstractFeaturePropertyAdapter.class);
+//                    reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class);
+                    // Inside of the getObjectUsingBuilder()-method the reader searches automatically for the builder/serializer
+                    // according to local-name, namespace-uri and type => As long as the adapter class is a superclass
+                    // of the wanted classes the builder uses the right adapter classes that matches the
+                    // local-name, namespace-uri and type (w.r.t. inheritance relations)
+                    object.getLane().add((OpenDRIVELaneProperty) reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class));
                     break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
