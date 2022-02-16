@@ -19,7 +19,7 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElement(name = "OpenDRIVELine", namespaceURI = OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)
-public class OpenDRIVELineAdapter extends OpenDRIVECurveSegmentAdapter{
+public class OpenDRIVELineAdapter extends OpenDRIVECurveSegmentAdapter<OpenDRIVELine>{
 
     @Override
     public OpenDRIVELine createObject(QName name, Object parent) throws ObjectBuildException {
@@ -27,12 +27,12 @@ public class OpenDRIVELineAdapter extends OpenDRIVECurveSegmentAdapter{
     }
 
     @Override
-    public void buildChildObject(Object object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(OpenDRIVELine object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.buildChildObject(object, name, attributes, reader);
     }
 
     @Override
-    public Element createElement(Object object, Namespaces namespaces) throws ObjectSerializeException {
+    public Element createElement(OpenDRIVELine object, Namespaces namespaces) throws ObjectSerializeException {
         Element element = Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "OpenDRIVELine");
         GMLSerializerHelper.serializeSRSReference(element, (OpenDRIVELine) object, namespaces);
 
@@ -40,7 +40,7 @@ public class OpenDRIVELineAdapter extends OpenDRIVECurveSegmentAdapter{
     }
 
     @Override
-    public void writeChildElements(Object object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+    public void writeChildElements(OpenDRIVELine object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
     }
 }
