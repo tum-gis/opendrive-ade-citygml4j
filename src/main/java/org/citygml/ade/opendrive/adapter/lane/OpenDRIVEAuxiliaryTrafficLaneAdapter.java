@@ -19,7 +19,7 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElement(name = "OpenDRIVEAuxiliaryTrafficLane", namespaceURI = OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)
-public class OpenDRIVEAuxiliaryTrafficLaneAdapter extends CompositeObjectAdapter<OpenDRIVEAuxiliaryTrafficLane> {
+public class OpenDRIVEAuxiliaryTrafficLaneAdapter extends OpenDRIVELaneAdapter<OpenDRIVEAuxiliaryTrafficLane>/*CompositeObjectAdapter<OpenDRIVEAuxiliaryTrafficLane>*/ {
 
     public OpenDRIVEAuxiliaryTrafficLaneAdapter() {
         super(AuxiliaryTrafficSpaceAdapter.class);
@@ -35,30 +35,30 @@ public class OpenDRIVEAuxiliaryTrafficLaneAdapter extends CompositeObjectAdapter
         return Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "OpenDRIVEAuxiliaryTrafficLane");
     }
 
-    @Override
-    public void buildChildObject(OpenDRIVEAuxiliaryTrafficLane object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (name.getNamespaceURI().equals(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)) {
-            switch(name.getLocalPart()) {
-                case "laneID":
-                    reader.getTextContent().ifInteger(object::setLaneID);
-                    break;
-                case "level":
-                    reader.getTextContent().ifBoolean(object::setLevel);
-                    break;
-                case "type":
-                    reader.getTextContent().ifPresent(object::setLaneType);
-                    break;
-                case "lateralLaneSection":
-                    reader.getTextContent().ifPresent((v) -> object.setLateralLaneSection(LateralLaneSection.fromValue(v)));
-                    break;
-            }
-        } else
-            super.buildChildObject(object, name, attributes, reader);
-    }
-
-    @Override
-    public void writeChildElements(OpenDRIVEAuxiliaryTrafficLane object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        super.writeChildElements(object, namespaces, writer);
-        // TODO:
-    }
+//    @Override
+//    public void buildChildObject(OpenDRIVEAuxiliaryTrafficLane object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+//        if (name.getNamespaceURI().equals(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)) {
+//            switch(name.getLocalPart()) {
+//                case "laneID":
+//                    reader.getTextContent().ifInteger(object::setLaneID);
+//                    break;
+//                case "level":
+//                    reader.getTextContent().ifBoolean(object::setLevel);
+//                    break;
+//                case "type":
+//                    reader.getTextContent().ifPresent(object::setLaneType);
+//                    break;
+//                case "lateralLaneSection":
+//                    reader.getTextContent().ifPresent((v) -> object.setLateralLaneSection(LateralLaneSection.fromValue(v)));
+//                    break;
+//            }
+//        } else
+//            super.buildChildObject(object, name, attributes, reader);
+//    }
+//
+//    @Override
+//    public void writeChildElements(OpenDRIVEAuxiliaryTrafficLane object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+//        super.writeChildElements(object, namespaces, writer);
+//        // TODO:
+//    }
 }
