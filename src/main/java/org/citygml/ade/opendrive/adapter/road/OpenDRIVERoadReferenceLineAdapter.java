@@ -59,5 +59,9 @@ public class OpenDRIVERoadReferenceLineAdapter extends AbstractFeatureAdapter<Op
 //            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "singleSided").addTextContent(object.getSingleSided().toString()));
         for (LR_ReferentProperty ref : object.getReferent())
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "referent"), ref, LR_ReferentPropertyAdapter.class, namespaces);
+
+        if (object.getPlanView() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "planView"),
+                    object.getPlanView(), CurvePropertyAdapter.class, namespaces);
     }
 }
