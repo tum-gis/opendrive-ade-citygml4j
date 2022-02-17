@@ -34,21 +34,21 @@ public class LR_LinearElement extends AbstractGML {
         this.curve = curve;
     }
 
-    public LR_LinearReferencingMethodProperty defaultLRM() {
+    public LR_LinearReferencingMethod defaultLRM() {
         // If the defaultLRM is not set retrieve it from the feature/curve
-        if (defaultLRM == null) {
+        if (defaultLRM == null || defaultLRM.getObject() == null) {
             if (feature != null && feature.getObject() != null && feature.getObject() instanceof LR_ILinearElement) {
                 // TODO: Resolve XLink if present
-                return new LR_LinearReferencingMethodProperty(((LR_ILinearElement)feature).defaultLRM());
+                return ((LR_ILinearElement)feature).defaultLRM();
             }
 
             if (curve != null && curve.getObject() != null && curve.getObject() instanceof LR_ILinearElement) {
                 // TODO: Resolve XLink if present
-                return new LR_LinearReferencingMethodProperty(((LR_ILinearElement)curve).defaultLRM());
+                return ((LR_ILinearElement)curve).defaultLRM();
             }
         }
 
-        return defaultLRM;
+        return defaultLRM.getObject();
     }
 
     public void setDefaultLRM(LR_LinearReferencingMethodProperty defaultLRM) {

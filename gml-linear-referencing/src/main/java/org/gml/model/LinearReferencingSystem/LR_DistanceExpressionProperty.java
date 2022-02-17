@@ -6,11 +6,6 @@ public class LR_DistanceExpressionProperty extends AbstractProperty<LR_DistanceE
     public LR_DistanceExpressionProperty() {
     }
 
-    @Override
-    public Class<LR_DistanceExpression> getTargetType() {
-        return LR_DistanceExpression.class;
-    }
-
     public LR_DistanceExpressionProperty(LR_DistanceExpression object) {
         super(object);
     }
@@ -19,5 +14,9 @@ public class LR_DistanceExpressionProperty extends AbstractProperty<LR_DistanceE
         super(href);
     }
 
+    @Override
+    public Class<LR_DistanceExpression> getTargetType() {
+        return LR_DistanceExpression.class;
+    }
 
 }
