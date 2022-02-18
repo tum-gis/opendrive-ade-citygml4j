@@ -21,8 +21,10 @@ import javax.xml.namespace.QName;
 
 @XMLElement(name = "OpenDRIVECurve", namespaceURI = OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)
 public class OpenDRIVECurveAdapter extends AbstractCurveAdapter<OpenDRIVECurve> {
-
-    private static CurveAdapter curveAdapter = new CurveAdapter();
+    // Does not work extending CurveAdapter since CurveAdapter extends AbstractCurveAdapter<Curve>
+    // and therefore also OpenDRIVECurveAdapter extends AbstractCurveAdapter<Curve> and is therefore not correctly
+    // recognized during the XML writing or since OpenDRIVECurve is a Curve the CurveAdapter methods are called
+//    private static CurveAdapter curveAdapter = new CurveAdapter();
 
     public OpenDRIVECurveAdapter() {
     }
@@ -45,7 +47,8 @@ public class OpenDRIVECurveAdapter extends AbstractCurveAdapter<OpenDRIVECurve> 
 
         // No OpenDRIVE ADE properties
 //        super.buildChildObject(object, name, attributes, reader);
-        this.curveAdapter.buildChildObject(object, name, attributes, reader);
+//        this.curveAdapter.buildChildObject(object, name, attributes, reader);
+        new CurveAdapter().buildChildObject(object, name, attributes, reader);
     }
 
     @Override
@@ -57,6 +60,7 @@ public class OpenDRIVECurveAdapter extends AbstractCurveAdapter<OpenDRIVECurve> 
     public void writeChildElements(OpenDRIVECurve object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         // No OpenDRIVE ADE properties
 //        super.writeChildElements(object, namespaces, writer);
-        this.curveAdapter.writeChildElements(object, namespaces, writer);
+//        this.curveAdapter.writeChildElements(object, namespaces, writer);
+        new CurveAdapter().writeChildElements(object, namespaces, writer);
     }
 }

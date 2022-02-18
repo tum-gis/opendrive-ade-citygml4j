@@ -26,6 +26,11 @@ public class OpenDRIVECubicPolynomialAdapter extends OpenDRIVECurveSegmentAdapte
     }
 
     @Override
+    public Element createElement(OpenDRIVECubicPolynomial object, Namespaces namespaces) throws ObjectSerializeException {
+        return Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "OpenDRIVECubicPolynomial");
+    }
+
+    @Override
     public void buildChildObject(OpenDRIVECubicPolynomial object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (name.getNamespaceURI().equals(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)) {
             switch (name.getLocalPart()) {
