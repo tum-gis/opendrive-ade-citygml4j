@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.road;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.road.OpenDRIVERoadReferenceLine;
 import org.citygml.ade.opendrive.model.road.OpenDRIVERoadShape;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
@@ -50,5 +51,9 @@ public class OpenDRIVERoadShapeAdapter extends AbstractThematicSurfaceAdapter<Op
 //            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "singleSided").addTextContent(object.getSingleSided().toString()));
         if (object.getReferenceLine() != null)
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "referenceLine"), object.getReferenceLine(), OpenDRIVERoadReferenceLinePropertyAdapter.class, namespaces);
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

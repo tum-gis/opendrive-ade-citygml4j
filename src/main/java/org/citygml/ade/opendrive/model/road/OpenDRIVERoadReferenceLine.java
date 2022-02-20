@@ -1,5 +1,7 @@
 package org.citygml.ade.opendrive.model.road;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
+import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.core.AbstractFeature;
 import org.gml.model.LinearReferencingSystem.*;
@@ -10,9 +12,20 @@ import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OpenDRIVERoadReferenceLine extends AbstractFeature implements LR_Feature, ADEObject {
+public class OpenDRIVERoadReferenceLine extends AbstractFeature implements LR_Feature, ADEObject, OpenDRIVEElement {
     private List<LR_ReferentProperty> referent;
     private CurveProperty planView;
+    private OpenDRIVEAdditionalDataProperty additionalData;
+
+    @Override
+    public OpenDRIVEAdditionalDataProperty getAdditionalData() {
+        return additionalData;
+    }
+
+    @Override
+    public void setAdditionalData(OpenDRIVEAdditionalDataProperty additionalData) {
+        this.additionalData = additionalData;
+    }
 
     public CurveProperty getPlanView() {
         return planView;

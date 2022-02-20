@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.junction;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.junction.OpenDRIVEJunction;
 import org.citygml.ade.opendrive.model.junction.e_junction_type;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
@@ -59,6 +60,8 @@ public class OpenDRIVEJunctionAdapter extends CompositeObjectAdapter<OpenDRIVEJu
         if (object.getJunctionType() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "junctionName").addTextContent(object.getJunctionName()));
 
-
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

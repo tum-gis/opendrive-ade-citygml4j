@@ -1,5 +1,7 @@
 package org.citygml.ade.opendrive.model.geometry;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
+import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
 import org.citygml.ade.opendrive.model.core.ReferenceableType;
 import org.citygml.ade.opendrive.model.object.LinearReferencing;
 import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;
@@ -10,7 +12,7 @@ import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 import org.xmlobjects.gml.model.measures.Angle;
 import org.xmlobjects.gml.model.measures.Length;
 
-public abstract class OpenDRIVECurveSegment extends AbstractCurveSegment implements ADEObject, SRSReference, ReferenceableType {
+public abstract class OpenDRIVECurveSegment extends AbstractCurveSegment implements ADEObject, SRSReference, ReferenceableType, OpenDRIVEElement {
     private String srsName;
     private Integer srsDimension;
 
@@ -18,6 +20,18 @@ public abstract class OpenDRIVECurveSegment extends AbstractCurveSegment impleme
     private Length length;
     private PointProperty origin;
     private LinearReferencingProperty linearReferencing;
+
+    private OpenDRIVEAdditionalDataProperty additionalData;
+
+    @Override
+    public OpenDRIVEAdditionalDataProperty getAdditionalData() {
+        return additionalData;
+    }
+
+    @Override
+    public void setAdditionalData(OpenDRIVEAdditionalDataProperty additionalData) {
+        this.additionalData = additionalData;
+    }
 
     @Override
     public String getSrsName() {

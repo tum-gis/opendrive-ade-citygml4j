@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.geometry;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.adapter.object.LinearReferencingAdapter;
 import org.citygml.ade.opendrive.adapter.object.LinearReferencingPropertyAdapter;
 import org.citygml.ade.opendrive.model.geometry.OpenDRIVECurveSegment;
@@ -85,5 +86,9 @@ public abstract class OpenDRIVECurveSegmentAdapter<T extends OpenDRIVECurveSegme
 
         if (((OpenDRIVECurveSegment)object).getLinearReferencing() != null)
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "linearReferencing"), object.getLinearReferencing(), LinearReferencingPropertyAdapter.class, namespaces);
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

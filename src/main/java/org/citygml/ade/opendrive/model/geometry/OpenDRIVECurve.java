@@ -1,5 +1,7 @@
 package org.citygml.ade.opendrive.model.geometry;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
+import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
 import org.citygml4j.model.ade.ADEObject;
 import org.gml.model.LinearReferencingSystem.*;
 import org.xmlobjects.gml.model.basictypes.Measure;
@@ -10,7 +12,19 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class OpenDRIVECurve extends Curve implements ADEObject, LR_Curve {
+public class OpenDRIVECurve extends Curve implements ADEObject, LR_Curve, OpenDRIVEElement {
+
+    private OpenDRIVEAdditionalDataProperty additionalData;
+
+    @Override
+    public OpenDRIVEAdditionalDataProperty getAdditionalData() {
+        return additionalData;
+    }
+
+    @Override
+    public void setAdditionalData(OpenDRIVEAdditionalDataProperty additionalData) {
+        this.additionalData = additionalData;
+    }
 
     class NotAnOpenDRIVECurveSegmentException extends Exception {
         public NotAnOpenDRIVECurveSegmentException(String message) {

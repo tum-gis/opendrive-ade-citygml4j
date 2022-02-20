@@ -55,11 +55,10 @@ public class OpenDRIVETrafficLaneAdapter extends OpenDRIVELaneAdapter<OpenDRIVET
 //            super.buildChildObject(object, name, attributes, reader);
 //    }
 //
-//    @Override
-//    public void writeChildElements(OpenDRIVETrafficLane object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-//        super.writeChildElements(object, namespaces, writer);
-//        // TODO:
-//    }
+    @Override
+    public void writeChildElements(OpenDRIVETrafficLane object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+    }
 
 
 }

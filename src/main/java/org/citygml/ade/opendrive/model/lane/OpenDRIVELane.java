@@ -1,12 +1,13 @@
 package org.citygml.ade.opendrive.model.lane;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
 import org.citygml4j.model.CityGMLObject;
 import org.citygml4j.model.ade.ADEObject;
 import org.xmlobjects.model.Child;
 
 import java.util.List;
 
-public interface OpenDRIVELane extends ADEObject {
+public interface OpenDRIVELane extends ADEObject, OpenDRIVEElement {
     public void setLaneID(Integer laneID);
     public Integer getLaneID();
 

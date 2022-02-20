@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.road;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELanePropertyAdapter;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
@@ -58,5 +59,9 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
 
         if (object.getSingleSided() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "singleSided").addTextContent(object.getSingleSided().toString()));
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

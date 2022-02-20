@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.model.road;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.common.TopLevelFeature;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
@@ -14,6 +15,17 @@ public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace impleme
     private E_trafficRule trafficRule;
     private List<OpenDRIVELaneSectionProperty> laneSection;
     private OpenDRIVERoadShapeProperty roadShape;
+    private OpenDRIVEAdditionalDataProperty additionalData;
+
+    @Override
+    public OpenDRIVEAdditionalDataProperty getAdditionalData() {
+        return additionalData;
+    }
+
+    @Override
+    public void setAdditionalData(OpenDRIVEAdditionalDataProperty additionalData) {
+        this.additionalData = additionalData;
+    }
 
     @Override
     public void setOpenDRIVERoadLength(Length length) {

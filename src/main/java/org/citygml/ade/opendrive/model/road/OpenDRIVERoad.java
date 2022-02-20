@@ -1,10 +1,11 @@
 package org.citygml.ade.opendrive.model.road;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
 import org.xmlobjects.gml.model.measures.Length;
 
 import java.util.List;
 
-public interface OpenDRIVERoad {
+public interface OpenDRIVERoad extends OpenDRIVEElement {
     public void setOpenDRIVERoadLength(Length length);
     public Length getOpenDRIVERoadLength();
 

@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.model.lane;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AuxiliaryTrafficSpace;
 
@@ -13,6 +14,17 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     private String laneType;
     private List<OpenDRIVELaneProperty> successor;
     private List<OpenDRIVELaneProperty> predecessor;
+    private OpenDRIVEAdditionalDataProperty additionalData;
+
+    @Override
+    public OpenDRIVEAdditionalDataProperty getAdditionalData() {
+        return additionalData;
+    }
+
+    @Override
+    public void setAdditionalData(OpenDRIVEAdditionalDataProperty additionalData) {
+        this.additionalData = additionalData;
+    }
 
     @Override
     public void setLaneID(Integer laneID) {

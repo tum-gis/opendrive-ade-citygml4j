@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.road;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.model.road.OpenDRIVERoadReferenceLine;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
@@ -63,5 +64,9 @@ public class OpenDRIVERoadReferenceLineAdapter extends AbstractFeatureAdapter<Op
         if (object.getPlanView() != null)
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "planView"),
                     object.getPlanView(), CurvePropertyAdapter.class, namespaces);
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

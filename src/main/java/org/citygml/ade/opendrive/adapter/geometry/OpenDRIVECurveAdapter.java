@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.geometry;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.geometry.OpenDRIVECurve;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.xmlobjects.annotation.XMLElement;
@@ -62,5 +63,9 @@ public class OpenDRIVECurveAdapter extends AbstractCurveAdapter<OpenDRIVECurve> 
 //        super.writeChildElements(object, namespaces, writer);
 //        this.curveAdapter.writeChildElements(object, namespaces, writer);
         new CurveAdapter().writeChildElements(object, namespaces, writer);
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

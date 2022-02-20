@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.lane;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.lane.LateralLaneSection;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVEAuxiliaryTrafficLane;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELane;
@@ -14,7 +15,9 @@ import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.util.composite.CompositeObjectAdapter;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
+import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
 
@@ -48,6 +51,25 @@ public abstract class OpenDRIVELaneAdapter<T extends OpenDRIVELane> extends Comp
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        // TODO:
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
+
+        if (object.getLevel() != null)
+            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "level").addTextContent(TextContent.ofBoolean(object.getLevel())));
+
+        if (object.getLaneID() != null)
+            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneID").addTextContent(
+                    TextContent.ofInteger(object.getLaneID())
+            ));
+
+        if (object.getLateralLaneSection() != null)
+            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lateralLaneSection").addTextContent(
+                    object.getLateralLaneSection().toString()
+            ));
+
+        if (object.getLaneType() != null)
+            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "type").addTextContent(object.getLaneType()));
     }
 }

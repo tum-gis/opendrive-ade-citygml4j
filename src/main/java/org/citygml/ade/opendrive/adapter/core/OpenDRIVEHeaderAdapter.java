@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.core;
 
+import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEHeader;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEOffset;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
@@ -144,5 +145,9 @@ public class OpenDRIVEHeaderAdapter implements ObjectBuilder<OpenDRIVEHeader>, O
 
         if (object.getGeoreference() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "georeference").addTextContent(object.getGeoreference()));
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
     }
 }

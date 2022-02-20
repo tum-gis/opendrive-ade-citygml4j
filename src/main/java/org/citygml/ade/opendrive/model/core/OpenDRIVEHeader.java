@@ -6,7 +6,7 @@ import org.xmlobjects.gml.model.GMLObject;
 
 import java.time.OffsetDateTime;
 
-public class OpenDRIVEHeader extends ADEOfCityModel implements ADEObject {
+public class OpenDRIVEHeader extends ADEOfCityModel implements ADEObject, OpenDRIVEElement {
 //    private OffsetDateTime date;
     private String date;
     private Double east;
@@ -20,6 +20,7 @@ public class OpenDRIVEHeader extends ADEOfCityModel implements ADEObject {
     private String version;
     private OpenDRIVEOffsetProperty offset;
     private String georeference;
+    private OpenDRIVEAdditionalDataProperty additionalData;
 
     public String getDate() {
         return date;
@@ -115,5 +116,15 @@ public class OpenDRIVEHeader extends ADEOfCityModel implements ADEObject {
 
     public void setGeoreference(String georeference) {
         this.georeference = georeference;
+    }
+
+    @Override
+    public void setAdditionalData(OpenDRIVEAdditionalDataProperty additionalData) {
+        this.additionalData = additionalData;
+    }
+
+    @Override
+    public OpenDRIVEAdditionalDataProperty getAdditionalData() {
+        return this.additionalData;
     }
 }

@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.adapter.road;
 
+import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSectionProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVEStandardRoad;
 import org.citygml.ade.opendrive.model.road.E_trafficRule;
@@ -79,6 +80,10 @@ public class OpenDRIVEStandardRoadAdapter extends CompositeObjectAdapter<OpenDRI
 
         if (object.getOpenDRIVERoadShape() != null)
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadShape"), object.getOpenDRIVERoadShape(), OpenDRIVERoadShapePropertyAdapter.class, namespaces);
+
+        if (object.getAdditionalData() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
+                    object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
 
     }
 }
