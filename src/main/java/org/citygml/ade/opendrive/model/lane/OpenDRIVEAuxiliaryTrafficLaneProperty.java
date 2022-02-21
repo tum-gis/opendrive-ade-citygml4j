@@ -1,12 +1,11 @@
 package org.citygml.ade.opendrive.model.lane;
 
-import org.xmlobjects.builder.ObjectBuildException;
+
 import org.xmlobjects.gml.model.feature.FeatureProperty;
 
+import java.util.List;
 
-import javax.xml.namespace.QName;
-
-public class OpenDRIVEAuxiliaryTrafficLaneProperty extends OpenDRIVELaneProperty/*extends FeatureProperty<OpenDRIVEAuxiliaryTrafficLane>*/ {
+public class OpenDRIVEAuxiliaryTrafficLaneProperty extends FeatureProperty<OpenDRIVEAuxiliaryTrafficLane> {
     public OpenDRIVEAuxiliaryTrafficLaneProperty() {
     }
 
@@ -18,8 +17,8 @@ public class OpenDRIVEAuxiliaryTrafficLaneProperty extends OpenDRIVELaneProperty
         super(href);
     }
 
-//    @Override
-//    public Class<OpenDRIVEAuxiliaryTrafficLane> getTargetType() {
-//        return OpenDRIVEAuxiliaryTrafficLane.class;
-//    }
+    @Override
+    public Class<OpenDRIVEAuxiliaryTrafficLane> getTargetType() {
+        return OpenDRIVEAuxiliaryTrafficLane.class;
+    }
 }

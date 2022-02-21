@@ -1,7 +1,6 @@
 package org.citygml.ade.opendrive.model.lane;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
-import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AuxiliaryTrafficSpace;
 
 import java.util.ArrayList;
@@ -12,8 +11,8 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     private LateralLaneSection lateralLaneSection;
     private Boolean level;
     private String laneType;
-    private List<OpenDRIVELaneProperty> successor;
-    private List<OpenDRIVELaneProperty> predecessor;
+    private List<OpenDRIVELaneArrayProperty> successor;
+    private List<OpenDRIVELaneArrayProperty> predecessor;
     private OpenDRIVEAdditionalDataProperty additionalData;
 
     @Override
@@ -67,12 +66,12 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     }
 
     @Override
-    public void setSuccessor(List<OpenDRIVELaneProperty> successor) {
+    public void setSuccessor(List<OpenDRIVELaneArrayProperty> successor) {
         this.successor = successor;
     }
 
     @Override
-    public List<OpenDRIVELaneProperty> getSuccessor() {
+    public List<OpenDRIVELaneArrayProperty> getSuccessor() {
         if (successor == null)
             successor = new ArrayList<>();
 
@@ -80,12 +79,12 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     }
 
     @Override
-    public void setPredecessor(List<OpenDRIVELaneProperty> predecessor) {
+    public void setPredecessor(List<OpenDRIVELaneArrayProperty> predecessor) {
         this.predecessor = predecessor;
     }
 
     @Override
-    public List<OpenDRIVELaneProperty> getPredecessor() {
+    public List<OpenDRIVELaneArrayProperty> getPredecessor() {
         if (predecessor == null)
             predecessor = new ArrayList<>();
 

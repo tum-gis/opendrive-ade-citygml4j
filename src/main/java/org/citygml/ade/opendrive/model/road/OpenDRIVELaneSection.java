@@ -2,17 +2,23 @@ package org.citygml.ade.opendrive.model.road;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneArrayProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.xmlobjects.gml.model.geometry.primitives.CurveSegmentArrayProperty;
 
 public class OpenDRIVELaneSection extends AbstractTransportationSpace implements ADEObject, OpenDRIVEElement {
     private Boolean singleSided;
-    private List<OpenDRIVELaneProperty> lane;
+    private OpenDRIVELaneArrayProperty lanes;
     private OpenDRIVEAdditionalDataProperty additionalData;
+
+    public OpenDRIVELaneSection() {
+
+    }
+
+    public OpenDRIVELaneSection(OpenDRIVELaneArrayProperty lanes) {
+        setLanes(lanes);
+    }
 
     @Override
     public OpenDRIVEAdditionalDataProperty getAdditionalData() {
@@ -32,14 +38,14 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
         this.singleSided = singleSided;
     }
 
-    public List<OpenDRIVELaneProperty> getLane() {
-        if (lane == null)
-            lane = new ArrayList<>();
+    public OpenDRIVELaneArrayProperty getLanes() {
+        if (lanes == null)
+            lanes = new OpenDRIVELaneArrayProperty();
 
-        return lane;
+        return lanes;
     }
 
-    public void setLane(List<OpenDRIVELaneProperty> lane) {
-        this.lane = lane;
+    public void setLanes(OpenDRIVELaneArrayProperty lanes) {
+        this.lanes = asChild(lanes);
     }
 }

@@ -2,7 +2,9 @@ package org.citygml.ade.opendrive.model.lane;
 
 import org.xmlobjects.gml.model.feature.FeatureProperty;
 
-public class OpenDRIVETrafficLaneProperty extends OpenDRIVELaneProperty /*extends FeatureProperty<OpenDRIVETrafficLane>*/ {
+import java.util.List;
+
+public class OpenDRIVETrafficLaneProperty extends FeatureProperty<OpenDRIVETrafficLane> {
     public OpenDRIVETrafficLaneProperty() {
     }
 

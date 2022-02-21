@@ -1,16 +1,10 @@
 package org.citygml.ade.opendrive.adapter.road;
 
 import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
-import org.citygml.ade.opendrive.adapter.lane.OpenDRIVEAuxiliaryTrafficLanePropertyAdapter;
-import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELanePropertyAdapter;
-import org.citygml.ade.opendrive.adapter.lane.OpenDRIVETrafficLanePropertyAdapter;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVEAuxiliaryTrafficLaneProperty;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVETrafficLane;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVETrafficLaneProperty;
+import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELaneArrayPropertyAdapter;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneArrayProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
-import org.citygml4j.xml.adapter.core.AbstractFeaturePropertyAdapter;
 import org.citygml4j.xml.adapter.transportation.AbstractTransportationSpaceAdapter;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
@@ -39,14 +33,16 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
                 case "singleSided":
                     reader.getTextContent().ifBoolean(object::setSingleSided);
                     break;
-                case "lane":
+                case "lanes":
 //                    reader.getObjectUsingBuilder(AbstractFeaturePropertyAdapter.class);
 //                    reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class);
                     // Inside of the getObjectUsingBuilder()-method the reader searches automatically for the builder/serializer
                     // according to local-name, namespace-uri and type => As long as the adapter class is a superclass
                     // of the wanted classes the builder uses the right adapter classes that matches the
                     // local-name, namespace-uri and type (w.r.t. inheritance relations)
-                    object.getLane().add((OpenDRIVELaneProperty) reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class));
+
+//                    object.getLanes().add((OpenDRIVELaneArrayProperty) reader.getObjectUsingBuilder(OpenDRIVELaneArrayPropertyAdapter.class));
+                    object.setLanes((OpenDRIVELaneArrayProperty) reader.getObjectUsingBuilder(OpenDRIVELaneArrayPropertyAdapter.class));
                     break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
@@ -69,19 +65,23 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
                     object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
 
-        for (OpenDRIVELaneProperty laneProperty : object.getLane()) {
-            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
-                    laneProperty, OpenDRIVELanePropertyAdapter.class, namespaces);
-//            if (laneProperty instanceof OpenDRIVETrafficLaneProperty) {
-//                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
-//                        (OpenDRIVETrafficLaneProperty) laneProperty, OpenDRIVETrafficLanePropertyAdapter.class, namespaces);
-//            } else {
-//                if (laneProperty instanceof OpenDRIVEAuxiliaryTrafficLaneProperty) {
-//                    writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
-//                            (OpenDRIVEAuxiliaryTrafficLaneProperty) laneProperty, OpenDRIVEAuxiliaryTrafficLanePropertyAdapter.class, namespaces);
-//                }
-//            }
-        }
+//        for (OpenDRIVELaneArrayProperty laneProperty : object.getLane()) {
+//            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+//                    laneProperty, OpenDRIVELanePropertyAdapter.class, namespaces);
+////            if (laneProperty instanceof OpenDRIVETrafficLaneProperty) {
+////                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+////                        (OpenDRIVETrafficLaneProperty) laneProperty, OpenDRIVETrafficLanePropertyAdapter.class, namespaces);
+////            } else {
+////                if (laneProperty instanceof OpenDRIVEAuxiliaryTrafficLaneProperty) {
+////                    writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+////                            (OpenDRIVEAuxiliaryTrafficLaneProperty) laneProperty, OpenDRIVEAuxiliaryTrafficLanePropertyAdapter.class, namespaces);
+////                }
+////            }
+//        }
+
+        if (object.getLanes() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lanes"),
+                    object.getLanes(), OpenDRIVELaneArrayPropertyAdapter.class, namespaces);
 
     }
 }
