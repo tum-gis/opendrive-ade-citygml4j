@@ -1,8 +1,13 @@
 package org.citygml.ade.opendrive.adapter.road;
 
 import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
+import org.citygml.ade.opendrive.adapter.lane.OpenDRIVEAuxiliaryTrafficLanePropertyAdapter;
 import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELanePropertyAdapter;
+import org.citygml.ade.opendrive.adapter.lane.OpenDRIVETrafficLanePropertyAdapter;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVEAuxiliaryTrafficLaneProperty;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVETrafficLane;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVETrafficLaneProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.core.AbstractFeaturePropertyAdapter;
@@ -63,5 +68,20 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
         if (object.getAdditionalData() != null)
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),
                     object.getAdditionalData(), OpenDRIVEAdditionalDataPropertyAdapter.class, namespaces);
+
+        for (OpenDRIVELaneProperty laneProperty : object.getLane()) {
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+                    laneProperty, OpenDRIVELanePropertyAdapter.class, namespaces);
+//            if (laneProperty instanceof OpenDRIVETrafficLaneProperty) {
+//                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+//                        (OpenDRIVETrafficLaneProperty) laneProperty, OpenDRIVETrafficLanePropertyAdapter.class, namespaces);
+//            } else {
+//                if (laneProperty instanceof OpenDRIVEAuxiliaryTrafficLaneProperty) {
+//                    writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+//                            (OpenDRIVEAuxiliaryTrafficLaneProperty) laneProperty, OpenDRIVEAuxiliaryTrafficLanePropertyAdapter.class, namespaces);
+//                }
+//            }
+        }
+
     }
 }

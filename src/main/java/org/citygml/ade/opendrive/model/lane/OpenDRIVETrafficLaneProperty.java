@@ -14,8 +14,8 @@ public class OpenDRIVETrafficLaneProperty extends OpenDRIVELaneProperty /*extend
         super(href);
     }
 
-//    @Override
-//    public Class<OpenDRIVETrafficLane> getTargetType() {
-//        return OpenDRIVETrafficLane.class;
-//    }
+    @Override
+    public Class<OpenDRIVETrafficLane> getTargetType() {
+        return OpenDRIVETrafficLane.class;
+    }
 }
