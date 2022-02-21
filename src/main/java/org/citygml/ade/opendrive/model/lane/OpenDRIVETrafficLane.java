@@ -32,7 +32,7 @@ public class OpenDRIVETrafficLane extends TrafficSpace implements OpenDRIVELane 
 
     @Override
     public Integer getLaneID() {
-        return null;
+        return laneID;
     }
 
     @Override

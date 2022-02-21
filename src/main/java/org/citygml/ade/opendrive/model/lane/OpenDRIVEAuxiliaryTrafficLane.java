@@ -32,7 +32,7 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
 
     @Override
     public Integer getLaneID() {
-        return null;
+        return laneID;
     }
 
     @Override
