@@ -51,9 +51,14 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
     }
 
     public OpenDRIVELaneArrayProperty sortLanesByLaneID(OpenDRIVELaneArrayProperty lanes) {
-        if (lanes != null && !lanes.getObjects().isEmpty() && lanes.getObjects().size() > 1) {
-            lanes.getObjects().sort((a, b) -> Integer.compare(((OpenDRIVELane) a).getLaneID(), ((OpenDRIVELane) b).getLaneID()));
-        }
+        try {
+                if (lanes != null && !lanes.getObjects().isEmpty() && lanes.getObjects().size() > 1) {
+                    lanes.getObjects().sort((a, b) -> Integer.compare(((OpenDRIVELane) a).getLaneID(), ((OpenDRIVELane) b).getLaneID()));
+                }
+            } catch (NullPointerException e) {
+                return lanes;
+            }
+        
         return lanes;
     }
 }
