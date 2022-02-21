@@ -2,6 +2,7 @@ package org.citygml.ade.opendrive.model.road;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELane;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneArrayProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
@@ -46,6 +47,13 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
     }
 
     public void setLanes(OpenDRIVELaneArrayProperty lanes) {
-        this.lanes = asChild(lanes);
+        this.lanes = asChild(this.sortLanesByLaneID(lanes));
+    }
+
+    public OpenDRIVELaneArrayProperty sortLanesByLaneID(OpenDRIVELaneArrayProperty lanes) {
+        if (lanes != null && !lanes.getObjects().isEmpty()) {
+            lanes.getObjects().sort((a, b) -> Integer.compare(((OpenDRIVELane) a).getLaneID(), ((OpenDRIVELane) b).getLaneID()));
+        }
+        return lanes;
     }
 }
