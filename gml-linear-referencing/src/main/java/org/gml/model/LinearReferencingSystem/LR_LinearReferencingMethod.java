@@ -9,7 +9,7 @@ public class LR_LinearReferencingMethod extends AbstractGML {
     private String name;
     private LR_LRMType type;
     private String units;
-    private List<String> constraint;
+    private String constraint;
 
     public String getName() {
         return name;
@@ -35,15 +35,11 @@ public class LR_LinearReferencingMethod extends AbstractGML {
         this.units = units;
     }
 
-    public List<String> getConstraint() {
-        if (this.constraint == null) {
-            constraint = new ArrayList<String>();
-        }
-
+    public String getConstraint() {
         return constraint;
     }
 
-    public void setConstraint(List<String> constraint) {
+    public void setConstraint(String constraint) {
         this.constraint = constraint;
     }
 }

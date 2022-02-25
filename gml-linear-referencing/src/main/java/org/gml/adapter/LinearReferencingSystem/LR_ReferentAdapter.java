@@ -50,7 +50,7 @@ public class LR_ReferentAdapter extends AbstractGMLAdapter<LR_Referent> {
                     object.setOwnedBy(reader.getObjectUsingBuilder(FeaturePropertyAdapter.class));
                     break;
             }
-        } else // If the namespace is not from the GML module then the element is from the GML standard module
+        } else // If the namespace is not from the GML module then the element is from the GML standard module -> call super class methods
             super.buildChildObject(object, name, attributes, reader);
     }
 
@@ -61,13 +61,23 @@ public class LR_ReferentAdapter extends AbstractGMLAdapter<LR_Referent> {
 
     @Override
     public void writeChildElements(LR_Referent object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        // TODO:
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getName() != null)
             writer.writeElement(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "name").addTextContent(object.getName().toString()));
 
+        if (object.getReferentType() != null)
+            writer.writeElement(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "type").addTextContent(object.getReferentType()));
+
         if (object.getLocation() != null)
             writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "location"), object.getLocation(), LR_PositionExpressionPropertyAdapter.class, namespaces);
+
+        if (object.getPosition() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "position"),
+                    object.getPosition(), PointPropertyAdapter.class, namespaces);
+
+        if (object.getOwnedBy() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "ownedBy"),
+                    object.getOwnedBy(), FeaturePropertyAdapter.class, namespaces);
     }
 }

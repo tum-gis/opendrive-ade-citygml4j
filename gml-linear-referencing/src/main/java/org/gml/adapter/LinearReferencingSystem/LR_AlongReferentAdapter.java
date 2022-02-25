@@ -42,7 +42,10 @@ public class LR_AlongReferentAdapter extends AbstractGMLAdapter<LR_AlongReferent
 
     @Override
     public void writeChildElements(LR_AlongReferent object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        // TODO:
         super.writeChildElements(object, namespaces, writer);
+
+        if (object.getFromReferent() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "fromReferent"),
+                    object.getFromReferent(), LR_ReferentPropertyAdapter.class, namespaces);
     }
 }

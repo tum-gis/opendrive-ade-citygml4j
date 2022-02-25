@@ -1,6 +1,7 @@
 package org.gml.adapter.LinearReferencingSystem;
 
 import org.gml.model.LinearReferencingSystem.LR_LinearElement;
+import org.gml.model.LinearReferencingSystem.LR_StartValue;
 import org.gml.module.GML_LR_Module;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
@@ -57,7 +58,29 @@ public class LR_LinearElementAdapter extends AbstractGMLAdapter<LR_LinearElement
 
     @Override
     public void writeChildElements(LR_LinearElement object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        // TODO:
         super.writeChildElements(object, namespaces, writer);
+
+        if (object.getFeature() != null) {
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "feature"),
+                    object.getFeature(), FeaturePropertyAdapter.class, namespaces);
+        } else {
+            if (object.getCurve() != null)
+                writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "curve"),
+                        object.getCurve(), CurvePropertyAdapter.class, namespaces);
+        }
+
+        if (object.getDefaultLRM() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "defaultLRM"),
+                    object.getFeature(), FeaturePropertyAdapter.class, namespaces);
+
+        if (object.getMeasure() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "measure"),
+                    object.getMeasure(), MeasureAdapter.class, namespaces);
+
+        if (object.getStartValue() != null)
+            for (LR_StartValue value : object.getStartValue())
+                writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "startValue"),
+                        value, LR_StartValueAdapter.class, namespaces);
+
     }
 }

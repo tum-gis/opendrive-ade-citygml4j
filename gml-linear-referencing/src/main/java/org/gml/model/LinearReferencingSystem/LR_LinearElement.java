@@ -34,6 +34,10 @@ public class LR_LinearElement extends AbstractGML {
         this.curve = curve;
     }
 
+    public LR_LinearReferencingMethodProperty getDefaultLRM() {
+        return new LR_LinearReferencingMethodProperty(defaultLRM());
+    }
+
     public LR_LinearReferencingMethod defaultLRM() {
         // If the defaultLRM is not set retrieve it from the feature/curve
         if (defaultLRM == null || defaultLRM.getObject() == null) {
@@ -77,6 +81,10 @@ public class LR_LinearElement extends AbstractGML {
 
     public void setMeasure(Measure measure) {
         this.measure = measure;
+    }
+
+    public Measure getMeasure() {
+        return measure();
     }
 
     public List<LR_StartValue> getStartValue() {

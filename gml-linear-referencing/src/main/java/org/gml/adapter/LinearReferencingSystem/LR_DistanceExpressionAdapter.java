@@ -54,7 +54,9 @@ public class LR_DistanceExpressionAdapter extends AbstractGMLAdapter<LR_Distance
         if (object.getDistanceAlong() != null)
             writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "distanceAlong"), object.getDistanceAlong(), MeasureAdapter.class, namespaces);
 
-        // TODO: Write referent to element
+        if (object.getReferent() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "referent"),
+                    object.getReferent(), LR_AlongReferentPropertyAdapter.class, namespaces);
 
     }
 }

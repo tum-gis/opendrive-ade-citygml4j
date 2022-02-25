@@ -16,6 +16,7 @@ import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
+import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
 
@@ -43,9 +44,10 @@ public class LR_StartValueAdapter implements ObjectBuilder<LR_StartValue>, Objec
     }
 
     @Override
-    public void writeChildElements(LR_StartValue object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-//        if (object.getHdg() != null)
-//            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "hdg"), object.getHdg(), AngleAdapter.class, namespaces);
-        // TODO:
+    public void initializeElement(Element element, LR_StartValue object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        element.addTextContent(TextContent.ofDouble(object.getValue()));
+        element.addAttribute("uom", object.getUom());
+        element.addAttribute("lrm", object.getLrm().getHref());
     }
+
 }

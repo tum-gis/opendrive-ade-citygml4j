@@ -53,6 +53,12 @@ public class LR_PositionExpressionAdapter extends AbstractGMLAdapter<LR_Position
         if (object.getDistanceExpression() != null)
             writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "distanceExpression"), object.getDistanceExpression(), LR_DistanceExpressionPropertyAdapter.class, namespaces);
 
-        // TODO: Write remaining elements
+        if (object.getLrm() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "lrm"),
+                    object.getLrm(), LR_LinearReferencingMethodPropertyAdapter.class, namespaces);
+
+        if (object.getLinearElement() != null)
+            writer.writeElementUsingSerializer(Element.of(GML_LR_Module.GML_LR_NAMESPACE, "linearElement"),
+                    object.getLinearElement(), LR_LinearElementPropertyAdapter.class, namespaces);
     }
 }
