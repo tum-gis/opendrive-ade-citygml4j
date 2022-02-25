@@ -4,6 +4,7 @@ import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAda
 import org.citygml.ade.opendrive.model.lane.LateralLaneSection;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVEAuxiliaryTrafficLane;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELane;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneShapeProperty;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
@@ -20,6 +21,7 @@ import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
+import java.util.List;
 
 public abstract class OpenDRIVELaneAdapter<T extends OpenDRIVELane> extends CompositeObjectAdapter<T> {
 
@@ -42,6 +44,9 @@ public abstract class OpenDRIVELaneAdapter<T extends OpenDRIVELane> extends Comp
                     break;
                 case "lateralLaneSection":
                     reader.getTextContent().ifPresent((v) -> object.setLateralLaneSection(LateralLaneSection.fromValue(v)));
+                    break;
+                case "laneShape":
+                    object.getLaneShape().add(reader.getObjectUsingBuilder(OpenDRIVELaneShapePropertyAdapter.class));
                     break;
             }
         } else
@@ -71,5 +76,13 @@ public abstract class OpenDRIVELaneAdapter<T extends OpenDRIVELane> extends Comp
 
         if (object.getLaneType() != null)
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "type").addTextContent(object.getLaneType()));
+
+        if (object.getLaneShape() != null) {
+            for (OpenDRIVELaneShapeProperty laneShapeProperty : object.getLaneShape()) {
+                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneShape"),
+                        laneShapeProperty, OpenDRIVELaneShapePropertyAdapter.class, namespaces);
+            }
+        }
+
     }
 }

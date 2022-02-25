@@ -14,6 +14,7 @@ public class OpenDRIVETrafficLane extends TrafficSpace implements OpenDRIVELane 
     private List<OpenDRIVELaneArrayProperty> successor;
     private List<OpenDRIVELaneArrayProperty> predecessor;
     private OpenDRIVEAdditionalDataProperty additionalData;
+    private List<OpenDRIVELaneShapeProperty> laneShape;
 
     @Override
     public OpenDRIVEAdditionalDataProperty getAdditionalData() {
@@ -89,5 +90,18 @@ public class OpenDRIVETrafficLane extends TrafficSpace implements OpenDRIVELane 
             predecessor = new ArrayList<>();
 
         return predecessor;
+    }
+
+    @Override
+    public void setLaneShape(List<OpenDRIVELaneShapeProperty> laneShape) {
+        this.laneShape = laneShape;
+    }
+
+    @Override
+    public List<OpenDRIVELaneShapeProperty> getLaneShape() {
+        if (laneShape == null)
+            laneShape = new ArrayList<>();
+
+        return this.laneShape;
     }
 }

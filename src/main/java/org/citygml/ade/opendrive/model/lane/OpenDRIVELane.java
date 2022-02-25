@@ -24,5 +24,8 @@ public interface OpenDRIVELane extends ADEObject, OpenDRIVEElement {
     public void setPredecessor(List<OpenDRIVELaneArrayProperty> predecessor);
     public List<OpenDRIVELaneArrayProperty> getPredecessor();
 
+    public void setLaneShape(List<OpenDRIVELaneShapeProperty> laneShape);
+    public List<OpenDRIVELaneShapeProperty> getLaneShape();
+
     // TODO: complete
 }
