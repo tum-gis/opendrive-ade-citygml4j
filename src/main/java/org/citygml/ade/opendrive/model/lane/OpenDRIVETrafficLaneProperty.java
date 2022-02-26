@@ -4,7 +4,7 @@ import org.xmlobjects.gml.model.feature.FeatureProperty;
 
 import java.util.List;
 
-public class OpenDRIVETrafficLaneProperty extends FeatureProperty<OpenDRIVETrafficLane> {
+public class OpenDRIVETrafficLaneProperty extends OpenDRIVELaneProperty<OpenDRIVETrafficLane> {
     public OpenDRIVETrafficLaneProperty() {
     }
 

@@ -2,10 +2,16 @@ package org.citygml.ade.opendrive.adapter.road;
 
 import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELaneArrayPropertyAdapter;
+import org.citygml.ade.opendrive.adapter.lane.OpenDRIVELanePropertyAdapter;
+import org.citygml.ade.opendrive.adapter.object.LinearReferencingPropertyAdapter;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELane;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneArrayProperty;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
+import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;
 import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.transportation.AbstractTransportationSpaceAdapter;
+import org.gml.module.GML_LR_Module;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -33,16 +39,21 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
                 case "singleSided":
                     reader.getTextContent().ifBoolean(object::setSingleSided);
                     break;
-                case "lanes":
+                case "lane":
 //                    reader.getObjectUsingBuilder(AbstractFeaturePropertyAdapter.class);
 //                    reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class);
                     // Inside of the getObjectUsingBuilder()-method the reader searches automatically for the builder/serializer
                     // according to local-name, namespace-uri and type => As long as the adapter class is a superclass
                     // of the wanted classes the builder uses the right adapter classes that matches the
                     // local-name, namespace-uri and type (w.r.t. inheritance relations)
+                    object.getLane().add((OpenDRIVELaneProperty) reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class));
 
+                    // For array property
 //                    object.getLanes().add((OpenDRIVELaneArrayProperty) reader.getObjectUsingBuilder(OpenDRIVELaneArrayPropertyAdapter.class));
-                    object.setLanes((OpenDRIVELaneArrayProperty) reader.getObjectUsingBuilder(OpenDRIVELaneArrayPropertyAdapter.class));
+//                    object.setLanes((OpenDRIVELaneArrayProperty) reader.getObjectUsingBuilder(OpenDRIVELaneArrayPropertyAdapter.class));
+                    break;
+                case "linearReferencing":
+                    object.setLinearReferencing(reader.getObjectUsingBuilder(LinearReferencingPropertyAdapter.class));
                     break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
@@ -79,9 +90,18 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
 ////            }
 //        }
 
-        if (object.getLanes() != null)
-            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lanes"),
-                    object.getLanes(), OpenDRIVELaneArrayPropertyAdapter.class, namespaces);
+//        if (object.getLanes() != null)
+//            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lanes"),
+//                    object.getLanes(), OpenDRIVELaneArrayPropertyAdapter.class, namespaces);
+
+        if (object.getLane() != null)
+            for (OpenDRIVELaneProperty l : object.getLane())
+                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "lane"),
+                        l, OpenDRIVELanePropertyAdapter.class, namespaces);
+
+        if (object.getLinearReferencing() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "linearReferencing"),
+                    object.getLinearReferencing(), LinearReferencingPropertyAdapter.class, namespaces);
 
     }
 }
