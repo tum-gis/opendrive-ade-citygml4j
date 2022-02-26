@@ -1,6 +1,7 @@
 package org.citygml.ade.opendrive.model.road;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
+import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableTypeList;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.common.TopLevelFeature;
 import org.citygml4j.model.transportation.Section;
@@ -13,7 +14,7 @@ public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, O
     private Length length;
     private String roadName;
     private E_trafficRule trafficRule;
-    private List<OpenDRIVELaneSectionProperty> laneSection;
+    private ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection;
     private OpenDRIVERoadShapeProperty roadShape;
     private OpenDRIVEAdditionalDataProperty additionalData;
 
@@ -59,14 +60,14 @@ public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, O
     }
 
     @Override
-    public void setOpenDRIVELaneSection(List<OpenDRIVELaneSectionProperty> laneSection) {
+    public void setOpenDRIVELaneSection(ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection) {
         this.laneSection = laneSection;
     }
 
     @Override
-    public List<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection() {
+    public ReferenceableTypeList<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection() {
         if (laneSection == null)
-            laneSection = new ArrayList<>();
+            laneSection = new ReferenceableTypeList<>();
 
         return laneSection;
     }

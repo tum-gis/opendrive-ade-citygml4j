@@ -2,14 +2,12 @@ package org.citygml.ade.opendrive.model.road;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
-import org.citygml.ade.opendrive.model.core.ReferenceableType;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVELane;
-import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneArrayProperty;
+import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableType;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
+import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableTypeList;
 import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
-import org.xmlobjects.gml.model.geometry.primitives.CurveSegmentArrayProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,25 +67,25 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
 //        this.lanes = asChild(this.sortLanesByLaneID(lanes));
 //    }
 
-    public OpenDRIVELaneArrayProperty sortLanesByLaneID(OpenDRIVELaneArrayProperty lanes) {
-        try {
-                if (lanes != null && !lanes.getObjects().isEmpty() && lanes.getObjects().size() > 1) {
-                    lanes.getObjects().sort((a, b) -> {
-                        try {
-                            return -Integer.compare(((OpenDRIVELane) a).getLaneID(), ((OpenDRIVELane) b).getLaneID());
-                        } catch (NullPointerException e) {
-                            e.printStackTrace();
-                            System.out.println("Lane does not contain lane id.");
-                            return 0;
-                        }
-                    });
-                }
-            } catch (NullPointerException e) {
-                return lanes;
-            }
-
-        return lanes;
-    }
+//    public OpenDRIVELaneArrayProperty sortLanesByLaneID(OpenDRIVELaneArrayProperty lanes) {
+//        try {
+//                if (lanes != null && !lanes.getObjects().isEmpty() && lanes.getObjects().size() > 1) {
+//                    lanes.getObjects().sort((a, b) -> {
+//                        try {
+//                            return -Integer.compare(((OpenDRIVELane) a).getLaneID(), ((OpenDRIVELane) b).getLaneID());
+//                        } catch (NullPointerException e) {
+//                            e.printStackTrace();
+//                            System.out.println("Lane does not contain lane id.");
+//                            return 0;
+//                        }
+//                    });
+//                }
+//            } catch (NullPointerException e) {
+//                return lanes;
+//            }
+//
+//        return lanes;
+//    }
 
     @Override
     public void setLinearReferencing(LinearReferencingProperty linearReferencing) {

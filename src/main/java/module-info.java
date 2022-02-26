@@ -35,5 +35,7 @@ module opendrive.ade.citygml4j.main {
 
     opens org.citygml.ade.opendrive.model.core to org.citygml4j;
     opens org.citygml.ade.opendrive.model.road to org.citygml4j;
+    exports org.citygml.ade.opendrive.model.linearReferencing;
+    opens org.citygml.ade.opendrive.model.linearReferencing to org.citygml4j;
 
 }

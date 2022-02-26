@@ -1,4 +1,4 @@
-package org.citygml.ade.opendrive.model.core;
+package org.citygml.ade.opendrive.model.linearReferencing;
 
 import org.citygml.ade.opendrive.model.object.LinearReferencing;
 import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;

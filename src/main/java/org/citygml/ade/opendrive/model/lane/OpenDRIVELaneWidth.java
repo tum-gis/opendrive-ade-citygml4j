@@ -2,7 +2,7 @@ package org.citygml.ade.opendrive.model.lane;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
-import org.citygml.ade.opendrive.model.core.ReferenceableType;
+import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableType;
 import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.xmlobjects.gml.model.base.AbstractGML;

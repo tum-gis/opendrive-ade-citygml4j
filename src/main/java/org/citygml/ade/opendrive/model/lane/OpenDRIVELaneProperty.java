@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.model.lane;
 
+import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableTypeProperty;
 import org.citygml4j.model.core.AbstractFeature;
 import org.xmlobjects.gml.model.feature.FeatureProperty;
 
