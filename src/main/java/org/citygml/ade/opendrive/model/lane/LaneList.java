@@ -1,5 +1,6 @@
 package org.citygml.ade.opendrive.model.lane;
 
+import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.model.road.OpenDRIVERoad;
 
 import java.util.ArrayList;
@@ -13,8 +14,19 @@ public class LaneList<T extends OpenDRIVELaneProperty> extends ArrayList<T> {
 //        public Boolean bGreaterA(T a, T b);
 //    }
 
-//    @Override
-    public boolean add(T t, Comparator<T> comparator) {
+    private Comparator<T> comparator;
+
+    public LaneList(Comparator<T> comparator){
+        this.comparator = comparator;
+    }
+
+
+    @Override
+    public boolean add(T t) {
+        return this.add(t, this.comparator);
+    }
+
+    private boolean add(T t, Comparator<T> comparator) {
         if (super.size() == 0)
             return super.add(t);
 
