@@ -46,7 +46,10 @@ public class OpenDRIVELaneSectionAdapter extends AbstractTransportationSpaceAdap
                     // according to local-name, namespace-uri and type => As long as the adapter class is a superclass
                     // of the wanted classes the builder uses the right adapter classes that matches the
                     // local-name, namespace-uri and type (w.r.t. inheritance relations)
-                    object.getLane().add((OpenDRIVELaneProperty) reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class));
+                    object.getLane().add((OpenDRIVELaneProperty) reader.getObjectUsingBuilder(OpenDRIVELanePropertyAdapter.class),
+                            (OpenDRIVELaneProperty a, OpenDRIVELaneProperty b) -> {
+                                return ((OpenDRIVELane) a.getObject()).getLaneID() < ((OpenDRIVELane) b.getObject()).getLaneID() ? -1 : 0;
+                            });
 
                     // For array property
 //                    object.getLanes().add((OpenDRIVELaneArrayProperty) reader.getObjectUsingBuilder(OpenDRIVELaneArrayPropertyAdapter.class));

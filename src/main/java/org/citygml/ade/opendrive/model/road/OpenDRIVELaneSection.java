@@ -2,6 +2,7 @@ package org.citygml.ade.opendrive.model.road;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
+import org.citygml.ade.opendrive.model.lane.LaneList;
 import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableType;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
 import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableTypeList;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class OpenDRIVELaneSection extends AbstractTransportationSpace implements ADEObject, OpenDRIVEElement, ReferenceableType {
     private Boolean singleSided;
-    private List<OpenDRIVELaneProperty> lane;
+    private LaneList<OpenDRIVELaneProperty> lane;
     private OpenDRIVEAdditionalDataProperty additionalData;
     private LinearReferencingProperty linearReferencing;
 
@@ -27,14 +28,14 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
 //    }
 
 
-    public List<OpenDRIVELaneProperty> getLane() {
+    public LaneList<OpenDRIVELaneProperty> getLane() {
         if (lane == null)
-            lane = new ArrayList<>();
+            lane = new LaneList<>();
 
         return lane;
     }
 
-    public void setLane(List<OpenDRIVELaneProperty> lane) {
+    public void setLane(LaneList<OpenDRIVELaneProperty> lane) {
         this.lane = lane;
     }
 

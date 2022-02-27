@@ -14,9 +14,10 @@ public class ReferenceableTypeList<T extends ReferenceableType> extends ArrayLis
             for (int i = 0; i < super.size(); ++i) {
                 Double s_tmp = super.get(i).getLinearReferencing().getObject().getPositionExpression().getObject().
                         getDistanceExpression().getObject().getDistanceAlong().getValue();
-                if (s_new < s_tmp)
+                if (s_new < s_tmp) {
                     super.add(i, t);
-                return true;
+                    return true;
+                }
             }
         } catch (NullPointerException e) {
             e.printStackTrace();
