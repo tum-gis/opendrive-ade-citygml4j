@@ -35,6 +35,9 @@ public class LR_LinearElement extends AbstractGML {
     }
 
     public LR_LinearReferencingMethodProperty getDefaultLRM() {
+        if (this.defaultLRM() == null)
+            return null;
+
         return new LR_LinearReferencingMethodProperty(defaultLRM());
     }
 
@@ -44,11 +47,13 @@ public class LR_LinearElement extends AbstractGML {
             if (feature != null && feature.getObject() != null && feature.getObject() instanceof LR_ILinearElement) {
                 // TODO: Resolve XLink if present
                 return ((LR_ILinearElement)feature).defaultLRM();
-            }
-
-            if (curve != null && curve.getObject() != null && curve.getObject() instanceof LR_ILinearElement) {
-                // TODO: Resolve XLink if present
-                return ((LR_ILinearElement)curve).defaultLRM();
+            } else {
+                if (curve != null && curve.getObject() != null && curve.getObject() instanceof LR_ILinearElement) {
+                    // TODO: Resolve XLink if present
+                    return ((LR_ILinearElement)curve).defaultLRM();
+                } else {
+                    return null;
+                }
             }
         }
 
