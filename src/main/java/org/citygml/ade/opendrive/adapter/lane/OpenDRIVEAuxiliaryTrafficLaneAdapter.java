@@ -3,6 +3,7 @@ package org.citygml.ade.opendrive.adapter.lane;
 import org.citygml.ade.opendrive.model.lane.LateralLaneSection;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVEAuxiliaryTrafficLane;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
+import org.citygml4j.model.transportation.GranularityValue;
 import org.citygml4j.xml.adapter.transportation.AuxiliaryTrafficSpaceAdapter;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;

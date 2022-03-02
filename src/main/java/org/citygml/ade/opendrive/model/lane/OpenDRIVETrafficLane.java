@@ -21,7 +21,6 @@ public class OpenDRIVETrafficLane extends TrafficSpace implements OpenDRIVELane 
     // In OpenDRIVE, all roads contain lanes. Each road shall have at least one lane with a width larger than 0. The number of lanes per road is not limited.
     // For the definition and description of lanes in OpenDRIVE, the center lane is required. The center lane has no width and serves as reference for lane numbering.
     // => lane granularity
-
     public OpenDRIVETrafficLane() {
         setGranularity(GranularityValue.LANE);
     }
