@@ -7,7 +7,7 @@ import org.citygml4j.model.transportation.Intersection;
 
 public class OpenDRIVEJunction extends Intersection implements ADEObject, OpenDRIVEElement {
     private String junctionName;
-    private e_junction_type junctionType = e_junction_type.DEFAULT;
+    private E_junction_type junctionType = E_junction_type.DEFAULT;
     private OpenDRIVEAdditionalDataProperty additionalData;
 
     @Override
@@ -28,11 +28,11 @@ public class OpenDRIVEJunction extends Intersection implements ADEObject, OpenDR
         this.junctionName = junctionName;
     }
 
-    public e_junction_type getJunctionType() {
+    public E_junction_type getJunctionType() {
         return junctionType;
     }
 
-    public void setJunctionType(e_junction_type junctionType) {
+    public void setJunctionType(E_junction_type junctionType) {
         this.junctionType = junctionType;
     }
 }

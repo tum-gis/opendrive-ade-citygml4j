@@ -4,10 +4,11 @@ import org.citygml.ade.opendrive.model.road.OpenDRIVELaneSection;
 import org.citygml.ade.opendrive.model.road.OpenDRIVERoad;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.function.Function;
 
-public class LaneList<T extends OpenDRIVELaneProperty> extends ArrayList<T> {
+public class OpenDRIVELaneList<T extends OpenDRIVELaneProperty> extends ArrayList<T> {
 
 //    @FunctionalInterface
 //    public interface ComparingFunction<T> {
@@ -16,10 +17,38 @@ public class LaneList<T extends OpenDRIVELaneProperty> extends ArrayList<T> {
 
     private Comparator<T> comparator;
 
-    public LaneList(Comparator<T> comparator){
+    public OpenDRIVELaneList(Comparator<T> comparator){
         this.comparator = comparator;
     }
 
+    public OpenDRIVELaneList(Collection<? extends T> c, Comparator<T> comparator) {
+//        super(c);
+        this.comparator = comparator;
+        this.addCollection(c);
+    }
+
+    public OpenDRIVELaneList(int initialCapacity, Comparator<T> comparator) {
+        super(initialCapacity);
+        this.comparator = comparator;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+//        return super.addAll(c);
+        return this.addCollection(c);
+    }
+
+    private boolean addCollection(Collection<? extends T> c) {
+        try {
+            for (T item : c) {
+                this.add(item);
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 
     @Override
     public boolean add(T t) {

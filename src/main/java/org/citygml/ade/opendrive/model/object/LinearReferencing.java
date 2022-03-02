@@ -8,6 +8,13 @@ import org.gml.model.LinearReferencingSystem.LR_PositionExpressionProperty;
 public class LinearReferencing extends ADEOfAbstractCityObject implements ADEObject {
     private LR_PositionExpressionProperty positionExpression;
 
+    public LinearReferencing() {
+    }
+
+    public LinearReferencing(LR_PositionExpressionProperty positionExpression) {
+        this.positionExpression = positionExpression;
+    }
+
     public LR_PositionExpressionProperty getPositionExpression() {
         return positionExpression;
     }

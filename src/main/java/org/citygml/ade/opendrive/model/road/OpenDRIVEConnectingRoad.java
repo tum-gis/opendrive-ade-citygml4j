@@ -9,6 +9,7 @@ import org.xmlobjects.gml.model.measures.Length;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace implements TopLevelFeature, OpenDRIVERoad, ADEObject {
     private Length length;
@@ -17,6 +18,19 @@ public class OpenDRIVEConnectingRoad extends AbstractTransportationSpace impleme
     private ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection;
     private OpenDRIVERoadShapeProperty roadShape;
     private OpenDRIVEAdditionalDataProperty additionalData;
+//    private OpenDRIVEJunctionProperty junction;
+
+    public OpenDRIVEConnectingRoad() {
+    }
+
+    public OpenDRIVEConnectingRoad(Length length, ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection,
+                                   OpenDRIVERoadShapeProperty roadShape, String roadID /*, OpenDRIVEJunctionProperty junction*/) {
+        this.length = length;
+        this.laneSection = laneSection;
+        this.roadShape = roadShape;
+        this.length = length;
+        super.setId("UUID_" + UUID.randomUUID() + "_ODR_id_" + roadID);
+    }
 
     @Override
     public OpenDRIVEAdditionalDataProperty getAdditionalData() {

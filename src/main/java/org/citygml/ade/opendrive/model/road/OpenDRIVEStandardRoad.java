@@ -9,6 +9,7 @@ import org.xmlobjects.gml.model.measures.Length;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, OpenDRIVERoad, ADEObject {
     private Length length;
@@ -18,6 +19,16 @@ public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, O
     private OpenDRIVERoadShapeProperty roadShape;
     private OpenDRIVEAdditionalDataProperty additionalData;
 
+    public OpenDRIVEStandardRoad() {
+    }
+
+    public OpenDRIVEStandardRoad(Length length, ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection,
+                                 OpenDRIVERoadShapeProperty roadShape, String roadID) {
+        this.length = length;
+        this.laneSection = laneSection;
+        this.roadShape = roadShape;
+        super.setId("UUID_" + UUID.randomUUID() + "_ODR_id_" + roadID);
+    }
 
     @Override
     public OpenDRIVEAdditionalDataProperty getAdditionalData() {

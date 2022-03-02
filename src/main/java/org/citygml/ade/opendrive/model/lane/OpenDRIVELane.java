@@ -6,6 +6,7 @@ import org.citygml4j.model.ade.ADEObject;
 import java.util.List;
 
 public interface OpenDRIVELane extends ADEObject, OpenDRIVEElement {
+
     public void setLaneID(Integer laneID);
     public Integer getLaneID();
 

@@ -2,6 +2,7 @@ package org.citygml.ade.opendrive.adapter.lane;
 
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneWidth;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
+import org.citygml4j.xml.adapter.core.AbstractSpaceBoundaryAdapter;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
@@ -20,7 +21,7 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElement(name = "OpenDRIVELaneWidth", namespaceURI = OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE)
-public class OpenDRIVELaneWidthAdapter extends AbstractGMLAdapter<OpenDRIVELaneWidth> {
+public class OpenDRIVELaneWidthAdapter extends AbstractSpaceBoundaryAdapter<OpenDRIVELaneWidth> {
     @Override
     public OpenDRIVELaneWidth createObject(QName name, Object parent) throws ObjectBuildException {
         return new OpenDRIVELaneWidth();

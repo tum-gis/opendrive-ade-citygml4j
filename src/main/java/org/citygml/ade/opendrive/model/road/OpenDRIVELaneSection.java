@@ -2,22 +2,19 @@ package org.citygml.ade.opendrive.model.road;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
 import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
-import org.citygml.ade.opendrive.model.lane.LaneList;
+import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneList;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELane;
 import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableType;
 import org.citygml.ade.opendrive.model.lane.OpenDRIVELaneProperty;
-import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableTypeList;
 import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;
 import org.citygml4j.model.ade.ADEObject;
 import org.citygml4j.model.transportation.AbstractTransportationSpace;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 public class OpenDRIVELaneSection extends AbstractTransportationSpace implements ADEObject, OpenDRIVEElement, ReferenceableType {
     private Boolean singleSided;
-    private LaneList<OpenDRIVELaneProperty> lane;
+    private OpenDRIVELaneList<OpenDRIVELaneProperty> lane;
     private OpenDRIVEAdditionalDataProperty additionalData;
     private LinearReferencingProperty linearReferencing;
 
@@ -34,14 +31,14 @@ public class OpenDRIVELaneSection extends AbstractTransportationSpace implements
 //    }
 
 
-    public LaneList<OpenDRIVELaneProperty> getLane() {
+    public OpenDRIVELaneList<OpenDRIVELaneProperty> getLane() {
         if (lane == null)
-            lane = new LaneList<OpenDRIVELaneProperty>(OpenDRIVELaneSection.laneIDComparator);
+            lane = new OpenDRIVELaneList<OpenDRIVELaneProperty>(OpenDRIVELaneSection.laneIDComparator);
 
         return lane;
     }
 
-    public void setLane(LaneList<OpenDRIVELaneProperty> lane) {
+    public void setLane(OpenDRIVELaneList<OpenDRIVELaneProperty> lane) {
         this.lane = lane;
     }
 

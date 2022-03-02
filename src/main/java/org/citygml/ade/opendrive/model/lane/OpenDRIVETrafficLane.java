@@ -1,6 +1,7 @@
 package org.citygml.ade.opendrive.model.lane;
 
 import org.citygml.ade.opendrive.model.core.OpenDRIVEAdditionalDataProperty;
+import org.citygml4j.model.transportation.GranularityValue;
 import org.citygml4j.model.transportation.TrafficSpace;
 
 import java.util.ArrayList;
@@ -15,6 +16,22 @@ public class OpenDRIVETrafficLane extends TrafficSpace implements OpenDRIVELane 
     private List<OpenDRIVELaneArrayProperty> predecessor;
     private OpenDRIVEAdditionalDataProperty additionalData;
     private List<OpenDRIVELaneShapeProperty> laneShape;
+
+    // From OpenDRIVE 1.6 specification:
+    // In OpenDRIVE, all roads contain lanes. Each road shall have at least one lane with a width larger than 0. The number of lanes per road is not limited.
+    // For the definition and description of lanes in OpenDRIVE, the center lane is required. The center lane has no width and serves as reference for lane numbering.
+    // => lane granularity
+
+    public OpenDRIVETrafficLane() {
+        setGranularity(GranularityValue.LANE);
+    }
+
+    public OpenDRIVETrafficLane(Integer laneID, LateralLaneSection lateralLaneSection, String type) {
+        this.setGranularity(GranularityValue.LANE);
+        this.laneID = laneID;
+        this.lateralLaneSection = lateralLaneSection;
+        this.laneType = type;
+    }
 
     @Override
     public OpenDRIVEAdditionalDataProperty getAdditionalData() {

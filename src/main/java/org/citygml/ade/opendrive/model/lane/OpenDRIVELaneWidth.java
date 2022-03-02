@@ -5,13 +5,21 @@ import org.citygml.ade.opendrive.model.core.OpenDRIVEElement;
 import org.citygml.ade.opendrive.model.linearReferencing.ReferenceableType;
 import org.citygml.ade.opendrive.model.object.LinearReferencingProperty;
 import org.citygml4j.model.ade.ADEObject;
+import org.citygml4j.model.core.AbstractSpaceBoundary;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 
-public class OpenDRIVELaneWidth extends AbstractGML implements ADEObject, ReferenceableType, OpenDRIVEElement {
+public class OpenDRIVELaneWidth extends AbstractSpaceBoundary implements ADEObject, ReferenceableType, OpenDRIVEElement {
     private CurveProperty width;
     private LinearReferencingProperty linearReferencing;
     private OpenDRIVEAdditionalDataProperty additionalData;
+
+    public OpenDRIVELaneWidth() {
+    }
+
+    public OpenDRIVELaneWidth(LinearReferencingProperty linearReferencing) {
+        this.linearReferencing = linearReferencing;
+    }
 
     public CurveProperty getWidth() {
         return width;

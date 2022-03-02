@@ -1,13 +1,13 @@
 package org.citygml.ade.opendrive.model.junction;
 
-public enum e_junction_type {
+public enum E_junction_type {
     DEFAULT("default"),
     VIRTUAL("virtual");
 
     private final String value;
 
-    public static e_junction_type fromValue(String value) {
-        for (e_junction_type v : e_junction_type.values()) {
+    public static E_junction_type fromValue(String value) {
+        for (E_junction_type v : E_junction_type.values()) {
             if (v.value.equals(value))
                 return v;
         }
@@ -15,7 +15,7 @@ public enum e_junction_type {
         return null;
     }
 
-    private e_junction_type(String value) {
+    private E_junction_type(String value) {
         this.value = value;
     }
 

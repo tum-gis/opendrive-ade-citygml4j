@@ -2,7 +2,7 @@ package org.citygml.ade.opendrive.adapter.junction;
 
 import org.citygml.ade.opendrive.adapter.core.OpenDRIVEAdditionalDataPropertyAdapter;
 import org.citygml.ade.opendrive.model.junction.OpenDRIVEJunction;
-import org.citygml.ade.opendrive.model.junction.e_junction_type;
+import org.citygml.ade.opendrive.model.junction.E_junction_type;
 import org.citygml.ade.opendrive.module.OpenDRIVEADEModule;
 import org.citygml4j.xml.adapter.transportation.IntersectionAdapter;
 import org.xmlobjects.annotation.XMLElement;
@@ -38,7 +38,7 @@ public class OpenDRIVEJunctionAdapter extends CompositeObjectAdapter<OpenDRIVEJu
                     reader.getTextContent().ifPresent(object::setJunctionName);
                     break;
                 case "junctionType":
-                    reader.getTextContent().ifPresent((v) -> object.setJunctionType(e_junction_type.fromValue(v)));
+                    reader.getTextContent().ifPresent((v) -> object.setJunctionType(E_junction_type.fromValue(v)));
                     break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
