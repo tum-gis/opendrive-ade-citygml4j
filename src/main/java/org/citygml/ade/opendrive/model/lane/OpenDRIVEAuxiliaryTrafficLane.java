@@ -22,11 +22,13 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     // For the definition and description of lanes in OpenDRIVE, the center lane is required. The center lane has no width and serves as reference for lane numbering.
     // => lane granularity
     public OpenDRIVEAuxiliaryTrafficLane() {
-        this.setGranularity(GranularityValue.LANE);
+        super(GranularityValue.LANE);
+//        this.setGranularity(GranularityValue.LANE);
     }
 
     public OpenDRIVEAuxiliaryTrafficLane(Integer laneID, LateralLaneSection lateralLaneSection, String type) {
-        this.setGranularity(GranularityValue.LANE);
+//        this.setGranularity(GranularityValue.LANE);
+        super(GranularityValue.LANE);
         this.laneID = laneID;
         this.lateralLaneSection = lateralLaneSection;
         this.laneType = type;

@@ -38,19 +38,19 @@ public class OpenDRIVEStandardRoadAdapter extends CompositeObjectAdapter<OpenDRI
         if (OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE.equals(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "length":
-                    object.setOpenDRIVERoadLength(reader.getObjectUsingBuilder(LengthAdapter.class));
+                    object.setLength(reader.getObjectUsingBuilder(LengthAdapter.class));
                     break;
                 case "roadName":
-                    reader.getTextContent().ifPresent(object::setOpenDRIVERoadName);
+                    reader.getTextContent().ifPresent(object::setRoadName);
                     break;
                 case "rule":
-                    reader.getTextContent().ifPresent(v -> object.setOpenDRIVERoadTrafficRule(E_trafficRule.fromValue(v)));
+                    reader.getTextContent().ifPresent(v -> object.setTrafficRule(E_trafficRule.fromValue(v)));
                     break;
                 case "laneSection":
-                    object.getOpenDRIVELaneSection().add(reader.getObjectUsingBuilder(OpenDRIVELaneSectionPropertyAdapter.class));
+                    object.getLaneSection().add(reader.getObjectUsingBuilder(OpenDRIVELaneSectionPropertyAdapter.class));
                     break;
                 case "roadShape":
-                    object.setOpenDRIVERoadShape(reader.getObjectUsingBuilder(OpenDRIVERoadShapePropertyAdapter.class));
+                    object.setRoadShape(reader.getObjectUsingBuilder(OpenDRIVERoadShapePropertyAdapter.class));
                     break;
             }
         } else // If the namespace is not from the ADE then the element is from the citygml standard module
@@ -66,20 +66,20 @@ public class OpenDRIVEStandardRoadAdapter extends CompositeObjectAdapter<OpenDRI
     public void writeChildElements(OpenDRIVEStandardRoad object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
 
-        if (object.getOpenDRIVERoadLength() != null)
-            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "length"), object.getOpenDRIVERoadLength(), LengthAdapter.class, namespaces);
+        if (object.getLength() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "length"), object.getLength(), LengthAdapter.class, namespaces);
 
-        if (object.getOpenDRIVERoadName() != null)
-            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadName").addTextContent(object.getOpenDRIVERoadName()));
+        if (object.getRoadName() != null)
+            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadName").addTextContent(object.getRoadName()));
 
-        if (object.getOpenDRIVERoadTrafficRule() != null)
-            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "rule").addTextContent(object.getOpenDRIVERoadTrafficRule().toValue()));
+        if (object.getTrafficRule() != null)
+            writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "rule").addTextContent(object.getTrafficRule().toValue()));
 
-        for (OpenDRIVELaneSectionProperty laneSectionProperty : object.getOpenDRIVELaneSection())
+        for (OpenDRIVELaneSectionProperty laneSectionProperty : object.getLaneSection())
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneSection"), laneSectionProperty, OpenDRIVELaneSectionPropertyAdapter.class, namespaces);
 
-        if (object.getOpenDRIVERoadShape() != null)
-            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadShape"), object.getOpenDRIVERoadShape(), OpenDRIVERoadShapePropertyAdapter.class, namespaces);
+        if (object.getRoadShape() != null)
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "roadShape"), object.getRoadShape(), OpenDRIVERoadShapePropertyAdapter.class, namespaces);
 
         if (object.getAdditionalData() != null)
             writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "additionalData"),

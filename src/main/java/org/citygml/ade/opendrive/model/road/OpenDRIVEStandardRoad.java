@@ -41,42 +41,42 @@ public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, O
     }
 
     @Override
-    public void setOpenDRIVERoadLength(Length length) {
+    public void setLength(Length length) {
         this.length = length;
     }
 
     @Override
-    public Length getOpenDRIVERoadLength() {
+    public Length getLength() {
         return this.length;
     }
 
     @Override
-    public void setOpenDRIVERoadName(String roadName) {
+    public void setRoadName(String roadName) {
         this.roadName = roadName;
     }
 
     @Override
-    public String getOpenDRIVERoadName() {
+    public String getRoadName() {
         return this.roadName;
     }
 
     @Override
-    public void setOpenDRIVERoadTrafficRule(E_trafficRule trafficRule) {
+    public void setTrafficRule(E_trafficRule trafficRule) {
         this.trafficRule = trafficRule;
     }
 
     @Override
-    public E_trafficRule getOpenDRIVERoadTrafficRule() {
+    public E_trafficRule getTrafficRule() {
         return this.trafficRule;
     }
 
     @Override
-    public void setOpenDRIVELaneSection(ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection) {
+    public void setLaneSection(ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection) {
         this.laneSection = laneSection;
     }
 
     @Override
-    public ReferenceableTypeList<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection() {
+    public ReferenceableTypeList<OpenDRIVELaneSectionProperty> getLaneSection() {
         if (laneSection == null)
             laneSection = new ReferenceableTypeList<>();
 
@@ -84,12 +84,12 @@ public class OpenDRIVEStandardRoad extends Section implements TopLevelFeature, O
     }
 
     @Override
-    public void setOpenDRIVERoadShape(OpenDRIVERoadShapeProperty roadShape) {
+    public void setRoadShape(OpenDRIVERoadShapeProperty roadShape) {
         this.roadShape = roadShape;
     }
 
     @Override
-    public OpenDRIVERoadShapeProperty getOpenDRIVERoadShape() {
+    public OpenDRIVERoadShapeProperty getRoadShape() {
         return roadShape;
     }
 }

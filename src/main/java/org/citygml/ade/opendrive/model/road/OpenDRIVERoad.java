@@ -7,19 +7,19 @@ import org.xmlobjects.gml.model.measures.Length;
 import java.util.List;
 
 public interface OpenDRIVERoad extends OpenDRIVEElement {
-    public void setOpenDRIVERoadLength(Length length);
-    public Length getOpenDRIVERoadLength();
+    public void setLength(Length length);
+    public Length getLength();
 
-    public void setOpenDRIVERoadName(String roadName);
-    public String getOpenDRIVERoadName();
+    public void setRoadName(String roadName);
+    public String getRoadName();
 
-    public void setOpenDRIVERoadTrafficRule(E_trafficRule trafficRule);
-    public E_trafficRule getOpenDRIVERoadTrafficRule();
+    public void setTrafficRule(E_trafficRule trafficRule);
+    public E_trafficRule getTrafficRule();
 
-    public void setOpenDRIVELaneSection(ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection);
-    public List<OpenDRIVELaneSectionProperty> getOpenDRIVELaneSection();
+    public void setLaneSection(ReferenceableTypeList<OpenDRIVELaneSectionProperty> laneSection);
+    public List<OpenDRIVELaneSectionProperty> getLaneSection();
 
-    public void setOpenDRIVERoadShape(OpenDRIVERoadShapeProperty roadShape);
-    public OpenDRIVERoadShapeProperty getOpenDRIVERoadShape();
+    public void setRoadShape(OpenDRIVERoadShapeProperty roadShape);
+    public OpenDRIVERoadShapeProperty getRoadShape();
 
 }
