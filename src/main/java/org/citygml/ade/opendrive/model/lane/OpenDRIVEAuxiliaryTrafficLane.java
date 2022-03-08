@@ -12,10 +12,10 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     private LateralLaneSection lateralLaneSection;
     private Boolean level;
     private String laneType;
-    private List<OpenDRIVELaneArrayProperty> successor;
-    private List<OpenDRIVELaneArrayProperty> predecessor;
+    private List<OpenDRIVELaneProperty> successor;
+    private List<OpenDRIVELaneProperty> predecessor;
     private OpenDRIVEAdditionalDataProperty additionalData;
-    private List<OpenDRIVELaneShapeProperty> laneShape;
+    private OpenDRIVELaneShapeProperty laneShape;
 
     // From OpenDRIVE 1.6 specification:
     // In OpenDRIVE, all roads contain lanes. Each road shall have at least one lane with a width larger than 0. The number of lanes per road is not limited.
@@ -85,12 +85,12 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     }
 
     @Override
-    public void setSuccessor(List<OpenDRIVELaneArrayProperty> successor) {
+    public void setSuccessor(List<OpenDRIVELaneProperty> successor) {
         this.successor = successor;
     }
 
     @Override
-    public List<OpenDRIVELaneArrayProperty> getSuccessor() {
+    public List<OpenDRIVELaneProperty> getSuccessor() {
         if (successor == null)
             successor = new ArrayList<>();
 
@@ -98,12 +98,12 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     }
 
     @Override
-    public void setPredecessor(List<OpenDRIVELaneArrayProperty> predecessor) {
+    public void setPredecessor(List<OpenDRIVELaneProperty> predecessor) {
         this.predecessor = predecessor;
     }
 
     @Override
-    public List<OpenDRIVELaneArrayProperty> getPredecessor() {
+    public List<OpenDRIVELaneProperty> getPredecessor() {
         if (predecessor == null)
             predecessor = new ArrayList<>();
 
@@ -111,15 +111,12 @@ public class OpenDRIVEAuxiliaryTrafficLane extends AuxiliaryTrafficSpace impleme
     }
 
     @Override
-    public void setLaneShape(List<OpenDRIVELaneShapeProperty> laneShape) {
+    public void setLaneShape(OpenDRIVELaneShapeProperty laneShape) {
         this.laneShape = laneShape;
     }
 
     @Override
-    public List<OpenDRIVELaneShapeProperty> getLaneShape() {
-        if (laneShape == null)
-            laneShape = new ArrayList<>();
-
+    public OpenDRIVELaneShapeProperty getLaneShape() {
         return this.laneShape;
     }
 }

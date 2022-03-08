@@ -46,7 +46,7 @@ public abstract class OpenDRIVELaneAdapter<T extends OpenDRIVELane> extends Comp
                     reader.getTextContent().ifPresent((v) -> object.setLateralLaneSection(LateralLaneSection.fromValue(v)));
                     break;
                 case "laneShape":
-                    object.getLaneShape().add(reader.getObjectUsingBuilder(OpenDRIVELaneShapePropertyAdapter.class));
+                    object.setLaneShape(reader.getObjectUsingBuilder(OpenDRIVELaneShapePropertyAdapter.class));
                     break;
             }
         } else
@@ -78,10 +78,8 @@ public abstract class OpenDRIVELaneAdapter<T extends OpenDRIVELane> extends Comp
             writer.writeElement(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "type").addTextContent(object.getLaneType()));
 
         if (object.getLaneShape() != null) {
-            for (OpenDRIVELaneShapeProperty laneShapeProperty : object.getLaneShape()) {
-                writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneShape"),
-                        laneShapeProperty, OpenDRIVELaneShapePropertyAdapter.class, namespaces);
-            }
+            writer.writeElementUsingSerializer(Element.of(OpenDRIVEADEModule.OPENDRIVEADE_NAMESPACE, "laneShape"),
+                    object.getLaneShape(), OpenDRIVELaneShapePropertyAdapter.class, namespaces);
         }
 
     }
