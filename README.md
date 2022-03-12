@@ -6,7 +6,7 @@
 > **_⚠:_** This is work-in-progress for a proof of concept.
 
 ## Overview
-*opendrive-ade-citygml4j* is a Java module implementation of the conceptual CityGML Application Domain Extension (ADE) model of the [ASAM OpenDRIVE 1.6 standard](https://www.asam.net/standards/detail/opendrive/). Is is built upon Claus Nagel's development branch of [Open Source Java API for CityGML3.0](https://github.com/citygml4j/citygml4j/tree/citygml3-devel).
+*opendrive-ade-citygml4j* is a Java module implementing of the conceptual CityGML Application Domain Extension (ADE) model of the [ASAM OpenDRIVE 1.6 standard](https://www.asam.net/standards/detail/opendrive/). Is is built upon Claus Nagel's development branch of [Open Source Java API for CityGML3.0](https://github.com/citygml4j/citygml4j/tree/citygml3-devel).
 
 ## Module structure
 *opendrive-ade-citygml4j* follows the package structure of the conceptual OpenDRIVE ADE. Additionally, a submodule is included implementing the [GML3.3](https://portal.ogc.org/files/?artifact_id=46568) XML schema of the Linear Referencing model defined in the ISO19148 standard.
