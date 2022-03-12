@@ -6,7 +6,7 @@
 > **_⚠:_** This is work-in-progress for a proof of concept.
 
 ## Overview
-*opendrive-ade-citygml4j* is a Java module implementing the conceptual CityGML Application Domain Extension (ADE) model of the [ASAM OpenDRIVE 1.6 standard](https://www.asam.net/standards/detail/opendrive/). It is built upon Claus Nagel's development branch of [Open Source Java API for CityGML3.0](https://github.com/citygml4j/citygml4j/tree/citygml3-devel).
+*opendrive-ade-citygml4j* is a Java module implementing the conceptual CityGML Application Domain Extension (ADE) model of the [ASAM OpenDRIVE 1.6](https://www.asam.net/standards/detail/opendrive/) standard. It is built upon Claus Nagel's development branch of [Open Source Java API for CityGML3.0](https://github.com/citygml4j/citygml4j/tree/citygml3-devel).
 
 ## Module structure
 *opendrive-ade-citygml4j* follows the package structure of the conceptual OpenDRIVE ADE model. Additionally, *opendrive-ade-citygml4j* includes as submodule an implementation of the [GML3.3](https://portal.ogc.org/files/?artifact_id=46568) XML schema of the Linear Referencing model, which is defined in the ISO19148 standard.
@@ -26,4 +26,4 @@ Following concepts are currently implemented:
 * Lanes/lane geometry
 * Linear referencing
 
-*opendrive-ade-citygml4j* serves as a proof of concept as part of an iterative process of bridging the semantic and conceptual differences between the [CityGML3.0](https://docs.ogc.org/is/20-010/20-010.html) standard and the [ASAM OpenDRIVE 1.6 standard](https://www.asam.net/standards/detail/opendrive/).
+*opendrive-ade-citygml4j* serves as a proof of concept as part of an iterative process of bridging the semantic and conceptual differences between the [CityGML3.0](https://docs.ogc.org/is/20-010/20-010.html) standard and the [ASAM OpenDRIVE 1.6](https://www.asam.net/standards/detail/opendrive/) standard.
