@@ -11,7 +11,7 @@ public class LRMComparator implements Comparator<LR_LinearReferencingMethod> {
         boolean equalNames = Objects.equals(o1.getName(), o2.getName());
         boolean equalType = Objects.equals(o1.getType(), o2.getType());
         boolean equalUnits = Objects.equals(o1.getUnits(), o2.getUnits());
-        boolean equalConstraints = o1.getConstraint().equalsIgnoreCase(o2.getConstraint());
+        boolean equalConstraints = Objects.equals(o1.getConstraint(), o2.getConstraint());
 
         if (equalNames && equalConstraints && equalType && equalUnits)
             return 0;
